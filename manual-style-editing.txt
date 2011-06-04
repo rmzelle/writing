@@ -187,7 +187,7 @@ You can use any text editor that allows you to edit plain text, but there are a
 few things to consider when choosing one. Some editors have features specific to
 editing XML, such as automatic indenting, closing of tags, and real-time testing
 for well-formedness and schema validation. Examples are the commercial |link|
-`<oXygen/> <http://www.oxygenxml.com/>`_ XML Editor, and the free and open
+`<oXygen/> XML Editor <http://www.oxygenxml.com/>`_, and the free and open
 source editors |link| `GNU Emacs <http://www.gnu.org/software/emacs/>`_ (in
 |link| `nXML mode <http://www.thaiopensource.com/nxml-mode/>`_) and |link|
 `jEdit <http://www.jedit.org/>`_. The latter is described in more detail below.
@@ -278,12 +278,14 @@ following checklist:
 Validation
 ^^^^^^^^^^
 
-Make sure the style `validates <XML validators>`_ against the CSL 1.0 schema.
+Make sure the style validates against the CSL 1.0 schema (see `XML
+validators`_).
 
 Licensing
 ^^^^^^^^^
 
-New styles should be licensed under the CC-BY-SA license. E.g.:
+New styles should be licensed under the |link| `CC-BY-SA license
+<http://creativecommons.org/licenses/by-sa/3.0/>`_. E.g.:
 
 .. sourcecode:: xml
 
@@ -355,9 +357,9 @@ bottom of the page. Include the link to the Gist (this link, which should look
 like "https://gist.github.com/766801", is shown in the address bar of your
 browser) in your forum post or issue description.
 
-Frequent contributors can streamline the submission process by forking the `CSL
-Style Repository`_, committing the changes, and creating a `pull request
-<http://help.github.com/pull-requests/>`_. You can use your Git client of
-choice, but we can recommend `SmartGit
+Frequent contributors can streamline the submission process by forking the
+|link| `CSL Style Repository`_, committing the changes, and creating a |link|
+`pull request <http://help.github.com/pull-requests/>`_. You can use your Git
+client of choice, but we can recommend |link| `SmartGit
 <http://www.syntevo.com/smartgit/index.html>`_, which is free for non-commercial
 use.
