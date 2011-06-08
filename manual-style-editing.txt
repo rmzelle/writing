@@ -233,18 +233,21 @@ Validating with Validator.nu
 To use the online XML validator |link| `Validator.nu <http://validator.nu/>`_:
 
 1. Select the style you want to validate. When using "Address" option, provide
-   the URL to the style and check the "Be lax about HTTP Content-Type"
-   check-box. With "File Upload", select the style file on your computer. With
-   "Text Field", paste the style code into the text box and select the "XML;
-   don't load external entities" option for the "Parser" drop-down menu.
-   
-2. Paste the URL to the CSL 1.0 schema into the "Schemas" text field:
-   https://github.com/citation-style-language/schema/raw/v1.0/csl.rnc
-   
-3. Click the "Validate" button. If your style is well-formed and conforms to the
-   CSL schema, you will get the message:
+   the URL to the style. With "File Upload", select the style file on your
+   computer. With "Text Field", paste the style code into the text box.
 
-    | The document validates according to the specified schema(s).
+2. Enter the URL to the CSL 1.0 schema into the "Schemas" text field:
+   https://github.com/citation-style-language/schema/raw/v1.0/csl.rnc
+
+3. Check the "Be lax about HTTP Content-Type" check-box and select the "XML;
+   don't load external entities" option in the "Parser" drop-down menu.
+   
+4. Click the "Validate" button. While you can generally ignore warnings, you
+   should pay attention to errors. If your style is well-formed and conforms to
+   the CSL schema, you will get the message:
+
+    | The document validates according to the specified schema(s) and to
+    | additional constraints checked by the validator.
 
 Zotero's Preview and Reference Test panes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -279,7 +282,7 @@ Validation
 ^^^^^^^^^^
 
 Make sure the style validates against the CSL 1.0 schema (see `XML
-validators`_).
+Validators`_).
 
 Licensing
 ^^^^^^^^^
