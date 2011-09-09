@@ -87,7 +87,7 @@ CSL Infrastructure
 
 In addition to **item metadata** (the details of the cited resources) and **CSL
 styles** (describing the different citation formats), there are a few more parts
-that make up the CSL infrastructure, which is shown below:
+that make up the CSL infrastructure, shown below:
 
 |csl-infrastructure|
 
@@ -119,7 +119,7 @@ Let's take a look at the following piece of CSL XML:
     <?xml version="1.0" encoding="utf-8"?>
     <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0">
       <info>
-        <title>Academic Medicine (Formerly Journal of Medical Education)</title>
+        <title>Academic Medicine</title>
         <id>http://www.zotero.org/styles/academic-medicine</id>
         <link href="http://www.zotero.org/styles/vancouver" rel="independent-parent"/>
         <category citation-format="numeric"/>
@@ -131,7 +131,7 @@ Let's take a look at the following piece of CSL XML:
 There are several concepts and terms you need to be familiar with. These are:
 
 - **XML Declaration**. The first line of any style or locale file should always
-  be the . It most cases, this will be ``<?xml version="1.0"
+  be the XML declaration. It most cases, this will be ``<?xml version="1.0"
   encoding="utf-8"?>``. This line designates the document as XML, and specifies
   the XML version ("1.0") and character encoding ("utf-8") used.
 
@@ -145,8 +145,8 @@ There are several concepts and terms you need to be familiar with. These are:
   Element tags are always wrapped in less-than ("<") and greater-than (">")
   characters (e.g. ``<style>``). For an empty-element tag, ">" is preceded by a
   forward-slash (e.g. ``<category/>``), while for end tags "<" is followed by a
-  forward-slash (e.g. ``</style>``). Indentation with spaces or tabs is used to
-  show the hierarchical levels.
+  forward-slash (e.g. ``</style>``). Indentation (with spaces or tabs) helps
+  showing the hierarchical levels.
 
 - **Attributes and Element Content**. There are two ways to add additional
   information to elements. First, XML elements can carry one or more attributes
@@ -169,11 +169,11 @@ There are several concepts and terms you need to be familiar with. These are:
   root element, or incorrect escaping will break the XML document and prevent it
   from being processed. XML documents that follow the XML specification and
   don't contain any errors are "well-formed". For well-formed styles and locale
-  files there is a second level of testing, involving the CSL schema. The schema
-  describes which elements and attributes are allowed, and how they should be
-  used. When a style of locale file is tested against the rules laid out in the
-  schema (this is called "validation") and passes, the file is considered to be
-  valid CSL. Only well-formed and valid CSL files can be expected to work.
+  files there is a second level of testing, involving the CSL schema. This
+  schema describes which elements and attributes are allowed, and how they must
+  be used. When a style or locale file is tested against the schema rules (this
+  is called "validation") and passes, the file is valid CSL. Only well-formed
+  and valid CSL files can be expected to work properly.
 
 Tools
 ~~~~~
@@ -261,6 +261,54 @@ styles, using the items selected in the library of the Zotero add-on. The
 **Zotero Reference Test pane**, accessible via
 "chrome://zotero/content/tools/csledit.xul", allows you to edit a style with
 instant previewing, again using the items selected in your Zotero library.
+
+Editing Styles
+--------------
+
+(todo: discuss namespacing in XML basics)
+
+After giving you some background information, we're now ready to take a look at our first CSL style:
+
+.. sourcecode:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0"
+    class="in-text">
+      <info>
+        <title>Journal A</title>
+        <id>journal-a</id>
+        <updated>2008-10-29T21:01:24+00:00</updated>
+      </info>
+      <citation>
+        <layout>
+          <text variable="citation-number"/>
+        </layout>
+      </citation>
+      <bibliography>
+        <layout>
+          <text variable="citation-number"/>
+          <text variable="title"/>
+        </layout>
+      </bibliography>
+    </style>
+
+cs:info, cs:citation and cs:bibliography
+
+In the example style above, the cs:style element has three child elements: cs:info, cs:citation and cs:bibliography.
+
+cs:info provides information about the CSL style itself. In this case it provides the style title, ID and the date and time the style was last updated.
+
+cs:citation describes what in-text citations or foot/end notes should look like. In-text citations can have several formats: common types are the numeric (1), author-date (Smith, 2002), author (Smith) and label formats (Smi2002). Foot and end notes are referenced in-text by the use of markers†. Our style generates in-text citations: this is specified with the "class" attribute on cs:style, which is set to "in-text" (for note styles, the attribute is set to "note").
+
+†CSL offers no control over the symbols and formatting used for in-text markers for note styles, which are typically assigned by the word processor.
+
+cs:bibliography describes what the individual entries in the bibliography should look like.
+
+The cs:style root element can include two more child elements, cs:macro and cs:locale, both of which may be used multiple times. These will be described later (see ... and ...).
+
+Variables
+
+So what kind of citations and bibligraphic entries does our citation style generate?
 
 CSL Style Repository
 --------------------
