@@ -11,7 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-Test!
+   primer
 
 
 Indices and tables
