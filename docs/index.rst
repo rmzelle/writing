@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
 
    primer
+   translating-locale-files
 
 
 Indices and tables
