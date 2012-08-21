@@ -7,46 +7,56 @@ Translating CSL Locale Files
 Preface
 ~~~~~~~
 
-This document describes how you can help us to improve the language support of
-the Citation Style Language (CSL) by providing us with accurate localization
-data for your language of choice.
+This document describes how you can help to improve the language support of
+Citation Style Language (CSL) styles for your favorite language.
 
-CSL styles can be roughly divided into two classes. The first class contains the
-styles that always generate output in one particular language. These include
-most journal, publisher and institute-specific styles, such as the British
-Psychological Society style, which uses British English. The second class
-consists of popular styles that find use in many languages, such as the Chicago
-Manual of Style styles.
+CSL styles can be bound to one particular language. For example, the British
+Psychological Society CSL style will always use British English when generating
+citations and bibliographies. It is also possible to allow styles to
+automatically localize (an example is the Vancouver CSL style), e.g. to a user-
+selected locale, or to the locale of the user's operating system.
 
-CSL styles of both classes rely on locale files to provide default localization
-data, which consists of translations of words commonly used in citations and
-bibliographies, as well as localized date formats and grammatical preferences.
-Storing localization data in separate files has several benefits: styles are
-more compact (although styles can still provide their own localization data to
-override the defaults), and styles themselves can be (mostly) language-agnostic.
+CSL styles of both types rely on locale files for default localization data,
+which consists of translations of words commonly used in citations and
+bibliographies, localized date formats, and grammatical preferences. By storing
+localization data in separate locale files, styles become more compact (although
+styles can still provide their own localization data to override the defaults),
+default localization data becomes easier to maintain, and styles themselves can
+be (mostly) language-agnostic.
 
-Locale Files
-~~~~~~~~~~~~
+Below we will describe the structure of a locale file, give instructions on how
+to translate all its parts, and explain how you can submit your contributions.
 
-The CSL locale files are maintained in a Git repository at https://github.com
+Getting Started
+~~~~~~~~~~~~~~~
+
+The CSL locale files are maintained in a GitHub repository at https://github.com
 /citation-style-language/locales/. Each locale file contains the localization
 data for one language. The file name of a locale file is always "locales-xx-
 XX.xml", where "xx-XX" is a `BCP 47 language code
-<http://people.w3.org/rishida/utils/subtags/index.php>`_ (e.g., the locale code
+<http://people.w3.org/rishida/utils/subtags/index.php>`_ (e.g. the locale code
 for British English is "en-GB"). The `repository wiki <https://github.com
-/citation-style-language/locales/wiki>`_ contains a list for the existing locale
+/citation-style-language/locales/wiki>`_ contains a list of the existing locale
 files, listing the locale code, language, and translation status.
 
-If there is an incomplete locale file for your language, you can start
-translating that file. If you cannot find a preexisting file, copy the "locales-
-en-US.xml" file and start from there (if you have trouble finding the right
-locale code for a new language, don't worry; we'll look it up when you submit
-your locale file).
+If you find that a locale file already exists for your language, but that its
+translations are inaccurate or incomplete, you can start translating that file.
+If there is no locale file for your language, copy the "locales- en-US.xml" file
+and start from there. Don't worry about finding the correct BCP 47 locale code
+for a new language; we'll be happy to look it up when you submit your new locale
+file.
 
-describe where to get styles, how to contribute translations
+Suggest text editor to use (plain text!)
+
+Translating Locale Files
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Date Formats
 ^^^^^^^^^^^^
+
+Link to relevant section in CSL spec. Styles can use non-localizing and localizing dates. Every locale file should contain two date formats: text (long month form) and numeric.
+
+Describe importance of using affixes/delimiter correctly, so dates gracefully degraded from year-month-day to year-month to year. Give bad and good example.
 
 Grammar Options
 ^^^^^^^^^^^^^^^
@@ -58,3 +68,15 @@ Ordinals
 ''''''''
 
 Cover gender-variants and ordinal suffix term usage
+
+Submitting Contributions
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+To submit changes to an existing locale file, or to submit a new locale file,
+follow the `submission instructions for CSL styles <https://github.com/citation-
+style-language/styles/wiki/Submitting-Styles>`_.
+
+Questions?
+~~~~~~~~~~
+
+Post to the `Zotero forums <http://forums.zotero.org/11/>`_.
