@@ -55,22 +55,22 @@ website. New locale files can be submitted as a "gist" or through a pull
 request. For details, see the `instructions on submitting CSL styles
 <https://github.com/citation-style-language/styles/wiki/Submitting-Styles>`_. If
 you edit a locale file on your own computer, use a suitable plain text editor
-(not a word processor).
+such as TextWrangler for OS X, Notepad++ for Windows, or jEdit.
 
 Translating Locale Files
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 When translating locale files, leave the overall structure of the locale file
 untouched. It makes life easier for us if you don't remove existing elements,
-introduce new ones, or move stuff around.
+introduce new ones, or move stuff around (exceptions are discussed below).
 
 xml:lang
 ^^^^^^^^
 
-At the top of the locale file you'll find the ``locale`` root element. It has an
-attribute, ``xml:lang``. The value of this attribute ("en-US" in the example
-below) should be set to the same language code used in the file name of the
-locale file.
+At the top of the locale file you'll find the ``locale`` root element. The value
+of its ``xml:lang`` attribute should be set to the same language code used in
+the file name of the locale file. For the locales-en-US.xml locale file, this is
+"en-US":
 
 .. sourcecode:: xml
 
@@ -81,12 +81,13 @@ Locale File Metadata
 ^^^^^^^^^^^^^^^^^^^^
 
 Directly below the ``locale`` root you'll find an ``info`` element. Here you can
-list yourself as a translator using the ``translator`` element (and optionally
-include contact information such as a website or email address). The ``rights``
-element indicates under which license the locale file is released. All locale
-files in our repository use the same Creative Commons license, so you don't have
-to change anything here. The ``updated`` element is used to keep track of when
-the locale file was last updated. Feel free to ignore it.
+list yourself as a translator using the ``translator`` element. Optionally you
+can include contact information such as a website or email address. A locale
+file can list multiple translators. The ``rights`` element indicates under which
+license the locale file is released. All locale files in our repository use the
+same Creative Commons license, so you don't have to change anything here. The
+``updated`` element is used to keep track of when the locale file was last
+updated. Feel free to ignore it if the format looks too intimidating.
 
 .. sourcecode:: xml
 
@@ -105,7 +106,37 @@ the locale file was last updated. Feel free to ignore it.
 Date Formats
 ^^^^^^^^^^^^
 
-Link to relevant section in CSL spec. Styles can use non-localizing and localizing dates. Every locale file should contain two date formats: text (long month form) and numeric.
+There are two ways in which CSL styles can format dates. A style can either
+define a date format itself, in which case the date format doesn't localize, or
+it can use a localized date format:
+
+.. sourcecode:: xml
+
+    <style>
+    
+      <!-- use of localized date format -->
+      <macro name="issued">
+        <date variable="issued" form="text"/>
+      </macro>
+      
+      <!-- use of non-localized date format -->
+      <macro name="accessed">
+        <date variable="accessed" suffix=", ">
+          <date-part name="month" suffix=" "/>
+          <date-part name="day" suffix=", "/>
+          <date-part name="year"/>
+        </date>
+      </macro>
+      
+    </style>
+
+Each locale file defines two date formats: a numeric format (e.g. "2012/9/3")
+and a textual format, where the month is written with letters (e.g. "September
+3, 2012").
+
+Discuss en-US formats.
+
+Link to relevant section in CSL spec. Styles can use non-localizing and localizing dates.
 
 Describe importance of using affixes/delimiter correctly, so dates gracefully degraded from year-month-day to year-month to year. Give bad and good example.
 
