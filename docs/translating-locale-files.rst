@@ -33,15 +33,15 @@ documentation on the structure and function of locale files.
 Getting Started
 ~~~~~~~~~~~~~~~
 
-The CSL locale files are kept in a GitHub repository at https://github.com
-/citation-style-language/locales/.
+The CSL locale files are kept in a GitHub repository at
+https://github.com/citation-style-language/locales/.
 
 Each locale file contains the localization data for one language. Locale files
 are named "locales-xx-XX.xml", where "xx-XX" is a `BCP 47 language code
 <http://people.w3.org/rishida/utils/subtags/index.php>`_ (e.g. the locale code
-for British English is "en-GB"). The `repository wiki <https://github.com
-/citation-style-language/locales/wiki>`_ lists the locale code, language, and
-translation status of all locale files in the repository.
+for British English is "en-GB"). The `repository wiki
+<https://github.com/citation-style-language/locales/wiki>`_ lists the locale
+code, language, and translation status of all locale files in the repository.
 
 If you find that a locale file already exists for your language, but that its
 translations are inaccurate or incomplete, you can start translating that file.
@@ -106,18 +106,11 @@ updated. Feel free to ignore it if the format looks too intimidating.
 Date Formats
 ^^^^^^^^^^^^
 
-There are two ways in which CSL styles can format dates. A style can either
-define a date format itself, in which case the date format doesn't localize, or
-it can use a localized date format:
+CSL styles can render dates in either non-localizing or localizing formats:
 
 .. sourcecode:: xml
 
     <style>
-    
-      <!-- use of localized date format -->
-      <macro name="issued">
-        <date variable="issued" form="text"/>
-      </macro>
       
       <!-- use of non-localized date format -->
       <macro name="accessed">
@@ -128,17 +121,52 @@ it can use a localized date format:
         </date>
       </macro>
       
+      <!-- use of localized date format -->
+      <macro name="issued">
+        <date variable="issued" form="text"/>
+      </macro>
+      
     </style>
 
-Each locale file defines two date formats: a numeric format (e.g. "2012/9/3")
-and a textual format, where the month is written with letters (e.g. "September
-3, 2012").
+Each locale file defines two localized date formats: a numeric format (e.g.
+"2012/9/3"), and a textual format, where the month is written out in full (e.g.
+"September 3, 2012").
 
-Discuss en-US formats.
+To localize a date format, place the date-part elements for "day", "month", and
+"year" in the desired order. Use the ``prefix`` and ``suffix`` attributes to
+define the punctuation before and after the different date-parts. Take into
+account that dates that only consist of a year and a month, or of only a year,
+still render correctly. For example, the US English localized "text" date
+format,
 
-Link to relevant section in CSL spec. Styles can use non-localizing and localizing dates.
+.. sourcecode:: xml
 
-Describe importance of using affixes/delimiter correctly, so dates gracefully degraded from year-month-day to year-month to year. Give bad and good example.
+    <date form="text">
+      <date-part name="month" suffix=" "/>
+      <date-part name="day" suffix=", "/>
+      <date-part name="year"/>
+    </date>
+
+will produce dates like "September 3, 2012", "September 2012", and "2012".
+Compare this to
+
+.. sourcecode:: xml
+
+    <date form="text">
+      <date-part name="month"/>
+      <date-part name="day" prefix=" "/>
+      <date-part name="year" prefix=", "/>
+    </date>
+
+which gives the same correct complete date ("September 3, 2012"), but which
+produces incorrect output for dates that don't have a day, or don't have a day
+and month ("September, 2012" and ", 2012", respectively).
+
+To read more about customizing date formats, see the `Localized Date Formats
+<http://citationstyles.org/downloads/specification.html#localized-date-formats>`_
+and `Date-part
+<http://citationstyles.org/downloads/specification.html#date-part>`_ sections in
+the CSL specification.
 
 Grammar Options
 ^^^^^^^^^^^^^^^

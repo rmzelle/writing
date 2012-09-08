@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Translating CSL Locale Files &mdash; Citation Style Language 1.0 documentation</title>
+    <title>Translating CSL 1.0.1 Locale Files &mdash; Citation Style Language 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -47,71 +47,184 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="translating-csl-locale-files">
-<h1><a class="toc-backref" href="#id1">Translating CSL Locale Files</a><a class="headerlink" href="#translating-csl-locale-files" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="translating-csl-1-0-1-locale-files">
+<h1><a class="toc-backref" href="#id1">Translating CSL 1.0.1 Locale Files</a><a class="headerlink" href="#translating-csl-1-0-1-locale-files" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="table-of-contents">
 <p class="topic-title first"><strong>Table of Contents</strong></p>
 <ul class="simple">
-<li><a class="reference internal" href="#translating-csl-locale-files" id="id1">Translating CSL Locale Files</a><ul>
+<li><a class="reference internal" href="#translating-csl-1-0-1-locale-files" id="id1">Translating CSL 1.0.1 Locale Files</a><ul>
 <li><a class="reference internal" href="#preface" id="id2">Preface</a></li>
-<li><a class="reference internal" href="#locale-files" id="id3">Locale Files</a><ul>
-<li><a class="reference internal" href="#date-formats" id="id4">Date Formats</a></li>
-<li><a class="reference internal" href="#grammar-options" id="id5">Grammar Options</a></li>
-<li><a class="reference internal" href="#terms" id="id6">Terms</a><ul>
-<li><a class="reference internal" href="#ordinals" id="id7">Ordinals</a></li>
+<li><a class="reference internal" href="#getting-started" id="id3">Getting Started</a></li>
+<li><a class="reference internal" href="#translating-locale-files" id="id4">Translating Locale Files</a><ul>
+<li><a class="reference internal" href="#xml-lang" id="id5">xml:lang</a></li>
+<li><a class="reference internal" href="#locale-file-metadata" id="id6">Locale File Metadata</a></li>
+<li><a class="reference internal" href="#date-formats" id="id7">Date Formats</a></li>
+<li><a class="reference internal" href="#grammar-options" id="id8">Grammar Options</a></li>
+<li><a class="reference internal" href="#terms" id="id9">Terms</a><ul>
+<li><a class="reference internal" href="#ordinals" id="id10">Ordinals</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#submitting-contributions" id="id11">Submitting Contributions</a></li>
+<li><a class="reference internal" href="#questions" id="id12">Questions?</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="preface">
 <h2><a class="toc-backref" href="#id2">Preface</a><a class="headerlink" href="#preface" title="Permalink to this headline">¶</a></h2>
-<p>This document describes how you can help us to improve the language support of
-the Citation Style Language (CSL) by providing us with accurate localization
-data for your language of choice.</p>
-<p>CSL styles can be roughly divided into two classes. The first class contains the
-styles that always generate output in one particular language. These include
-most journal, publisher and institute-specific styles, such as the British
-Psychological Society style, which uses British English. The second class
-consists of popular styles that find use in many languages, such as the Chicago
-Manual of Style styles.</p>
-<p>CSL styles of both classes rely on locale files to provide default localization
-data, which consists of translations of words commonly used in citations and
-bibliographies, as well as localized date formats and grammatical preferences.
-Storing localization data in separate files has several benefits: styles are
-more compact (although styles can still provide their own localization data to
-override the defaults), and styles themselves can be (mostly) language-agnostic.</p>
+<p>This document describes how you can help us improve the language support of
+Citation Style Language (CSL) styles by translating the CSL locale file of your
+favorite language.</p>
+<p>CSL styles are either bound to one particular locale (e.g. the &#8220;British
+Psychological Society&#8221; CSL style will always produce citations and
+bibliographies in British English), or they (automatically) localize, e.g. to a
+user-selected locale, or to the locale of the user&#8217;s operating system.</p>
+<p>All CSL styles, both those with and without a fixed locale, rely on locale files
+for default localization data, which consists of translated terms commonly used
+in citations and bibliographies, date formats, and grammar rules. Storing
+localization data in separate files has several benefits: translations are
+easier to maintain, styles are more compact (although styles can still include
+their own localization data to override the defaults), and styles can be
+(mostly) language-agnostic.</p>
+<p>Below we will describe the structure of a locale file, give instructions on how
+to translate all its parts, and explain how you can submit your translations.
+See the <a class="reference external" href="http://citationstyles.org/downloads/specification.html">CSL specification</a> for more in-depth
+documentation on the structure and function of locale files.</p>
 </div>
-<div class="section" id="locale-files">
-<h2><a class="toc-backref" href="#id3">Locale Files</a><a class="headerlink" href="#locale-files" title="Permalink to this headline">¶</a></h2>
-<p>The CSL locale files are maintained in a Git repository at <a class="reference external" href="https://github.com">https://github.com</a>
-/citation-style-language/locales/. Each locale file contains the localization
-data for one language. The file name of a locale file is always &#8220;locales-xx-
-XX.xml&#8221;, where &#8220;xx-XX&#8221; is a <a class="reference external" href="http://people.w3.org/rishida/utils/subtags/index.php">BCP 47 language code</a> (e.g., the locale code
-for British English is &#8220;en-GB&#8221;). The <a class="reference external" href="https://github.com/citation-style-language/locales/wiki">repository wiki</a> contains a list for the existing locale
-files, listing the locale code, language, and translation status.</p>
-<p>If there is an incomplete locale file for your language, you can start
-translating that file. If you cannot find a preexisting file, copy the &#8220;locales-
-en-US.xml&#8221; file and start from there (if you have trouble finding the right
-locale code for a new language, don&#8217;t worry; we&#8217;ll look it up when you submit
-your locale file).</p>
-<p>describe where to get styles, how to contribute translations</p>
+<div class="section" id="getting-started">
+<h2><a class="toc-backref" href="#id3">Getting Started</a><a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>The CSL locale files are kept in a GitHub repository at
+<a class="reference external" href="https://github.com/citation-style-language/locales/">https://github.com/citation-style-language/locales/</a>.</p>
+<p>Each locale file contains the localization data for one language. Locale files
+are named &#8220;locales-xx-XX.xml&#8221;, where &#8220;xx-XX&#8221; is a <a class="reference external" href="http://people.w3.org/rishida/utils/subtags/index.php">BCP 47 language code</a> (e.g. the locale code
+for British English is &#8220;en-GB&#8221;). The <a class="reference external" href="https://github.com/citation-style-language/locales/wiki">repository wiki</a> lists the locale
+code, language, and translation status of all locale files in the repository.</p>
+<p>If you find that a locale file already exists for your language, but that its
+translations are inaccurate or incomplete, you can start translating that file.
+If there is no locale file for your language, copy the &#8220;locales-en-US.xml&#8221; file
+and start from there. Don&#8217;t worry about finding the correct BCP 47 locale code
+for a new language; we&#8217;ll be happy to look it up when you submit your new locale
+file.</p>
+<p>Modifications to existing locale files can be made directly via the GitHub
+website. New locale files can be submitted as a &#8220;gist&#8221; or through a pull
+request. For details, see the <a class="reference external" href="https://github.com/citation-style-language/styles/wiki/Submitting-Styles">instructions on submitting CSL styles</a>. If
+you edit a locale file on your own computer, use a suitable plain text editor
+such as TextWrangler for OS X, Notepad++ for Windows, or jEdit.</p>
+</div>
+<div class="section" id="translating-locale-files">
+<h2><a class="toc-backref" href="#id4">Translating Locale Files</a><a class="headerlink" href="#translating-locale-files" title="Permalink to this headline">¶</a></h2>
+<p>When translating locale files, leave the overall structure of the locale file
+untouched. It makes life easier for us if you don&#8217;t remove existing elements,
+introduce new ones, or move stuff around (exceptions are discussed below).</p>
+<div class="section" id="xml-lang">
+<h3><a class="toc-backref" href="#id5">xml:lang</a><a class="headerlink" href="#xml-lang" title="Permalink to this headline">¶</a></h3>
+<p>At the top of the locale file you&#8217;ll find the <tt class="docutils literal"><span class="pre">locale</span></tt> root element. The value
+of its <tt class="docutils literal"><span class="pre">xml:lang</span></tt> attribute should be set to the same language code used in
+the file name of the locale file. For the locales-en-US.xml locale file, this is
+&#8220;en-US&#8221;:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;locale</span> <span class="na">xmlns=</span><span class="s">&quot;http://purl.org/net/xbiblio/csl&quot;</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span> <span class="na">xml:lang=</span><span class="s">&quot;en-US&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="locale-file-metadata">
+<h3><a class="toc-backref" href="#id6">Locale File Metadata</a><a class="headerlink" href="#locale-file-metadata" title="Permalink to this headline">¶</a></h3>
+<p>Directly below the <tt class="docutils literal"><span class="pre">locale</span></tt> root you&#8217;ll find an <tt class="docutils literal"><span class="pre">info</span></tt> element. Here you can
+list yourself as a translator using the <tt class="docutils literal"><span class="pre">translator</span></tt> element. Optionally you
+can include contact information such as a website or email address. A locale
+file can list multiple translators. The <tt class="docutils literal"><span class="pre">rights</span></tt> element indicates under which
+license the locale file is released. All locale files in our repository use the
+same Creative Commons license, so you don&#8217;t have to change anything here. The
+<tt class="docutils literal"><span class="pre">updated</span></tt> element is used to keep track of when the locale file was last
+updated. Feel free to ignore it if the format looks too intimidating.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;locale&gt;</span>
+  <span class="nt">&lt;info&gt;</span>
+    <span class="nt">&lt;translator&gt;</span>
+      <span class="nt">&lt;name&gt;</span>John Doe<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;email&gt;</span>john.doe@citationstyles.org<span class="nt">&lt;/email&gt;</span>
+      <span class="nt">&lt;uri&gt;</span>http://citationstyles.org/<span class="nt">&lt;/uri&gt;</span>
+    <span class="nt">&lt;/translator&gt;</span>
+    <span class="nt">&lt;rights</span> <span class="na">license=</span><span class="s">&quot;http://creativecommons.org/licenses/by-sa/3.0/&quot;</span><span class="nt">&gt;</span>This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License<span class="nt">&lt;/rights&gt;</span>
+    <span class="nt">&lt;updated&gt;</span>2012-07-04T23:31:02+00:00<span class="nt">&lt;/updated&gt;</span>
+  <span class="nt">&lt;/info&gt;</span>
+<span class="nt">&lt;/locale&gt;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="date-formats">
-<h3><a class="toc-backref" href="#id4">Date Formats</a><a class="headerlink" href="#date-formats" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id7">Date Formats</a><a class="headerlink" href="#date-formats" title="Permalink to this headline">¶</a></h3>
+<p>CSL styles can render dates in either non-localizing or localizing formats:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;style&gt;</span>
+
+  <span class="c">&lt;!-- use of non-localized date format --&gt;</span>
+  <span class="nt">&lt;macro</span> <span class="na">name=</span><span class="s">&quot;accessed&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;date</span> <span class="na">variable=</span><span class="s">&quot;accessed&quot;</span> <span class="na">suffix=</span><span class="s">&quot;, &quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;month&quot;</span> <span class="na">suffix=</span><span class="s">&quot; &quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;day&quot;</span> <span class="na">suffix=</span><span class="s">&quot;, &quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;year&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/date&gt;</span>
+  <span class="nt">&lt;/macro&gt;</span>
+
+  <span class="c">&lt;!-- use of localized date format --&gt;</span>
+  <span class="nt">&lt;macro</span> <span class="na">name=</span><span class="s">&quot;issued&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;date</span> <span class="na">variable=</span><span class="s">&quot;issued&quot;</span> <span class="na">form=</span><span class="s">&quot;text&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/macro&gt;</span>
+
+<span class="nt">&lt;/style&gt;</span>
+</pre></div>
+</div>
+<p>Each locale file defines two localized date formats: a numeric format (e.g.
+&#8220;2012/9/3&#8221;), and a textual format, where the month is written out in full (e.g.
+&#8220;September 3, 2012&#8221;).</p>
+<p>To localize a date format, place the date-part elements for &#8220;day&#8221;, &#8220;month&#8221;, and
+&#8220;year&#8221; in the desired order. Use the <tt class="docutils literal"><span class="pre">prefix</span></tt> and <tt class="docutils literal"><span class="pre">suffix</span></tt> attributes to
+define the punctuation before and after the different date-parts. Take into
+account that dates that only consist of a year and a month, or of only a year,
+still render correctly. For example, the US English localized &#8220;text&#8221; date
+format,</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;date</span> <span class="na">form=</span><span class="s">&quot;text&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;month&quot;</span> <span class="na">suffix=</span><span class="s">&quot; &quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;day&quot;</span> <span class="na">suffix=</span><span class="s">&quot;, &quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;year&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/date&gt;</span>
+</pre></div>
+</div>
+<p>will produce dates like &#8220;September 3, 2012&#8221;, &#8220;September 2012&#8221;, and &#8220;2012&#8221;.
+Compare this to</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;date</span> <span class="na">form=</span><span class="s">&quot;text&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;month&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;day&quot;</span> <span class="na">prefix=</span><span class="s">&quot; &quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;year&quot;</span> <span class="na">prefix=</span><span class="s">&quot;, &quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/date&gt;</span>
+</pre></div>
+</div>
+<p>which gives the same correct complete date (&#8220;September 3, 2012&#8221;), but which
+produces incorrect output for dates that don&#8217;t have a day, or don&#8217;t have a day
+and month (&#8220;September, 2012&#8221; and &#8221;, 2012&#8221;).</p>
+<p>To read more about customizing date formats, see the <a class="reference external" href="http://citationstyles.org/downloads/specification.html#localized-date-formats">Localized Date Formats</a>
+and <a class="reference external" href="http://citationstyles.org/downloads/specification.html#date-part">Date-part</a> sections in
+the CSL specification.</p>
 </div>
 <div class="section" id="grammar-options">
-<h3><a class="toc-backref" href="#id5">Grammar Options</a><a class="headerlink" href="#grammar-options" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id8">Grammar Options</a><a class="headerlink" href="#grammar-options" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="terms">
-<h3><a class="toc-backref" href="#id6">Terms</a><a class="headerlink" href="#terms" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">Terms</a><a class="headerlink" href="#terms" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="ordinals">
-<h4><a class="toc-backref" href="#id7">Ordinals</a><a class="headerlink" href="#ordinals" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id10">Ordinals</a><a class="headerlink" href="#ordinals" title="Permalink to this headline">¶</a></h4>
 <p>Cover gender-variants and ordinal suffix term usage</p>
 </div>
 </div>
+</div>
+<div class="section" id="submitting-contributions">
+<h2><a class="toc-backref" href="#id11">Submitting Contributions</a><a class="headerlink" href="#submitting-contributions" title="Permalink to this headline">¶</a></h2>
+<p>To submit changes to an existing locale file, or to submit a new locale file,
+follow the <a class="reference external" href="https://github.com/citation-style-language/styles/wiki/Submitting-Styles">submission instructions for CSL styles</a>.</p>
+</div>
+<div class="section" id="questions">
+<h2><a class="toc-backref" href="#id12">Questions?</a><a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h2>
+<p>Post to the <a class="reference external" href="http://forums.zotero.org/11/">Zotero forums</a>.</p>
 </div>
 </div>
 
@@ -123,9 +236,12 @@ your locale file).</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Translating CSL Locale Files</a><ul>
+<li><a class="reference internal" href="#">Translating CSL 1.0.1 Locale Files</a><ul>
 <li><a class="reference internal" href="#preface">Preface</a></li>
-<li><a class="reference internal" href="#locale-files">Locale Files</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li><a class="reference internal" href="#translating-locale-files">Translating Locale Files</a><ul>
+<li><a class="reference internal" href="#xml-lang">xml:lang</a></li>
+<li><a class="reference internal" href="#locale-file-metadata">Locale File Metadata</a></li>
 <li><a class="reference internal" href="#date-formats">Date Formats</a></li>
 <li><a class="reference internal" href="#grammar-options">Grammar Options</a></li>
 <li><a class="reference internal" href="#terms">Terms</a><ul>
@@ -134,6 +250,8 @@ your locale file).</p>
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#submitting-contributions">Submitting Contributions</a></li>
+<li><a class="reference internal" href="#questions">Questions?</a></li>
 </ul>
 </li>
 </ul>
