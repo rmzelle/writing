@@ -91,17 +91,29 @@ updated. Feel free to ignore it if the format looks too intimidating.
 
 .. sourcecode:: xml
 
-    <locale>
-      <info>
-        <translator>
-          <name>John Doe</name>
-          <email>john.doe@citationstyles.org</email>
-          <uri>http://citationstyles.org/</uri>
-        </translator>
-        <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
-        <updated>2012-07-04T23:31:02+00:00</updated>
-      </info>
-    </locale>
+    <info>
+      <translator>
+        <name>John Doe</name>
+        <email>john.doe@citationstyles.org</email>
+        <uri>http://citationstyles.org/</uri>
+      </translator>
+      <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+      <updated>2012-07-04T23:31:02+00:00</updated>
+    </info>
+
+Grammar Rules
+^^^^^^^^^^^^^
+
+Next up is the ``style-options`` element:
+
+.. sourcecode:: xml
+
+    <style-options punctuation-in-quote="true"/>
+
+This element is used to define localized grammar rules, as described in the
+`Locale Options
+<http://citationstyles.org/downloads/specification.html#locale-options>`_
+section in the CSL specification.
 
 Date Formats
 ^^^^^^^^^^^^
@@ -133,11 +145,12 @@ Each locale file defines two localized date formats: a numeric format (e.g.
 "September 3, 2012").
 
 To localize a date format, place the date-part elements for "day", "month", and
-"year" in the desired order. Use the ``prefix`` and ``suffix`` attributes to
-define the punctuation before and after the different date-parts. Take into
-account that dates that only consist of a year and a month, or of only a year,
-still render correctly. For example, the US English localized "text" date
-format,
+"year" in the desired order. Use the ``prefix`` and ``suffix`` attributes (on
+the ``date-part`` elements), or the ``delimiter`` attribute (on the ``date``
+element) to define punctuation before, after, and between the different
+date-parts. When using affixes, make sure that dates that only consist of a year
+and a month, or of only a year, still render correctly. For example, the US
+English localized "text" date format,
 
 .. sourcecode:: xml
 
@@ -160,7 +173,7 @@ Compare this to
 
 which gives the same correct complete date ("September 3, 2012"), but which
 produces incorrect output for dates that don't have a day, or don't have a day
-and month ("September, 2012" and ", 2012").
+and month ("September, 2012" and ", 2012", respectively).
 
 To read more about customizing date formats, see the `Localized Date Formats
 <http://citationstyles.org/downloads/specification.html#localized-date-formats>`_
@@ -168,16 +181,136 @@ and `Date-part
 <http://citationstyles.org/downloads/specification.html#date-part>`_ sections in
 the CSL specification.
 
-Grammar Options
-^^^^^^^^^^^^^^^
-
 Terms
 ^^^^^
+
+The ``terms`` element makes up the last section of the locale file, and contains
+all the term translations. Below we discuss the different types of terms, and
+how to translate them.
+
+In its simplest form, a term consists only of a ``term`` element with the
+``name`` attribute indicating the term name, and with the translation enclosed
+between the start and end tag:
+
+.. sourcecode:: xml
+
+    <terms>
+      <term name="et-al">et al.</term>
+    </terms>
+
+See the `Terms <http://citationstyles.org/downloads/specification.html#terms>`_
+section in the CSL specification.
+
+
+Abbreviations
+'''''''''''''
+
+When translating abbreviations such as "et al.", always include periods where
+applicable.
+
+Plurals
+'''''''
+
+Many terms have translations for both the singular and plural form. In this
+case, the ``term`` element contains a ``single`` (for singular) and a
+``multiple`` (for plural) element, which enclose the translations:
+
+.. sourcecode:: xml
+
+    <terms>
+      <term name="edition">
+        <single>edition</single>
+        <multiple>editions</multiple>
+      </term>
+    </terms>
+
+Forms
+'''''
+
+Terms can also vary in their 'form', which is indicated with the "form"
+attribute on the ``term`` element. The different forms are "long" (the default),
+"short" (abbreviated form of "long"), "verb", "verb-short" (abbreviated form of
+"verb"), and "symbol". Examples of the different forms:
+
+.. sourcecode:: xml
+
+    <terms>
+      <term name="editor">
+        <single>editor</single>
+        <multiple>editors</multiple>
+      </term>
+      
+      <term name="editor" form="short">
+        <single>ed.</single>
+        <multiple>eds.</multiple>
+      </term>
+      
+      <term name="editor" form="verb">edited by</term>
+      <term name="editor" form="verb-short">ed.</term>
+      
+      <term name="paragraph">
+        <single>paragraph</single>
+        <multiple>paragraph</multiple>
+      </term>
+      
+      <term name="paragraph" form="symbol">
+        <single>¶</single>
+        <multiple>¶¶</multiple>
+      </term>
+    </terms>
+
+AD/BC
+'''''
+
+The "ad" and "bc" terms are used to format years before 1000. E.g. the year "79"
+becomes "79AD", and "-2500" becomes "2500BC".
+
+See the `AD and BC
+<http://citationstyles.org/downloads/specification.html#ad-and-bc>`_ section in
+the CSL specification.
+
+Punctuation
+'''''''''''
+
+The terms "open-quote", "close-quote", "open-inner-quote", "close-inner-quote",
+and "page-range-delimiter" define punctuation.
+
+When a CSL style renders a title in quotes through the use of the ``quotes``
+attribute, it uses the "open-quote" and "close-quote" terms. When the title
+contains internal quotes, these are replaced by "open-inner-quote",
+"close-inner-quote". For example, with
+
+.. sourcecode:: xml
+
+    <terms>
+      <term name="open-quote">“</term>
+      <term name="close-quote">”</term>
+      <term name="open-inner-quote">‘</term>
+      <term name="close-inner-quote">’</term>
+      <term name="page-range-delimiter">–</term>
+    </terms>
+
+styles can render titles as
+
+::  
+
+    “Moby-Dick”
+    “Textual Analysis of ‘Moby-Dick’”
+
+The "page-range-delimiter" terms is used to connect the first and last page of
+page ranges, e.g. "15–18" (it's default value is an en-dash).
+
+See the `Quotes
+<http://citationstyles.org/downloads/specification.html#quotes>`_ and `Page
+Ranges <http://citationstyles.org/downloads/specification.html#page-ranges>`_
+sections in the CSL specification.
 
 Ordinals
 ''''''''
 
 Cover gender-variants and ordinal suffix term usage
+
+Link to spec.
 
 Submitting Contributions
 ~~~~~~~~~~~~~~~~~~~~~~~~

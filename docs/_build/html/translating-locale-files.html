@@ -48,32 +48,37 @@
           <div class="body">
             
   <div class="section" id="translating-csl-1-0-1-locale-files">
-<h1><a class="toc-backref" href="#id1">Translating CSL 1.0.1 Locale Files</a><a class="headerlink" href="#translating-csl-1-0-1-locale-files" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id2">Translating CSL 1.0.1 Locale Files</a><a class="headerlink" href="#translating-csl-1-0-1-locale-files" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="table-of-contents">
 <p class="topic-title first"><strong>Table of Contents</strong></p>
 <ul class="simple">
-<li><a class="reference internal" href="#translating-csl-1-0-1-locale-files" id="id1">Translating CSL 1.0.1 Locale Files</a><ul>
-<li><a class="reference internal" href="#preface" id="id2">Preface</a></li>
-<li><a class="reference internal" href="#getting-started" id="id3">Getting Started</a></li>
-<li><a class="reference internal" href="#translating-locale-files" id="id4">Translating Locale Files</a><ul>
-<li><a class="reference internal" href="#xml-lang" id="id5">xml:lang</a></li>
-<li><a class="reference internal" href="#locale-file-metadata" id="id6">Locale File Metadata</a></li>
-<li><a class="reference internal" href="#date-formats" id="id7">Date Formats</a></li>
-<li><a class="reference internal" href="#grammar-options" id="id8">Grammar Options</a></li>
-<li><a class="reference internal" href="#terms" id="id9">Terms</a><ul>
-<li><a class="reference internal" href="#ordinals" id="id10">Ordinals</a></li>
+<li><a class="reference internal" href="#translating-csl-1-0-1-locale-files" id="id2">Translating CSL 1.0.1 Locale Files</a><ul>
+<li><a class="reference internal" href="#preface" id="id3">Preface</a></li>
+<li><a class="reference internal" href="#getting-started" id="id4">Getting Started</a></li>
+<li><a class="reference internal" href="#translating-locale-files" id="id5">Translating Locale Files</a><ul>
+<li><a class="reference internal" href="#xml-lang" id="id6">xml:lang</a></li>
+<li><a class="reference internal" href="#locale-file-metadata" id="id7">Locale File Metadata</a></li>
+<li><a class="reference internal" href="#grammar-rules" id="id8">Grammar Rules</a></li>
+<li><a class="reference internal" href="#date-formats" id="id9">Date Formats</a></li>
+<li><a class="reference internal" href="#terms" id="id10">Terms</a><ul>
+<li><a class="reference internal" href="#abbreviations" id="id11">Abbreviations</a></li>
+<li><a class="reference internal" href="#plurals" id="id12">Plurals</a></li>
+<li><a class="reference internal" href="#forms" id="id13">Forms</a></li>
+<li><a class="reference internal" href="#ad-bc" id="id14">AD/BC</a></li>
+<li><a class="reference internal" href="#punctuation" id="id15">Punctuation</a></li>
+<li><a class="reference internal" href="#ordinals" id="id16">Ordinals</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#submitting-contributions" id="id11">Submitting Contributions</a></li>
-<li><a class="reference internal" href="#questions" id="id12">Questions?</a></li>
+<li><a class="reference internal" href="#submitting-contributions" id="id17">Submitting Contributions</a></li>
+<li><a class="reference internal" href="#questions" id="id18">Questions?</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="preface">
-<h2><a class="toc-backref" href="#id2">Preface</a><a class="headerlink" href="#preface" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Preface</a><a class="headerlink" href="#preface" title="Permalink to this headline">¶</a></h2>
 <p>This document describes how you can help us improve the language support of
 Citation Style Language (CSL) styles by translating the CSL locale file of your
 favorite language.</p>
@@ -94,7 +99,7 @@ See the <a class="reference external" href="http://citationstyles.org/downloads/
 documentation on the structure and function of locale files.</p>
 </div>
 <div class="section" id="getting-started">
-<h2><a class="toc-backref" href="#id3">Getting Started</a><a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Getting Started</a><a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>The CSL locale files are kept in a GitHub repository at
 <a class="reference external" href="https://github.com/citation-style-language/locales/">https://github.com/citation-style-language/locales/</a>.</p>
 <p>Each locale file contains the localization data for one language. Locale files
@@ -114,12 +119,12 @@ you edit a locale file on your own computer, use a suitable plain text editor
 such as TextWrangler for OS X, Notepad++ for Windows, or jEdit.</p>
 </div>
 <div class="section" id="translating-locale-files">
-<h2><a class="toc-backref" href="#id4">Translating Locale Files</a><a class="headerlink" href="#translating-locale-files" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Translating Locale Files</a><a class="headerlink" href="#translating-locale-files" title="Permalink to this headline">¶</a></h2>
 <p>When translating locale files, leave the overall structure of the locale file
 untouched. It makes life easier for us if you don&#8217;t remove existing elements,
 introduce new ones, or move stuff around (exceptions are discussed below).</p>
 <div class="section" id="xml-lang">
-<h3><a class="toc-backref" href="#id5">xml:lang</a><a class="headerlink" href="#xml-lang" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id6">xml:lang</a><a class="headerlink" href="#xml-lang" title="Permalink to this headline">¶</a></h3>
 <p>At the top of the locale file you&#8217;ll find the <tt class="docutils literal"><span class="pre">locale</span></tt> root element. The value
 of its <tt class="docutils literal"><span class="pre">xml:lang</span></tt> attribute should be set to the same language code used in
 the file name of the locale file. For the locales-en-US.xml locale file, this is
@@ -129,7 +134,7 @@ the file name of the locale file. For the locales-en-US.xml locale file, this is
 </div>
 </div>
 <div class="section" id="locale-file-metadata">
-<h3><a class="toc-backref" href="#id6">Locale File Metadata</a><a class="headerlink" href="#locale-file-metadata" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id7">Locale File Metadata</a><a class="headerlink" href="#locale-file-metadata" title="Permalink to this headline">¶</a></h3>
 <p>Directly below the <tt class="docutils literal"><span class="pre">locale</span></tt> root you&#8217;ll find an <tt class="docutils literal"><span class="pre">info</span></tt> element. Here you can
 list yourself as a translator using the <tt class="docutils literal"><span class="pre">translator</span></tt> element. Optionally you
 can include contact information such as a website or email address. A locale
@@ -138,22 +143,30 @@ license the locale file is released. All locale files in our repository use the
 same Creative Commons license, so you don&#8217;t have to change anything here. The
 <tt class="docutils literal"><span class="pre">updated</span></tt> element is used to keep track of when the locale file was last
 updated. Feel free to ignore it if the format looks too intimidating.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;locale&gt;</span>
-  <span class="nt">&lt;info&gt;</span>
-    <span class="nt">&lt;translator&gt;</span>
-      <span class="nt">&lt;name&gt;</span>John Doe<span class="nt">&lt;/name&gt;</span>
-      <span class="nt">&lt;email&gt;</span>john.doe@citationstyles.org<span class="nt">&lt;/email&gt;</span>
-      <span class="nt">&lt;uri&gt;</span>http://citationstyles.org/<span class="nt">&lt;/uri&gt;</span>
-    <span class="nt">&lt;/translator&gt;</span>
-    <span class="nt">&lt;rights</span> <span class="na">license=</span><span class="s">&quot;http://creativecommons.org/licenses/by-sa/3.0/&quot;</span><span class="nt">&gt;</span>This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License<span class="nt">&lt;/rights&gt;</span>
-    <span class="nt">&lt;updated&gt;</span>2012-07-04T23:31:02+00:00<span class="nt">&lt;/updated&gt;</span>
-  <span class="nt">&lt;/info&gt;</span>
-<span class="nt">&lt;/locale&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;info&gt;</span>
+  <span class="nt">&lt;translator&gt;</span>
+    <span class="nt">&lt;name&gt;</span>John Doe<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;email&gt;</span>john.doe@citationstyles.org<span class="nt">&lt;/email&gt;</span>
+    <span class="nt">&lt;uri&gt;</span>http://citationstyles.org/<span class="nt">&lt;/uri&gt;</span>
+  <span class="nt">&lt;/translator&gt;</span>
+  <span class="nt">&lt;rights</span> <span class="na">license=</span><span class="s">&quot;http://creativecommons.org/licenses/by-sa/3.0/&quot;</span><span class="nt">&gt;</span>This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License<span class="nt">&lt;/rights&gt;</span>
+  <span class="nt">&lt;updated&gt;</span>2012-07-04T23:31:02+00:00<span class="nt">&lt;/updated&gt;</span>
+<span class="nt">&lt;/info&gt;</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="grammar-rules">
+<h3><a class="toc-backref" href="#id8">Grammar Rules</a><a class="headerlink" href="#grammar-rules" title="Permalink to this headline">¶</a></h3>
+<p>Next up is the <tt class="docutils literal"><span class="pre">style-options</span></tt> element:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;style-options</span> <span class="na">punctuation-in-quote=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>This element is used to define localized grammar rules, as described in the
+<a class="reference external" href="http://citationstyles.org/downloads/specification.html#locale-options">Locale Options</a>
+section in the CSL specification.</p>
+</div>
 <div class="section" id="date-formats">
-<h3><a class="toc-backref" href="#id7">Date Formats</a><a class="headerlink" href="#date-formats" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">Date Formats</a><a class="headerlink" href="#date-formats" title="Permalink to this headline">¶</a></h3>
 <p>CSL styles can render dates in either non-localizing or localizing formats:</p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;style&gt;</span>
 
@@ -178,11 +191,12 @@ updated. Feel free to ignore it if the format looks too intimidating.</p>
 &#8220;2012/9/3&#8221;), and a textual format, where the month is written out in full (e.g.
 &#8220;September 3, 2012&#8221;).</p>
 <p>To localize a date format, place the date-part elements for &#8220;day&#8221;, &#8220;month&#8221;, and
-&#8220;year&#8221; in the desired order. Use the <tt class="docutils literal"><span class="pre">prefix</span></tt> and <tt class="docutils literal"><span class="pre">suffix</span></tt> attributes to
-define the punctuation before and after the different date-parts. Take into
-account that dates that only consist of a year and a month, or of only a year,
-still render correctly. For example, the US English localized &#8220;text&#8221; date
-format,</p>
+&#8220;year&#8221; in the desired order. Use the <tt class="docutils literal"><span class="pre">prefix</span></tt> and <tt class="docutils literal"><span class="pre">suffix</span></tt> attributes (on
+the <tt class="docutils literal"><span class="pre">date-part</span></tt> elements), or the <tt class="docutils literal"><span class="pre">delimiter</span></tt> attribute (on the <tt class="docutils literal"><span class="pre">date</span></tt>
+element) to define punctuation before, after, and between the different
+date-parts. When using affixes, make sure that dates that only consist of a year
+and a month, or of only a year, still render correctly. For example, the US
+English localized &#8220;text&#8221; date format,</p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;date</span> <span class="na">form=</span><span class="s">&quot;text&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;month&quot;</span> <span class="na">suffix=</span><span class="s">&quot; &quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;date-part</span> <span class="na">name=</span><span class="s">&quot;day&quot;</span> <span class="na">suffix=</span><span class="s">&quot;, &quot;</span><span class="nt">/&gt;</span>
@@ -201,29 +215,126 @@ Compare this to</p>
 </div>
 <p>which gives the same correct complete date (&#8220;September 3, 2012&#8221;), but which
 produces incorrect output for dates that don&#8217;t have a day, or don&#8217;t have a day
-and month (&#8220;September, 2012&#8221; and &#8221;, 2012&#8221;).</p>
+and month (&#8220;September, 2012&#8221; and &#8221;, 2012&#8221;, respectively).</p>
 <p>To read more about customizing date formats, see the <a class="reference external" href="http://citationstyles.org/downloads/specification.html#localized-date-formats">Localized Date Formats</a>
 and <a class="reference external" href="http://citationstyles.org/downloads/specification.html#date-part">Date-part</a> sections in
 the CSL specification.</p>
 </div>
-<div class="section" id="grammar-options">
-<h3><a class="toc-backref" href="#id8">Grammar Options</a><a class="headerlink" href="#grammar-options" title="Permalink to this headline">¶</a></h3>
-</div>
 <div class="section" id="terms">
-<h3><a class="toc-backref" href="#id9">Terms</a><a class="headerlink" href="#terms" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">Terms</a><a class="headerlink" href="#terms" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">terms</span></tt> element makes up the last section of the locale file, and contains
+all the term translations. Below we discuss the different types of terms, and
+how to translate them.</p>
+<p>In its simplest form, a term consists only of a <tt class="docutils literal"><span class="pre">term</span></tt> element with the
+<tt class="docutils literal"><span class="pre">name</span></tt> attribute indicating the term name, and with the translation enclosed
+between the start and end tag:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;terms&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;et-al&quot;</span><span class="nt">&gt;</span>et al.<span class="nt">&lt;/term&gt;</span>
+<span class="nt">&lt;/terms&gt;</span>
+</pre></div>
+</div>
+<p>See the <a class="reference external" href="http://citationstyles.org/downloads/specification.html#terms">Terms</a>
+section in the CSL specification.</p>
+<div class="section" id="abbreviations">
+<h4><a class="toc-backref" href="#id11">Abbreviations</a><a class="headerlink" href="#abbreviations" title="Permalink to this headline">¶</a></h4>
+<p>When translating abbreviations such as &#8220;et al.&#8221;, always include periods where
+applicable.</p>
+</div>
+<div class="section" id="plurals">
+<h4><a class="toc-backref" href="#id12">Plurals</a><a class="headerlink" href="#plurals" title="Permalink to this headline">¶</a></h4>
+<p>Many terms have translations for both the singular and plural form. In this
+case, the <tt class="docutils literal"><span class="pre">term</span></tt> element contains a <tt class="docutils literal"><span class="pre">single</span></tt> (for singular) and a
+<tt class="docutils literal"><span class="pre">multiple</span></tt> (for plural) element, which enclose the translations:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;terms&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;edition&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;single&gt;</span>edition<span class="nt">&lt;/single&gt;</span>
+    <span class="nt">&lt;multiple&gt;</span>editions<span class="nt">&lt;/multiple&gt;</span>
+  <span class="nt">&lt;/term&gt;</span>
+<span class="nt">&lt;/terms&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="forms">
+<h4><a class="toc-backref" href="#id13">Forms</a><a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h4>
+<p>Terms can also vary in their &#8216;form&#8217;, which is indicated with the &#8220;form&#8221;
+attribute on the <tt class="docutils literal"><span class="pre">term</span></tt> element. The different forms are &#8220;long&#8221; (the default),
+&#8220;short&#8221; (abbreviated form of &#8220;long&#8221;), &#8220;verb&#8221;, &#8220;verb-short&#8221; (abbreviated form of
+&#8220;verb&#8221;), and &#8220;symbol&#8221;. Examples of the different forms:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;terms&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;editor&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;single&gt;</span>editor<span class="nt">&lt;/single&gt;</span>
+    <span class="nt">&lt;multiple&gt;</span>editors<span class="nt">&lt;/multiple&gt;</span>
+  <span class="nt">&lt;/term&gt;</span>
+
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;editor&quot;</span> <span class="na">form=</span><span class="s">&quot;short&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;single&gt;</span>ed.<span class="nt">&lt;/single&gt;</span>
+    <span class="nt">&lt;multiple&gt;</span>eds.<span class="nt">&lt;/multiple&gt;</span>
+  <span class="nt">&lt;/term&gt;</span>
+
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;editor&quot;</span> <span class="na">form=</span><span class="s">&quot;verb&quot;</span><span class="nt">&gt;</span>edited by<span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;editor&quot;</span> <span class="na">form=</span><span class="s">&quot;verb-short&quot;</span><span class="nt">&gt;</span>ed.<span class="nt">&lt;/term&gt;</span>
+
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;paragraph&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;single&gt;</span>paragraph<span class="nt">&lt;/single&gt;</span>
+    <span class="nt">&lt;multiple&gt;</span>paragraph<span class="nt">&lt;/multiple&gt;</span>
+  <span class="nt">&lt;/term&gt;</span>
+
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;paragraph&quot;</span> <span class="na">form=</span><span class="s">&quot;symbol&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;single&gt;</span>¶<span class="nt">&lt;/single&gt;</span>
+    <span class="nt">&lt;multiple&gt;</span>¶¶<span class="nt">&lt;/multiple&gt;</span>
+  <span class="nt">&lt;/term&gt;</span>
+<span class="nt">&lt;/terms&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ad-bc">
+<h4><a class="toc-backref" href="#id14">AD/BC</a><a class="headerlink" href="#ad-bc" title="Permalink to this headline">¶</a></h4>
+<p>The &#8220;ad&#8221; and &#8220;bc&#8221; terms are used to format years before 1000. E.g. the year &#8220;79&#8221;
+becomes &#8220;79AD&#8221;, and &#8220;-2500&#8221; becomes &#8220;2500BC&#8221;.</p>
+<p>See the <a class="reference external" href="http://citationstyles.org/downloads/specification.html#ad-and-bc">AD and BC</a> section in
+the CSL specification.</p>
+</div>
+<div class="section" id="punctuation">
+<h4><a class="toc-backref" href="#id15">Punctuation</a><a class="headerlink" href="#punctuation" title="Permalink to this headline">¶</a></h4>
+<p>The terms &#8220;open-quote&#8221;, &#8220;close-quote&#8221;, &#8220;open-inner-quote&#8221;, &#8220;close-inner-quote&#8221;,
+and &#8220;page-range-delimiter&#8221; define punctuation.</p>
+<p>When a CSL style renders a title in quotes through the use of the <tt class="docutils literal"><span class="pre">quotes</span></tt>
+attribute, it uses the &#8220;open-quote&#8221; and &#8220;close-quote&#8221; terms. When the title
+contains internal quotes, these are replaced by &#8220;open-inner-quote&#8221;,
+&#8220;close-inner-quote&#8221;. For example, with</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;terms&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;open-quote&quot;</span><span class="nt">&gt;</span>“<span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;close-quote&quot;</span><span class="nt">&gt;</span>”<span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;open-inner-quote&quot;</span><span class="nt">&gt;</span>‘<span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;close-inner-quote&quot;</span><span class="nt">&gt;</span>’<span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;page-range-delimiter&quot;</span><span class="nt">&gt;</span>–<span class="nt">&lt;/term&gt;</span>
+<span class="nt">&lt;/terms&gt;</span>
+</pre></div>
+</div>
+<p>styles can render titles as</p>
+<div class="highlight-python"><pre>“Moby-Dick”
+“Textual Analysis of ‘Moby-Dick’”</pre>
+</div>
+<p>The &#8220;page-range-delimiter&#8221; terms is used to connect the first and last page of
+page ranges, e.g. &#8220;15–18&#8221; (it&#8217;s default value is an en-dash).</p>
+<p>See the <a class="reference external" href="http://citationstyles.org/downloads/specification.html#quotes">Quotes</a> and <a class="reference external" href="http://citationstyles.org/downloads/specification.html#page-ranges">Page
+Ranges</a>
+sections in the CSL specification.</p>
+</div>
 <div class="section" id="ordinals">
-<h4><a class="toc-backref" href="#id10">Ordinals</a><a class="headerlink" href="#ordinals" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id16">Ordinals</a><a class="headerlink" href="#ordinals" title="Permalink to this headline">¶</a></h4>
 <p>Cover gender-variants and ordinal suffix term usage</p>
+<p>Link to spec.</p>
 </div>
 </div>
 </div>
 <div class="section" id="submitting-contributions">
-<h2><a class="toc-backref" href="#id11">Submitting Contributions</a><a class="headerlink" href="#submitting-contributions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">Submitting Contributions</a><a class="headerlink" href="#submitting-contributions" title="Permalink to this headline">¶</a></h2>
 <p>To submit changes to an existing locale file, or to submit a new locale file,
 follow the <a class="reference external" href="https://github.com/citation-style-language/styles/wiki/Submitting-Styles">submission instructions for CSL styles</a>.</p>
 </div>
 <div class="section" id="questions">
-<h2><a class="toc-backref" href="#id12">Questions?</a><a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">Questions?</a><a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h2>
 <p>Post to the <a class="reference external" href="http://forums.zotero.org/11/">Zotero forums</a>.</p>
 </div>
 </div>
@@ -242,9 +353,14 @@ follow the <a class="reference external" href="https://github.com/citation-style
 <li><a class="reference internal" href="#translating-locale-files">Translating Locale Files</a><ul>
 <li><a class="reference internal" href="#xml-lang">xml:lang</a></li>
 <li><a class="reference internal" href="#locale-file-metadata">Locale File Metadata</a></li>
+<li><a class="reference internal" href="#grammar-rules">Grammar Rules</a></li>
 <li><a class="reference internal" href="#date-formats">Date Formats</a></li>
-<li><a class="reference internal" href="#grammar-options">Grammar Options</a></li>
 <li><a class="reference internal" href="#terms">Terms</a><ul>
+<li><a class="reference internal" href="#abbreviations">Abbreviations</a></li>
+<li><a class="reference internal" href="#plurals">Plurals</a></li>
+<li><a class="reference internal" href="#forms">Forms</a></li>
+<li><a class="reference internal" href="#ad-bc">AD/BC</a></li>
+<li><a class="reference internal" href="#punctuation">Punctuation</a></li>
 <li><a class="reference internal" href="#ordinals">Ordinals</a></li>
 </ul>
 </li>
