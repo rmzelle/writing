@@ -323,8 +323,40 @@ sections in the CSL specification.</p>
 </div>
 <div class="section" id="ordinals">
 <h4><a class="toc-backref" href="#id16">Ordinals</a><a class="headerlink" href="#ordinals" title="Permalink to this headline">¶</a></h4>
+<p>CSL styles can render numbers (e.g., &#8220;2&#8221;) in two ordinal forms: &#8220;long-ordinal&#8221;
+(&#8220;second&#8221;) and &#8220;ordinal&#8221; (&#8220;2nd&#8221;). Both forms are localized through the use of
+terms.</p>
+<p>The &#8220;long-ordinal&#8221; form is limited to the numbers 1 through 10 (the fallback for
+other numbers is the &#8220;ordinal&#8221; form). Each of these ten numbers has its own term
+(&#8220;long-ordinal-01&#8221; through &#8220;long-ordinal-10&#8221;).</p>
+<p>Things are different for the &#8220;ordinal&#8221; form. Here, terms are only used to define
+the ordinal suffix (&#8220;nd&#8221; for &#8220;2nd&#8221;). Secondly, terms and numbers don&#8217;t
+correspond one to one. For example, the &#8220;ordinal&#8221; term defines the default
+suffix, which is used for all numbers (unless, as described below, exceptions
+are introduced through the use of the terms &#8220;ordinal-00&#8221; through &#8220;ordinal-99&#8221;).</p>
+<p>CSL also supports gender-specific ordinals (both for &#8220;long-ordinal&#8221; and
+&#8220;ordinal&#8221; forms). In languages such as French, ordinal numbers must match the
+gender of the target noun, which can be feminine or masculine. E.g. &#8220;1re
+édition&#8221; (&#8220;édition&#8221; is feminine) and &#8220;1er janvier&#8221; (&#8220;janvier&#8221; is masculine). See
+the relevant section below.</p>
+<div class="section" id="terms-for-ordinal-numbers">
+<h5>Terms for &#8220;ordinal&#8221; numbers<a class="headerlink" href="#terms-for-ordinal-numbers" title="Permalink to this headline">¶</a></h5>
+<p>Terms for the &#8220;ordinal&#8221; form follow special rules to make it possible to render
+any number in the &#8220;ordinal&#8221; form (e.g. &#8220;2nd&#8221;, &#8220;15th&#8221;, &#8220;231st&#8221;), without having
+to define a term for each number.</p>
+<p>The logic for defining ordinal suffixes with terms is described at
+<a class="reference external" href="http://citationstyles.org/downloads/specification.html#ordinal-suffixes">http://citationstyles.org/downloads/specification.html#ordinal-suffixes</a> . After you
+have that description, try to follow along with the following description.</p>
+<p>In English, there are four different ordinal suffixes in use: &#8220;st&#8221;, &#8220;nd&#8221;, &#8220;rd&#8221;
+are used for numbers ending on 1, 2, 3, respectively, while &#8220;th&#8221; is used for
+numbers ending on 0 and 4 through 9.</p>
+<p>To capture these suffix assignments, we first start by defining the &#8220;ordinal&#8221; term as &#8220;th&#8221;, which is the most common suffix.</p>
+</div>
+<div class="section" id="gender-specific-ordinals">
+<h5>Gender-specific Ordinals<a class="headerlink" href="#gender-specific-ordinals" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="http://citationstyles.org/downloads/specification.html#gender-specific-ordinals">http://citationstyles.org/downloads/specification.html#gender-specific-ordinals</a></p>
 <p>Cover gender-variants and ordinal suffix term usage</p>
-<p>Link to spec.</p>
+</div>
 </div>
 </div>
 </div>
@@ -361,7 +393,11 @@ follow the <a class="reference external" href="https://github.com/citation-style
 <li><a class="reference internal" href="#forms">Forms</a></li>
 <li><a class="reference internal" href="#ad-bc">AD/BC</a></li>
 <li><a class="reference internal" href="#punctuation">Punctuation</a></li>
-<li><a class="reference internal" href="#ordinals">Ordinals</a></li>
+<li><a class="reference internal" href="#ordinals">Ordinals</a><ul>
+<li><a class="reference internal" href="#terms-for-ordinal-numbers">Terms for &#8220;ordinal&#8221; numbers</a></li>
+<li><a class="reference internal" href="#gender-specific-ordinals">Gender-specific Ordinals</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

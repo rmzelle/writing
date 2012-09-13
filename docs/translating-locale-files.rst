@@ -308,9 +308,49 @@ sections in the CSL specification.
 Ordinals
 ''''''''
 
-Cover gender-variants and ordinal suffix term usage
+CSL styles can render numbers (e.g., "2") in two ordinal forms: "long-ordinal"
+("second") and "ordinal" ("2nd"). Both forms are localized through the use of
+terms.
 
-Link to spec.
+The "long-ordinal" form is limited to the numbers 1 through 10 (the fallback for
+other numbers is the "ordinal" form). Each of these ten numbers has its own term
+("long-ordinal-01" through "long-ordinal-10").
+
+Things are different for the "ordinal" form. Here, terms are only used to define
+the ordinal suffix ("nd" for "2nd"). Secondly, terms and numbers don't
+correspond one to one. For example, the "ordinal" term defines the default
+suffix, which is used for all numbers (unless, as described below, exceptions
+are introduced through the use of the terms "ordinal-00" through "ordinal-99").
+
+CSL also supports gender-specific ordinals (both for "long-ordinal" and
+"ordinal" forms). In languages such as French, ordinal numbers must match the
+gender of the target noun, which can be feminine or masculine. E.g. "1re
+édition" ("édition" is feminine) and "1er janvier" ("janvier" is masculine). See
+the relevant section below.
+
+Terms for "ordinal" numbers
+|||||||||||||||||||||||||||
+
+Terms for the "ordinal" form follow special rules to make it possible to render
+any number in the "ordinal" form (e.g. "2nd", "15th", "231st"), without having
+to define a term for each number. 
+
+The logic for defining ordinal suffixes with terms is described at
+http://citationstyles.org/downloads/specification.html#ordinal-suffixes . After you
+have that description, try to follow along with the following description.
+
+In English, there are four different ordinal suffixes in use: "st", "nd", "rd"
+are used for numbers ending on 1, 2, 3, respectively, while "th" is used for
+numbers ending on 0 and 4 through 9.
+
+To capture these suffix assignments, we first start by defining the "ordinal" term as "th", which is the most common suffix.
+
+Gender-specific Ordinals
+||||||||||||||||||||||||
+
+http://citationstyles.org/downloads/specification.html#gender-specific-ordinals
+ 
+Cover gender-variants and ordinal suffix term usage
 
 Submitting Contributions
 ~~~~~~~~~~~~~~~~~~~~~~~~
