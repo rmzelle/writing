@@ -330,8 +330,8 @@ terms.</p>
 other numbers is the &#8220;ordinal&#8221; form). Each of these ten numbers has its own term
 (&#8220;long-ordinal-01&#8221; through &#8220;long-ordinal-10&#8221;).</p>
 <p>Things are different for the &#8220;ordinal&#8221; form. Here, terms are only used to define
-the ordinal suffix (&#8220;nd&#8221; for &#8220;2nd&#8221;). Secondly, terms and numbers don&#8217;t
-correspond one to one. For example, the &#8220;ordinal&#8221; term defines the default
+the ordinal suffix (&#8220;nd&#8221; for &#8220;2nd&#8221;). Furthermore, terms and numbers don&#8217;t
+correspond one-to-one. For example, the &#8220;ordinal&#8221; term defines the default
 suffix, which is used for all numbers (unless, as described below, exceptions
 are introduced through the use of the terms &#8220;ordinal-00&#8221; through &#8220;ordinal-99&#8221;).</p>
 <p>CSL also supports gender-specific ordinals (both for &#8220;long-ordinal&#8221; and
@@ -342,20 +342,54 @@ the relevant section below.</p>
 <div class="section" id="terms-for-ordinal-numbers">
 <h5>Terms for &#8220;ordinal&#8221; numbers<a class="headerlink" href="#terms-for-ordinal-numbers" title="Permalink to this headline">¶</a></h5>
 <p>Terms for the &#8220;ordinal&#8221; form follow special rules to make it possible to render
-any number in the &#8220;ordinal&#8221; form (e.g. &#8220;2nd&#8221;, &#8220;15th&#8221;, &#8220;231st&#8221;), without having
+any number in the &#8220;ordinal&#8221; form (e.g., &#8220;2nd&#8221;, &#8220;15th&#8221;, &#8220;231st&#8221;), without having
 to define a term for each number.</p>
 <p>The logic for defining ordinal suffixes with terms is described at
-<a class="reference external" href="http://citationstyles.org/downloads/specification.html#ordinal-suffixes">http://citationstyles.org/downloads/specification.html#ordinal-suffixes</a> . After you
-have that description, try to follow along with the following description.</p>
-<p>In English, there are four different ordinal suffixes in use: &#8220;st&#8221;, &#8220;nd&#8221;, &#8220;rd&#8221;
-are used for numbers ending on 1, 2, 3, respectively, while &#8220;th&#8221; is used for
-numbers ending on 0 and 4 through 9.</p>
-<p>To capture these suffix assignments, we first start by defining the &#8220;ordinal&#8221; term as &#8220;th&#8221;, which is the most common suffix.</p>
+<a class="reference external" href="http://citationstyles.org/downloads/specification.html#ordinal-suffixes">http://citationstyles.org/downloads/specification.html#ordinal-suffixes</a>, and
+won&#8217;t be revisited here. Instead, we&#8217;ll look at an example.</p>
+<p>In English, there are four different ordinal suffixes in use: &#8220;st&#8221;, &#8220;nd&#8221;, and
+&#8220;rd&#8221; are used for numbers ending on 1, 2, and 3, respectively, while &#8220;th&#8221; is
+used for numbers ending on 0 and 4 through 9. Exceptions are numbers ending on
+&#8220;11&#8221;, &#8220;12&#8221;, and &#8220;13&#8221;, which also use &#8220;th&#8221;.</p>
+<p>To capture this logic, we start by defining the &#8220;ordinal&#8221; term as &#8220;th&#8221;, which is
+the most common suffix. Then, we define the terms &#8220;ordinal-01&#8221;, &#8220;ordinal-02&#8221;,
+and &#8220;ordinal-01&#8221; as &#8220;st&#8221;, &#8220;nd&#8221;, and &#8220;rd&#8221;, respectively. By default (i.e., when
+the <tt class="docutils literal"><span class="pre">term</span></tt> elements don&#8217;t carry a <tt class="docutils literal"><span class="pre">match</span></tt> attribute), the terms &#8220;ordinal-00&#8221;
+through &#8220;ordinal-09&#8221; repeat at intervals of 10. For example, the term
+&#8220;ordinal-01&#8221; overrides the &#8220;ordinal&#8221; term for numbers 1, 11, 21, 31, etc. At
+this point, we would get &#8220;ordinal&#8221; numbers such as &#8220;1st&#8221;, &#8220;2nd&#8221;, &#8220;3rd&#8221;, &#8220;4th&#8221;,
+&#8220;21st&#8221;, &#8220;67th&#8221;, and &#8220;101st&#8221;, but we would also get the incorrect &#8220;11st&#8221;, &#8220;12nd&#8221;
+and &#8220;13rd&#8221;. For these cases, we define the terms &#8220;ordinal-11&#8221;, &#8220;ordinal-12&#8221;, and
+&#8220;&#8221;ordinal-13&#8221; as &#8220;th&#8221;. By default, the terms &#8220;ordinal-10&#8221; though &#8220;ordinal-99&#8221;
+repeat at intervals of 100. For example, the term &#8220;ordinal-11&#8221; overrides the
+&#8220;ordinal&#8221; and &#8220;ordinal-01&#8221; terms for numbers &#8220;11&#8221;, &#8220;111&#8221;, &#8220;211&#8221;, etc. So, in
+total, we need the following seven terms:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;terms&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal&quot;</span><span class="nt">&gt;</span>th<span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal-01&quot;</span><span class="nt">&gt;</span>st<span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal-02&quot;</span><span class="nt">&gt;</span>nd<span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal-03&quot;</span><span class="nt">&gt;</span>rd<span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal-11&quot;</span><span class="nt">&gt;</span>th<span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal-12&quot;</span><span class="nt">&gt;</span>th<span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal-13&quot;</span><span class="nt">&gt;</span>th<span class="nt">&lt;/term&gt;</span>
+<span class="nt">&lt;/terms&gt;</span>
+</pre></div>
+</div>
+<p>Fortunately, many languages have simpler &#8220;ordinal&#8221; numbers. E.g., for German all
+&#8220;ordinal&#8221; numbers receive a period as the suffix, so it suffice to define the
+&#8220;ordinal&#8221; term:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;terms&gt;</span>
+  <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal&quot;</span><span class="nt">&gt;</span>.<span class="nt">&lt;/term&gt;</span>
+<span class="nt">&lt;/terms&gt;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="gender-specific-ordinals">
 <h5>Gender-specific Ordinals<a class="headerlink" href="#gender-specific-ordinals" title="Permalink to this headline">¶</a></h5>
 <p><a class="reference external" href="http://citationstyles.org/downloads/specification.html#gender-specific-ordinals">http://citationstyles.org/downloads/specification.html#gender-specific-ordinals</a></p>
 <p>Cover gender-variants and ordinal suffix term usage</p>
+<p>Task is two-fold: define gender of nouns (&#8220;long&#8221; forms of number variable terms
+&#8220;edition&#8221;, &#8220;volume&#8221;, &#8220;issue&#8221;, &#8220;months&#8221;), define gender-variants of ordinal terms.</p>
 </div>
 </div>
 </div>

@@ -317,8 +317,8 @@ other numbers is the "ordinal" form). Each of these ten numbers has its own term
 ("long-ordinal-01" through "long-ordinal-10").
 
 Things are different for the "ordinal" form. Here, terms are only used to define
-the ordinal suffix ("nd" for "2nd"). Secondly, terms and numbers don't
-correspond one to one. For example, the "ordinal" term defines the default
+the ordinal suffix ("nd" for "2nd"). Furthermore, terms and numbers don't
+correspond one-to-one. For example, the "ordinal" term defines the default
 suffix, which is used for all numbers (unless, as described below, exceptions
 are introduced through the use of the terms "ordinal-00" through "ordinal-99").
 
@@ -332,18 +332,53 @@ Terms for "ordinal" numbers
 |||||||||||||||||||||||||||
 
 Terms for the "ordinal" form follow special rules to make it possible to render
-any number in the "ordinal" form (e.g. "2nd", "15th", "231st"), without having
-to define a term for each number. 
+any number in the "ordinal" form (e.g., "2nd", "15th", "231st"), without having
+to define a term for each number.
 
 The logic for defining ordinal suffixes with terms is described at
-http://citationstyles.org/downloads/specification.html#ordinal-suffixes . After you
-have that description, try to follow along with the following description.
+http://citationstyles.org/downloads/specification.html#ordinal-suffixes, and
+won't be revisited here. Instead, we'll look at an example.
 
-In English, there are four different ordinal suffixes in use: "st", "nd", "rd"
-are used for numbers ending on 1, 2, 3, respectively, while "th" is used for
-numbers ending on 0 and 4 through 9.
+In English, there are four different ordinal suffixes in use: "st", "nd", and
+"rd" are used for numbers ending on 1, 2, and 3, respectively, while "th" is
+used for numbers ending on 0 and 4 through 9. Exceptions are numbers ending on
+"11", "12", and "13", which also use "th".
 
-To capture these suffix assignments, we first start by defining the "ordinal" term as "th", which is the most common suffix.
+To capture this logic, we start by defining the "ordinal" term as "th", which is
+the most common suffix. Then, we define the terms "ordinal-01", "ordinal-02",
+and "ordinal-01" as "st", "nd", and "rd", respectively. By default (i.e., when
+the ``term`` elements don't carry a ``match`` attribute), the terms "ordinal-00"
+through "ordinal-09" repeat at intervals of 10. For example, the term
+"ordinal-01" overrides the "ordinal" term for numbers 1, 11, 21, 31, etc. At
+this point, we would get "ordinal" numbers such as "1st", "2nd", "3rd", "4th",
+"21st", "67th", and "101st", but we would also get the incorrect "11st", "12nd"
+and "13rd". For these cases, we define the terms "ordinal-11", "ordinal-12", and
+""ordinal-13" as "th". By default, the terms "ordinal-10" though "ordinal-99"
+repeat at intervals of 100. For example, the term "ordinal-11" overrides the
+"ordinal" and "ordinal-01" terms for numbers "11", "111", "211", etc. So, in
+total, we need the following seven terms:
+
+.. sourcecode:: xml
+
+    <terms>
+      <term name="ordinal">th</term>
+      <term name="ordinal-01">st</term>
+      <term name="ordinal-02">nd</term>
+      <term name="ordinal-03">rd</term>
+      <term name="ordinal-11">th</term>
+      <term name="ordinal-12">th</term>
+      <term name="ordinal-13">th</term>
+    </terms>
+
+Fortunately, many languages have simpler "ordinal" numbers. E.g., for German all
+"ordinal" numbers receive a period as the suffix, so it suffice to define the
+"ordinal" term:
+
+.. sourcecode:: xml
+
+    <terms>
+      <term name="ordinal">.</term>
+    </terms>
 
 Gender-specific Ordinals
 ||||||||||||||||||||||||
@@ -351,6 +386,9 @@ Gender-specific Ordinals
 http://citationstyles.org/downloads/specification.html#gender-specific-ordinals
  
 Cover gender-variants and ordinal suffix term usage
+
+Task is two-fold: define gender of nouns ("long" forms of number variable terms
+"edition", "volume", "issue", "months"), define gender-variants of ordinal terms.
 
 Submitting Contributions
 ~~~~~~~~~~~~~~~~~~~~~~~~
