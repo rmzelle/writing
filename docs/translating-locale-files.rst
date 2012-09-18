@@ -383,12 +383,22 @@ Fortunately, many languages have simpler "ordinal" numbers. E.g., for German all
 Gender-specific Ordinals
 ||||||||||||||||||||||||
 
-http://citationstyles.org/downloads/specification.html#gender-specific-ordinals
- 
-Cover gender-variants and ordinal suffix term usage
+To use gender-specific ordinals, we first need to define the gender of several
+target nouns: the terms accompanying the number variables (it is probably
+sufficient to specify the gender for "edition", "issue", and "volume") and the
+month terms ("month-01" through "month-12", corresponding to January through
+December). This is done by setting the ``gender`` attribute on the "long"
+(default) form of the term to either "masculine" or "feminine".
 
-Task is two-fold: define gender of nouns ("long" forms of number variable terms
-"edition", "volume", "issue", "months"), define gender-variants of ordinal terms.
+Secondly, we need to define "feminine" and "masculine" variants of the ordinal
+terms, which is done with the ``gender-variant`` attribute (set to "masculine"
+or "feminine").
+
+ToDo: Discuss fr-FR.
+
+For more information, see `Gender-specific Ordinals
+<http://citationstyles.org/downloads/specification.html#gender-specific-ordinals>`_
+section in the CSL specification.
 
 Submitting Contributions
 ~~~~~~~~~~~~~~~~~~~~~~~~
