@@ -391,12 +391,52 @@ target nouns: the terms accompanying the number variables (it is probably
 sufficient to specify the gender for &#8220;edition&#8221;, &#8220;issue&#8221;, and &#8220;volume&#8221;) and the
 month terms (&#8220;month-01&#8221; through &#8220;month-12&#8221;, corresponding to January through
 December). This is done by setting the <tt class="docutils literal"><span class="pre">gender</span></tt> attribute on the &#8220;long&#8221;
-(default) form of the term to either &#8220;masculine&#8221; or &#8220;feminine&#8221;.</p>
+(default) form of these terms to either &#8220;masculine&#8221; or &#8220;feminine&#8221;.</p>
 <p>Secondly, we need to define &#8220;feminine&#8221; and &#8220;masculine&#8221; variants of the ordinal
 terms, which is done with the <tt class="docutils literal"><span class="pre">gender-variant</span></tt> attribute (set to &#8220;masculine&#8221;
 or &#8220;feminine&#8221;).</p>
-<p>ToDo: Discuss fr-FR.</p>
-<p>For more information, see <a class="reference external" href="http://citationstyles.org/downloads/specification.html#gender-specific-ordinals">Gender-specific Ordinals</a>
+<p>A minimal example for French:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;locale</span> <span class="na">xml:lang=</span><span class="s">&quot;fr-FR&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;terms&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;edition&quot;</span> <span class="na">gender=</span><span class="s">&quot;feminine&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;single&gt;</span>édition<span class="nt">&lt;/single&gt;</span>
+      <span class="nt">&lt;multiple&gt;</span>éditions<span class="nt">&lt;/multiple&gt;</span>
+    <span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;edition&quot;</span> <span class="na">form=</span><span class="s">&quot;short&quot;</span><span class="nt">&gt;</span>éd.<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;month-01&quot;</span> <span class="na">gender=</span><span class="s">&quot;masculine&quot;</span><span class="nt">&gt;</span>janvier<span class="nt">&lt;/term&gt;</span>
+
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;long-ordinal-01&quot;</span> <span class="na">gender-form=</span><span class="s">&quot;masculine&quot;</span><span class="nt">&gt;</span>premier<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;long-ordinal-01&quot;</span> <span class="na">gender-form=</span><span class="s">&quot;feminine&quot;</span><span class="nt">&gt;</span>première<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;long-ordinal-01&quot;</span><span class="nt">&gt;</span>premier<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;long-ordinal-02&quot;</span><span class="nt">&gt;</span>deuxième<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;long-ordinal-03&quot;</span><span class="nt">&gt;</span>troisième<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;long-ordinal-04&quot;</span><span class="nt">&gt;</span>quatrième<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;long-ordinal-05&quot;</span><span class="nt">&gt;</span>cinquième<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;long-ordinal-06&quot;</span><span class="nt">&gt;</span>sixième<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;long-ordinal-07&quot;</span><span class="nt">&gt;</span>septième<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;long-ordinal-08&quot;</span><span class="nt">&gt;</span>huitième<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;long-ordinal-09&quot;</span><span class="nt">&gt;</span>neuvième<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;long-ordinal-10&quot;</span><span class="nt">&gt;</span>dixième<span class="nt">&lt;/term&gt;</span>
+
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal&quot;</span><span class="nt">&gt;</span>e<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal-01&quot;</span> <span class="na">gender-form=</span><span class="s">&quot;feminine&quot;</span> <span class="na">match=</span><span class="s">&quot;whole-number&quot;</span><span class="nt">&gt;</span>re<span class="nt">&lt;/term&gt;</span>
+    <span class="nt">&lt;term</span> <span class="na">name=</span><span class="s">&quot;ordinal-01&quot;</span> <span class="na">gender-form=</span><span class="s">&quot;masculine&quot;</span> <span class="na">match=</span><span class="s">&quot;whole-number&quot;</span><span class="nt">&gt;</span>er<span class="nt">&lt;/term&gt;</span>
+  <span class="nt">&lt;/terms&gt;</span>
+<span class="nt">&lt;/locale&gt;</span>
+</pre></div>
+</div>
+<p>In this example, the &#8220;edition&#8221; term is defined as feminine, and the &#8220;month-01&#8221;
+term (&#8220;janvier&#8221;) is defined as masculine. For French, of the &#8220;long-ordinal&#8221;
+terms, only &#8220;long-ordinal-01&#8221; has gender-variants (&#8220;premier&#8221; for masculine,
+&#8220;première&#8221; for feminine). To cover cases where no gender is defined for the
+target noun (e.g., a style author might redefine a term like &#8220;edition&#8221; but
+forget to specify the gender), also a neuter variant of &#8220;long-ordinal-01&#8221; is
+defined without the <tt class="docutils literal"><span class="pre">gender</span></tt> attribute. The &#8220;ordinal&#8221; term defines the default
+suffix. The only exceptions are for the number 1 when the target noun is either
+feminine or masculine (with <tt class="docutils literal"><span class="pre">match</span></tt> set to &#8220;whole-number&#8221;, the term does not
+repeat), e.g. &#8220;1re édition&#8221; but &#8220;11e édition&#8221;.</p>
+<p>For more information, see the <a class="reference external" href="http://citationstyles.org/downloads/specification.html#gender-specific-ordinals">Gender-specific Ordinals</a>
 section in the CSL specification.</p>
 </div>
 </div>

@@ -388,15 +388,57 @@ target nouns: the terms accompanying the number variables (it is probably
 sufficient to specify the gender for "edition", "issue", and "volume") and the
 month terms ("month-01" through "month-12", corresponding to January through
 December). This is done by setting the ``gender`` attribute on the "long"
-(default) form of the term to either "masculine" or "feminine".
+(default) form of these terms to either "masculine" or "feminine".
 
 Secondly, we need to define "feminine" and "masculine" variants of the ordinal
 terms, which is done with the ``gender-variant`` attribute (set to "masculine"
 or "feminine").
 
-ToDo: Discuss fr-FR.
+A minimal example for French:
 
-For more information, see `Gender-specific Ordinals
+.. sourcecode:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <locale xml:lang="fr-FR">
+      <terms>
+        <term name="edition" gender="feminine">
+          <single>édition</single>
+          <multiple>éditions</multiple>
+        </term>
+        <term name="edition" form="short">éd.</term>
+        <term name="month-01" gender="masculine">janvier</term>
+        
+        <term name="long-ordinal-01" gender-form="masculine">premier</term>
+        <term name="long-ordinal-01" gender-form="feminine">première</term>
+        <term name="long-ordinal-01">premier</term>
+        <term name="long-ordinal-02">deuxième</term>
+        <term name="long-ordinal-03">troisième</term>
+        <term name="long-ordinal-04">quatrième</term>
+        <term name="long-ordinal-05">cinquième</term>
+        <term name="long-ordinal-06">sixième</term>
+        <term name="long-ordinal-07">septième</term>
+        <term name="long-ordinal-08">huitième</term>
+        <term name="long-ordinal-09">neuvième</term>
+        <term name="long-ordinal-10">dixième</term>
+        
+        <term name="ordinal">e</term>
+        <term name="ordinal-01" gender-form="feminine" match="whole-number">re</term>
+        <term name="ordinal-01" gender-form="masculine" match="whole-number">er</term>
+      </terms>
+    </locale>
+
+In this example, the "edition" term is defined as feminine, and the "month-01"
+term ("janvier") is defined as masculine. For French, of the "long-ordinal"
+terms, only "long-ordinal-01" has gender-variants ("premier" for masculine,
+"première" for feminine). To cover cases where no gender is defined for the
+target noun (e.g., a style author might redefine a term like "edition" but
+forget to specify the gender), also a neuter variant of "long-ordinal-01" is
+defined without the ``gender`` attribute. The "ordinal" term defines the default
+suffix. The only exceptions are for the number 1 when the target noun is either
+feminine or masculine (with ``match`` set to "whole-number", the term does not
+repeat), e.g. "1re édition" but "11e édition".
+
+For more information, see the `Gender-specific Ordinals
 <http://citationstyles.org/downloads/specification.html#gender-specific-ordinals>`_
 section in the CSL specification.
 
