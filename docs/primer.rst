@@ -1,5 +1,5 @@
-Citation Style Language 1.0 - Primer
-====================================
+Citation Style Language 1.0.1 - Primer
+======================================
 
 .. contents:: **Table of Contents**
    :depth: 4
@@ -46,7 +46,7 @@ Zwart KB, Veenhuis M, Harder W (1983) Significance of yeast peroxisomes in the m
 "numeric" Styles
 ++++++++++++++++
 
-Cites consist of numbers, e.g. [1,2] and [3]. Bibliographic entries are typically sorted either alphabetically by author, or in the order in which the entries are first cited.
+Cites of "numeric" styles consist of numbers, e.g. [1,2] and [3]. Bibliographic entries are typically sorted either alphabetically by author, or in the order in which the entries are first cited.
 
 *Bibliography*
 
@@ -56,10 +56,10 @@ Cites consist of numbers, e.g. [1,2] and [3]. Bibliographic entries are typicall
    
 3. van der Klei IJ, Harder W, Veenhuis M (1991) Methanol metabolism in a peroxisome-deficient mutant of *Hansenula polymorpha*: a physiological study. Arch Microbiol 156: 15-23.
 
-"numeric" Compound Styles (unsupported)
-***************************************
+"numeric" Compound Styles
++++++++++++++++++++++++++
 
-A variation of the "numeric" in-text style format is the compound style format, popular in the field of chemistry. With these styles, bibliographic entries may consist of one [1] or multiple references [2]. Single items in preceding bibliographic entries can also be cited, e.g. [2b]. This format is not (yet) supported by CSL.
+Compound styles are a variation of the "numeric" in-text style format, popular in the field of chemistry. With these styles, bibliographic entries may consist of one [1] or multiple references [2]. Single items can be cited again individually, e.g. [2b]. This format is not (yet) supported by CSL.
 
 *Bibliography*
 
@@ -70,7 +70,7 @@ A variation of the "numeric" in-text style format is the compound style format, 
 "label" Styles
 ++++++++++++++
 
-Cites consist of short keys, e.g. [GBKv2008] and [ZwVH1983; vaHV1991]. These keys are also included in the bibliographic entries.
+Cites of "label" styles consist of short keys, e.g. [GBKv2008] and [ZwVH1983; vaHV1991]. These keys are also included in the bibliographic entries. CSL has limited support for this format.
 
 *Bibliography*
 
@@ -83,7 +83,7 @@ Cites consist of short keys, e.g. [GBKv2008] and [ZwVH1983; vaHV1991]. These key
 Note Styles
 '''''''''''
 
-The second category of citation styles consists of **"note"** styles. With these a *marker* (a number or a symbol) is added to the sentence when works are cited, e.g. [*]_ and [*]_. The marker points to a footnote or endnote. CSL styles do not control which number formats or symbols are used for the markers. In contrast to in-text citations, footnotes and endnotes typically contain all information required to identify the cited work(s). Some "note" styles include a bibliography to give an overview of all cited works, and to describe the works in more detail.
+The second category of citation styles consists of **"note"** styles. With these a *marker* (a number or a symbol) is added to the sentence when works are cited, e.g. [*]_ and [*]_. Each marker points to a footnote or endnote. CSL styles do not control which number formats or symbols are used for the markers. In contrast to in-text citations, footnotes and endnotes typically contain all information required to identify the cited work(s). Some "note" styles include a bibliography to give an overview of all cited works, and to describe the works in more detail.
 
     .. [*] 'Voyage to St. Kilda' (3rd edit. 1753), p. 37.
     .. [*] Sir J. E. Tennent, 'Ceylon,' vol. ii. 1859, p. 107.
@@ -91,17 +91,17 @@ The second category of citation styles consists of **"note"** styles. With these
 CSL Infrastructure
 ^^^^^^^^^^^^^^^^^^
 
-To generate citations and bibliographies in any of the formats described above, a CSL-based reference manager needs:
+To generate citations and bibliographies in any of the supported formats described above, a CSL-based reference manager needs:
 
-- a **CSL style** describing a citation style.
+- a **CSL style**, which describes a citation style.
 
 - **item metadata**, which are the bibliographic details of the cited works. E.g., the item type (book), title ("Moby-Dick"), author (Herman Melville), etc.
 
-- **CSL locale files** and the desired **locale**. CSL has support for style localization. For example, a single CSL style can generate both "Doe and Smith. May 5, 1993." (US English) and "Doe und Smith. 5. Mai 1993." (German). The locale files provide default localization data (e.g., translations of common terms like "in" and "and", date formats, and grammar preferences) for a wide selection of languages. Some CSL styles are set to a particular language, while others will use the provided **locale**. 
+- **CSL locale files** and the desired **locale**. CSL styles rely on CSL locale files for default localization data (e.g., translations of common terms like "in" and "and", date formats, and grammar preferences). This allows styles to automatically localize based on the provided **locale**. For example, a single CSL style can produce both "Doe and Smith. May 5, 1993." (for US English) and "Doe und Smith. 5. Mai 1993." (for German). Note that many styles in the CSL style repository, such as styles for journals that publish in a single language, are hard-coded to one particular language.
 
-- **citing details**. Many reference managers have word processor plugins so you can easily insert citations and bibliographies into manuscripts. Here, the item metadata is supplemented by details on how the items are cited in the manuscript (e.g., the order in which the items are cited, which items are cited together in a single citation, etc.).
+- **citing details**. Citations often contain information beyond the item metadata. Such details include the order in which the items are cited in the document, which items are cited together in citations, and locators (to pinpoint a section within a larger work).
 
-- a **CSL processor**, which processes all the pieces listed above and generates the formatted citations and bibliographies. Zotero and Mendeley both use the open source JavaScript `citeproc-js <https://bitbucket.org/fbennett/citeproc-js/wiki/Home>`_ CSL processor.
+- a **CSL processor**, which processes all the pieces listed above and generates the formatted citations and bibliographies.
 
 |csl-infrastructure|
 
@@ -110,73 +110,42 @@ To generate citations and bibliographies in any of the formats described above, 
 XML Basics
 ~~~~~~~~~~
 
-For those new to XML (or HTML), this section gives a short overview of what you need to know about XML in order to edit CSL styles and locale files. If anything here is unclear, just check one of the many XML tutorials online.
+For those new to XML (or HTML), this section gives a short overview of what you need to know about XML in order to edit CSL styles and locale files. For more background, just check one of the many XML tutorials online.
 
-Let's take a look at the following piece of CSL XML:
+Let's take a look at the following CSL style:
 
 .. sourcecode:: xml
 
     <?xml version="1.0" encoding="utf-8"?>
-    <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0">
+    <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" default-locale="en-US">
       <info>
-        <title>Academic Medicine</title>
-        <id>http://www.zotero.org/styles/academic-medicine</id>
-        <link href="http://www.zotero.org/styles/vancouver" rel="independent-parent"/>
+        <title>Applied and Environmental Microbiology</title>
+        <id>http://www.zotero.org/styles/applied-and-environmental-microbiology</id>
+        <link href="http://www.zotero.org/styles/applied-and-environmental-microbiology" rel="self"/>
+        <link href="http://www.zotero.org/styles/american-society-for-microbiology" rel="independent-parent"/>
+        <link href="http://aem.asm.org/" rel="documentation"/>
         <category citation-format="numeric"/>
-        <category field="medicine"/>
-        <issn>1040-2446</issn>
-        <updated>2012-01-11T19:01:02+00:00</updated>
-        <rights>This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
+        <category field="biology"/>
+        <issn>0099-2240</issn>
+        <eissn>1098-5336</eissn>
+        <updated>2012-09-09T21:58:08+00:00</updated>
+        <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
       </info>
     </style>
 
 There are several concepts and terms you need to be familiar with. These are:
 
-- **XML Declaration**. The first line of any style or locale file should always
-  be the XML declaration. It almost all cases, this will be ``<?xml version="1.0"
-  encoding="utf-8"?>``. This line designates the document as XML, and specifies
-  the XML version ("1.0") and character encoding ("utf-8") used.
+- **XML Declaration**. The first line of any style or locale file should always be the XML declaration. In most cases, this will be ``<?xml version="1.0" encoding="utf-8"?>``. This line designates the document as XML, and specifies the XML version ("1.0") and character encoding ("utf-8") used.
 
-- **Elements and Hierarchy**. The basic building blocks of XML documents are
-  elements, which are hierarchically structured. Each XML document contains a
-  single root element (for CSL styles this is ``<style/>``). If an element
-  contains other elements, the parent element is split into a start tag
-  (``<style>``) and an end tag (``</style>``). In our example, the ``<style/>``
-  element has one child element, ``<info/>``. This element has several children
-  of its own, which are grandchildren of the grandparent ``<style/>`` element.
-  Element tags are always wrapped in less-than ("<") and greater-than (">")
-  characters (e.g., ``<style>``). For an empty-element tag, ">" is preceded by a
-  forward-slash (e.g., ``<category/>``), while for end tags "<" is followed by a
-  forward-slash (e.g.,``</style>``). Child elements are typically indented with spaces or tabs to show the different hierarchical levels.
+- **Elements and Hierarchy**. The basic building blocks of XML documents are elements, which are hierarchically structured. Each XML document contains a single root element (for CSL styles this is ``<style/>``). If an element contains other elements, the parent element is split into a start tag (``<style>``) and an end tag (``</style>``). In our example, the ``<style/>`` element has one child element, ``<info/>``. This element has several children of its own, which are grandchildren of the grandparent ``<style/>`` element. Element tags are always wrapped in less-than ("<") and greater-than (">") characters (e.g., ``<style>``). For empty-element tags, ">" is preceded by a forward-slash (e.g., ``<category/>``), while for end tags "<" is followed by a forward-slash (e.g.,``</style>``). Child elements are typically indented with spaces or tabs to show the different hierarchical levels.
 
-- **Attributes and Element Content**. There are two ways to add additional
-  information to elements. First, XML elements can carry one or more attributes
-  (the order of attributes on an element is arbitrary). Every attribute needs a
-  value. For example, the ``<style/>`` element carries a ``version`` attribute, set to a
-  value of "1.0", indicating that the style is written in CSL 1.0. Secondly, elements can
-  store non-element content between start and end tags, e.g. the content of the
-  ``<id/>`` element is "http://www.zotero.org/styles/academic-medicine".
+- **Attributes and Element Content**. There are two ways to add additional information to elements. First, XML elements can carry one or more attributes (the order of attributes on an element is arbitrary). Every attribute needs a value. For example, the ``<style/>`` element carries a ``version`` attribute, set to a value of "1.0", indicating that the style is written in CSL 1.0. Secondly, elements can store non-element content between start and end tags, e.g. the content of the ``<title/>`` element is "Applied and Environmental Microbiology".
 
 - **Namespace**. To indicate that all the elements in the style or locale file are part of CSL, the root element should always carry the ``xmlns`` attribute, set to the CSL XML namespace URI, "http://purl.org/net/xbiblio/csl". In the rest of this primer we will use the namespace prefix "cs:" when referring to CSL elements (e.g., ``cs:style`` instead of ``<style/>``).
 
-- **Escaping**. Some characters have to be substituted when used for purposes
-  other than for defining the XML structure (e.g., when used in attribute values
-  or non-element content), or, in the case of the ampersand ("&"), for
-  substitution itself. Escape sequences are "&lt;" for "<", "&gt;" for ">",
-  "&amp;" for "&", "&apos;" for ', and "&quot;" for ". For example, the link
-  "http://domain.com/?tag=a&id=4" should be escaped as ``<link
-  href="http://domain.com/?tag=a&amp;id=4"/>``.
+- **Escaping**. Some characters have to be substituted when used for purposes other than for defining the XML structure (e.g., when used in attribute values or non-element content), or, in the case of the ampersand ("&"), for substitution itself. Escape sequences are "&lt;" for "<", "&gt;" for ">", "&amp;" for "&", "&apos;" for ', and "&quot;" for ". For example, the link "http://domain.com/?tag=a&id=4" is escaped as ``<link href="http://domain.com/?tag=a&amp;id=4"/>``.
 
-- **Well-formedness and Schema Validity**. Unlike HTML, XML does not allow for
-  any markup errors. Any error, like forgetting an end tag, having more than one
-  root element, or incorrect escaping will break the XML document and prevent it
-  from being processed. XML documents that follow the XML specification and
-  are error-free are "well-formed". For well-formed styles and locale
-  files there is a second level of testing, involving the CSL schema. This
-  schema describes which CSL elements and attributes are allowed and how they must
-  be used. When a style or locale file is tested against the CSL schema rules (this process
-  is called "validation") and passes, the file is valid CSL. Only well-formed
-  and valid CSL files can be expected to work properly.
+- **Well-formedness and Schema Validity**. Unlike HTML, XML does not allow for any markup errors. Any error, like forgetting an end tag, having more than one root element, or incorrect escaping will break the XML document and can prevent it from being processed. XML documents that follow the XML specification and are error-free are "well-formed". For well-formed CSL styles and locale files there is a second level of testing, involving the CSL schema. This schema describes which CSL elements and attributes are allowed and how they must be used. When a style or locale file is tested against the rules of the CSL schema and passes, the file is valid CSL (this process is called "validation"). Only well-formed and valid CSL files can be expected to work properly.
 
 Tools for Editing
 ~~~~~~~~~~~~~~~~~
