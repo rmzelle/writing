@@ -1,5 +1,5 @@
-Citation Style Language 1.0.1 - Primer
-======================================
+Citation Style Language - Primer
+================================
 
 .. contents:: **Table of Contents**
    :depth: 4
@@ -7,33 +7,35 @@ Citation Style Language 1.0.1 - Primer
 Preface
 ~~~~~~~
 
-This primer is an introduction to the Citation Style Language (CSL), an open XML-based language to describe the formatting of citations and bibliographies. If you want to learn how to edit CSL styles, or use CSL styles in your own software, this primer is meant for you. For a more comprehensive and in-depth overview of CSL, see the `CSL 1.0 Specification`_.
+This primer is an introduction to the Citation Style Language (CSL), an open XML-based language to describe the formatting of citations and bibliographies. For a more technical and in-depth overview of CSL, see the `CSL Specification`_.
 
 .. _CSL 1.0 Specification: http://citationstyles.org/downloads/specification.html
 
 What is CSL?
 ~~~~~~~~~~~~
 
-If you ever had to write a scholarly manuscript, you probably were required to reference other works. And for good reason, as proper referencing plays an important role in scholarly communication by, for example, providing attribution and linking together published research. However, manually formatting references can be boring and time-consuming. The burden is even higher when you have to deal with multiple journals or publishers that each have their own particular citation style format.
+If you ever had to write a scholarly manuscript, you probably included references to other works. Proper referencing plays an important role in scholarly communication by, for example, providing attribution and linking together published research. However, manually formatting references is often boring and time-consuming, especially when you have to deal with multiple journals or publishers that each have their own particular citation style.
 
-Luckily, reference management software can lighten the load. Programs like Zotero, Mendeley, and Papers not only make it easier to manage your research library (and PDFs), but also provide features to automatically generate and update citations and bibliographies in text documents. But to format references in the desired style, these programs need descriptions of each style in a computer-readable format. The Citation Style Language is such a format.
+Luckily, reference management software can lighten the load. Programs like Zotero, Mendeley, and Papers not only help you manage your research library, but can also automatically generate citations and bibliographies. But to format references in the desired style, these programs need descriptions of each citation style in a computer-readable format. The Citation Style Language (CSL) is such a format.
 
 Citation Formats
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
-Before we focus on the technical aspects of CSL, let's first take a look at the different types of citation formats that CSL supports (and doesn't support).
+Before we focus on the technical aspects of CSL, let's first take a look at the different types of citation formats in use.
 
 In-text Styles
-''''''''''''''
+^^^^^^^^^^^^^^
 
 Citation styles can be divided in two main categories. The first category consists of **"in-text"** styles, where a *citation* in the sentence directly points to one or multiple entries in the *bibliography*. Within this category, CSL distinguishes between **"author-date"**, **"author"**, **"numeric"** and **"label"** styles.
 
-A citation can point to multiple bibliographic entries. In CSL, each individual pointer is called a *cite*. For example, the citation (Doe et al. 2002, Smith 1997) contains one cite to a 2002 publication by Doe et al. ("Doe et al. 2002"), and one to a 1997 publication by Smith ("Smith 1997"). In the context of CSL, a *bibliographic entry* is sometimes also referred to as a *reference*.
+A citation can point to multiple bibliographic entries. In CSL, each individual pointer is called a *cite*. For example, the citation (Doe et al. 2002, Smith 1997) contains one cite to a 2002 publication by Doe et al., and one to a 1997 publication by Smith. In the context of CSL, a *bibliographic entry* is sometimes also called a *reference*.
 
 "author-date" & "author" Styles
-+++++++++++++++++++++++++++++++
+'''''''''''''''''''''''''''''''
 
 Cites of "author-date" styles show author names and the date of publication, e.g. (van der Klei et al. 1991; Zwart et al. 1983), whereas cites of "author" styles only show the names, e.g. (Gidijala et al.). Bibliographic entries are typically sorted alphabetically by author.
+
+Many citation style guides use the term "Harvard" instead of "author-date". Because there is no real connection between these citation styles and Harvard University, we personally prefer the term "author-date". Note there is no single authoritative "Harvard" style. 
 
 *Bibliography*
 
@@ -44,7 +46,7 @@ van der Klei IJ, Harder W, Veenhuis M (1991) Methanol metabolism in a peroxisome
 Zwart KB, Veenhuis M, Harder W (1983) Significance of yeast peroxisomes in the metabolism of choline and ethanolamine. Antonie van Leeuwenhoek 49: 369-385.
 
 "numeric" Styles
-++++++++++++++++
+''''''''''''''''
 
 Cites of "numeric" styles consist of numbers, e.g. [1,2] and [3]. Bibliographic entries are typically sorted either alphabetically by author, or in the order in which the entries are first cited.
 
@@ -57,9 +59,9 @@ Cites of "numeric" styles consist of numbers, e.g. [1,2] and [3]. Bibliographic 
 3. van der Klei IJ, Harder W, Veenhuis M (1991) Methanol metabolism in a peroxisome-deficient mutant of *Hansenula polymorpha*: a physiological study. Arch Microbiol 156: 15-23.
 
 "numeric" Compound Styles
-+++++++++++++++++++++++++
+'''''''''''''''''''''''''
 
-Compound styles are a variation of the "numeric" in-text style format, popular in the field of chemistry. With these styles, bibliographic entries may consist of one [1] or multiple references [2]. Single items can be cited again individually, e.g. [2b]. This format is not (yet) supported by CSL.
+Compound styles are a variation of the "numeric" in-text style format. With these styles, popular in the field of chemistry, bibliographic entries may consist of one [1] or multiple references [2]. Single items can be cited again individually, e.g. [2b]. This format is not yet supported by CSL.
 
 *Bibliography*
 
@@ -68,9 +70,9 @@ Compound styles are a variation of the "numeric" in-text style format, popular i
 2. \a) Zwart KB, et al. (1983) Antonie van Leeuwenhoek 49: 369-385, b) van der Klei IJ, et al. (1991) Arch Microbiol 156: 15-23.
 
 "label" Styles
-++++++++++++++
+''''''''''''''
 
-Cites of "label" styles consist of short keys, e.g. [GBKv2008] and [ZwVH1983; vaHV1991]. These keys are also included in the bibliographic entries. CSL has limited support for this format.
+Cites of "label" styles consist of short keys, e.g. [GBKv2008] and [ZwVH1983; vaHV1991]. These keys are also included in the bibliographic entries. CSL has limited support for this format, since it currently doesn't allow for (style-specific) customisation of the key format.
 
 *Bibliography*
 
@@ -81,9 +83,9 @@ Cites of "label" styles consist of short keys, e.g. [GBKv2008] and [ZwVH1983; va
 [ZwVH1983] Zwart KB, Veenhuis M, Harder W (1983) Significance of yeast peroxisomes in the metabolism of choline and ethanolamine. Antonie van Leeuwenhoek 49: 369-385.
 
 Note Styles
-'''''''''''
+^^^^^^^^^^^
 
-The second category of citation styles consists of **"note"** styles. With these a *marker* (a number or a symbol) is added to the sentence when works are cited, e.g. [*]_ and [*]_. Each marker points to a footnote or endnote. CSL styles do not control which number formats or symbols are used for the markers. In contrast to in-text citations, footnotes and endnotes typically contain all information required to identify the cited work(s). Some "note" styles include a bibliography to give an overview of all cited works, and to describe the works in more detail.
+The second category of citation styles consists of **"note"** styles. Here a *marker* (a number or a symbol) is added to the sentence when works are cited, e.g. [*]_ and [*]_. Each marker points to a footnote or endnote. CSL styles do not control which number formats or symbols are used for the markers, which is left to the word processor instead. In contrast to in-text citations, footnotes and endnotes typically contain all information required to identify the cited work(s). Some "note" styles include a bibliography to give an overview of all cited works, and to describe the works in more detail.
 
     .. [*] 'Voyage to St. Kilda' (3rd edit. 1753), p. 37.
     .. [*] Sir J. E. Tennent, 'Ceylon,' vol. ii. 1859, p. 107.
