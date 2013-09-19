@@ -7,16 +7,17 @@ Citation Style Language - Primer
 Preface
 ~~~~~~~
 
-This primer is an introduction to the Citation Style Language (CSL), an open XML-based language to describe the formatting of citations and bibliographies. For a more technical and in-depth overview of CSL, see the `CSL Specification`_.
+This primer is an introduction to the `Citation Style Language`_ (CSL), an open XML-based language to describe the formatting of citations and bibliographies. For a more technical and in-depth description of CSL, see the `CSL Specification`_.
 
-.. _CSL 1.0 Specification: http://citationstyles.org/downloads/specification.html
+.. _Citation Style Language: http://citationstyles.org
+.. _CSL Specification: http://citationstyles.org/downloads/specification.html
 
 What is CSL?
 ~~~~~~~~~~~~
 
-If you ever had to write a scholarly manuscript, you probably included references to other works. Proper referencing plays an important role in scholarly communication by, for example, providing attribution and linking together published research. However, manually formatting references is often boring and time-consuming, especially when you have to deal with multiple journals or publishers that each have their own particular citation style.
+If you ever wrote a research paper, you probably included references to other works. Referencing is important in scholarly communication, as it provides attribution and links together published research. However, manually formatting references can quickly become boring and time-consuming, especially when you have to deal with multiple journals that each have their own citation style.
 
-Luckily, reference management software can lighten the load. Programs like Zotero, Mendeley, and Papers not only help you manage your research library, but can also automatically generate citations and bibliographies. But to format references in the desired style, these programs need descriptions of each citation style in a computer-readable format. The Citation Style Language (CSL) is such a format.
+Luckily, reference management software can help out. Programs like Zotero, Mendeley, and Papers not only help you manage your research library, but can also automatically generate citations and bibliographies. But to format references in the desired style, these programs need descriptions of each citation style in a computer-readable format. The Citation Style Language (CSL) is such a format.
 
 Citation Formats
 ~~~~~~~~~~~~~~~~
