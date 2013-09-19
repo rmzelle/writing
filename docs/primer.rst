@@ -22,21 +22,21 @@ Luckily, reference management software can help out. Programs like Zotero, Mende
 Citation Formats
 ~~~~~~~~~~~~~~~~
 
-Before we focus on the technical aspects of CSL, let's first take a look at the different types of citation formats in use.
+Before we really dive into CSL, let's take a quick look at the different types of citation formats in existence, while gently introducing you to some CSL jargon.
 
 In-text Styles
 ^^^^^^^^^^^^^^
 
 Citation styles can be divided in two main categories. The first category consists of **"in-text"** styles, where a *citation* in the sentence directly points to one or multiple entries in the *bibliography*. Within this category, CSL distinguishes between **"author-date"**, **"author"**, **"numeric"** and **"label"** styles.
 
-A citation can point to multiple bibliographic entries. In CSL, each individual pointer is called a *cite*. For example, the citation (Doe et al. 2002, Smith 1997) contains one cite to a 2002 publication by Doe et al., and one to a 1997 publication by Smith. In the context of CSL, a *bibliographic entry* is sometimes also called a *reference*.
+A citation can point to multiple *bibliographic entries*. In CSL, each individual pointer is called a *cite*. For example, the citation (Doe et al. 2002, Smith 1997) contains two cites: one to a 2002 publication by Doe et al., and one to a 1997 publication by Smith. In the context of CSL, bibliographic entries are sometimes also called *references*.
 
 "author-date" & "author" Styles
 '''''''''''''''''''''''''''''''
 
 Cites of "author-date" styles show author names and the date of publication, e.g. (van der Klei et al. 1991; Zwart et al. 1983), whereas cites of "author" styles only show the names, e.g. (Gidijala et al.). Bibliographic entries are typically sorted alphabetically by author.
 
-Many citation style guides use the term "Harvard" instead of "author-date". Because there is no real connection between these citation styles and Harvard University, we personally prefer the term "author-date". Note there is no single authoritative "Harvard" style. 
+Note that many citation style guides use the term "Harvard" to refer to the "author-date" format, and that, as such, there isn't a single official "Harvard" style. Because these citation styles typically don't have any connection to Harvard University, we prefer the term "author-date".
 
 *Bibliography*
 
