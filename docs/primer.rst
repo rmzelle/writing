@@ -15,14 +15,14 @@ This primer is an introduction to the `Citation Style Language`_ (CSL), an open 
 What is CSL?
 ~~~~~~~~~~~~
 
-If you ever wrote a research paper, you probably included references to other works. Referencing is important in scholarly communication, as it provides attribution and links together published research. However, manually formatting references can quickly become boring and time-consuming, especially when you have to deal with multiple journals that each have their own citation style.
+If you ever wrote a research paper, you probably included references to other works. Referencing is important in scholarly communication, as it provides attribution and links together published research. However, manually formatting references can become very time-consuming, especially when you're dealing with multiple journals that each have their own citation style.
 
 Luckily, reference management software can help out. Programs like Zotero, Mendeley, and Papers not only help you manage your research library, but can also automatically generate citations and bibliographies. But to format references in the desired style, these programs need descriptions of each citation style in a computer-readable format. The Citation Style Language (CSL) is such a format.
 
-Citation Formats
-~~~~~~~~~~~~~~~~
+Supported Citation Formats
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Before we really dive into CSL, let's take a quick look at the different types of citation formats in existence, while gently introducing you to some CSL jargon.
+There are hundreds, if not thousands, different citation styles in use around the world. Fortunately, most styles fall within a few basic categories, and CSL has extensive support for the most popular types.
 
 In-text Styles
 ^^^^^^^^^^^^^^
