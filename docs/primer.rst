@@ -90,7 +90,7 @@ Bibliography
 Note Styles
 ^^^^^^^^^^^
 
-The second category of citation styles consists of **note** styles. Here a *marker*, which can be a number or a symbol, is added to the sentence when works are cited, e.g. "[*]_" and "[*]_". Each marker points to a footnote or endnote. CSL styles do not control which number formats or symbols are used for the markers, which is left to the word processor. In contrast to **in-text** citations, footnotes and endnotes typically contain all information required to identify the cited work(s). Some **note** styles include a bibliography to give an overview of all cited works, and to describe the works in more detail.
+The second category of citation styles consists of **note** styles. Here a *marker*, which can be a number or a symbol, is added to the sentence when works are cited, e.g. \"[*]_\" and \"[*]_\". Each marker points to a footnote or endnote. CSL styles do not control which number formats or symbols are used for the markers, which is left to the word processor. In contrast to **in-text** citations, footnotes and endnotes typically contain all information required to identify the cited work(s). Some **note** styles include a bibliography to give an overview of all cited works, and to describe the works in more detail.
 
     .. [*] 'Voyage to St. Kilda' (3rd edit. 1753), p. 37.
     .. [*] Sir J. E. Tennent, 'Ceylon,' vol. ii. 1859, p. 107.
