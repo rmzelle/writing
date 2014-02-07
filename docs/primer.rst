@@ -17,28 +17,29 @@ What is CSL?
 
 If you ever wrote a research paper, you probably included references to other works. Referencing is important in scholarly communication, as it provides attribution and links together published research. However, manually formatting references can become very time-consuming, especially when you're dealing with multiple journals that each have their own citation style.
 
-Luckily, reference management software can help out. Programs like Zotero, Mendeley, and Papers not only help you manage your research library, but can also automatically generate citations and bibliographies. But to format references in the desired style, these programs need descriptions of each citation style in a computer-readable format. The Citation Style Language (CSL) is such a format.
+Luckily, reference management software can help out. Programs like Zotero, Mendeley, and Papers not only help you manage your research library, but can also automatically generate citations and bibliographies. But to format references in the desired style, these programs need descriptions of each citation style in language the computer can understand. As you might have guessed, the Citation Style Language (CSL) is such a language.
 
 Supported Citation Formats
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are hundreds, if not thousands, different citation styles in use around the world. Fortunately, most styles fall within a few basic categories, and CSL has extensive support for the most popular types.
+There are hundreds, if not thousands of different citation styles in use around the world. Fortunately, most citation styles fall within a few basic categories. CSL distinguishes between the following types:
 
 In-text Styles
 ^^^^^^^^^^^^^^
 
-Citation styles can be divided in two main categories. The first category consists of **"in-text"** styles, where a *citation* in the sentence directly points to one or multiple entries in the *bibliography*. Within this category, CSL distinguishes between **"author-date"**, **"author"**, **"numeric"** and **"label"** styles.
+Citation styles can be divided in two main categories. The first category consists of **in-text** styles, where a *citation* in the sentence directly points to one or multiple entries in the *bibliography*. CSL subdivides this category in **author-date**, **author**, **numeric** and **label** styles.
 
-A citation can point to multiple *bibliographic entries*. In CSL, each individual pointer is called a *cite*. For example, the citation (Doe et al. 2002, Smith 1997) contains two cites: one to a 2002 publication by Doe et al., and one to a 1997 publication by Smith. In the context of CSL, bibliographic entries are sometimes also called *references*.
+A citation can point to multiple *bibliographic entries*. In CSL, each individual pointer is called a *cite*. For example, the citation "(Doe et al. 2002, Smith 1997)" contains two cites: one to a 2002 publication by Doe et al., and one to a 1997 publication by Smith. In the context of CSL, bibliographic entries are sometimes also called *references*.
 
-"author-date" & "author" Styles
-'''''''''''''''''''''''''''''''
+author-date & author Styles
+'''''''''''''''''''''''''''
 
-Cites of "author-date" styles show author names and the date of publication, e.g. (van der Klei et al. 1991; Zwart et al. 1983), whereas cites of "author" styles only show the names, e.g. (Gidijala et al.). Bibliographic entries are typically sorted alphabetically by author.
+Cites of **author-date** styles show author names and the date of publication, e.g. "(Van der Klei et al. 1991; Zwart et al. 1983)", whereas cites of **author** styles only show names, e.g. "(Gidijala et al.)". Bibliographic entries are typically sorted alphabetically by author.
 
-Note that many citation style guides use the term "Harvard" to refer to the "author-date" format, and that, as such, there isn't a single official "Harvard" style. Because these citation styles typically don't have any connection to Harvard University, we prefer the term "author-date".
+Note that many citation style guides use the term "Harvard" to refer to the **author-date** format, and that, as such, there isn't a single official "Harvard" style. Because these citation styles typically don't have any connection to Harvard University, we prefer the term **author-date**.
 
-*Bibliography*
+Bibliography
+++++++++++++
 
 Gidijala L, Bovenberg RA, Klaassen P, van der Klei IJ, Veenhuis M, et al. (2008) Production of functionally active *Penicillium chrysogenum* isopenicillin N synthase in the yeast *Hansenula polymorpha*. BMC Biotechnol 8: 29.
 
@@ -46,12 +47,13 @@ van der Klei IJ, Harder W, Veenhuis M (1991) Methanol metabolism in a peroxisome
    
 Zwart KB, Veenhuis M, Harder W (1983) Significance of yeast peroxisomes in the metabolism of choline and ethanolamine. Antonie van Leeuwenhoek 49: 369-385.
 
-"numeric" Styles
-''''''''''''''''
+numeric Styles
+''''''''''''''
 
-Cites of "numeric" styles consist of numbers, e.g. [1,2] and [3]. Bibliographic entries are typically sorted either alphabetically by author, or in the order in which the entries are first cited.
+Cites of **numeric** styles consist of numbers, e.g. "[1, 2]" and "[3]". Bibliographic entries are typically sorted either alphabetically by author, or in the order in which the entries are first cited.
 
-*Bibliography*
+Bibliography
+++++++++++++
 
 1. Gidijala L, Bovenberg RA, Klaassen P, van der Klei IJ, Veenhuis M, et al. (2008) Production of functionally active *Penicillium chrysogenum* isopenicillin N synthase in the yeast *Hansenula polymorpha*. BMC Biotechnol 8: 29.
    
@@ -59,23 +61,25 @@ Cites of "numeric" styles consist of numbers, e.g. [1,2] and [3]. Bibliographic 
    
 3. van der Klei IJ, Harder W, Veenhuis M (1991) Methanol metabolism in a peroxisome-deficient mutant of *Hansenula polymorpha*: a physiological study. Arch Microbiol 156: 15-23.
 
-"numeric" Compound Styles
-'''''''''''''''''''''''''
+numeric Compound Styles
+'''''''''''''''''''''''
 
-Compound styles are a variation of the "numeric" in-text style format. With these styles, popular in the field of chemistry, bibliographic entries may consist of one [1] or multiple references [2]. Single items can be cited again individually, e.g. [2b]. This format is not yet supported by CSL.
+Compound styles are a variation of the **numeric** in-text style format. With these styles, popular in the field of chemistry, bibliographic entries may consist of one "[1]" or multiple references "[2]". Single items can be cited again individually, e.g. "[2b]". This format is not yet supported by CSL.
 
-*Bibliography*
+Bibliography
+++++++++++++
 
 1. Gidijala L, et al. (2008) BMC Biotechnol 8: 29.
    
 2. \a) Zwart KB, et al. (1983) Antonie van Leeuwenhoek 49: 369-385, b) van der Klei IJ, et al. (1991) Arch Microbiol 156: 15-23.
 
-"label" Styles
-''''''''''''''
+label Styles
+''''''''''''
 
-Cites of "label" styles consist of short keys, e.g. [GBKv2008] and [ZwVH1983; vaHV1991]. These keys are also included in the bibliographic entries. CSL has limited support for this format, since it currently doesn't allow for (style-specific) customisation of the key format.
+Cites of **label** styles consist of short keys, e.g. "[GBKv2008]" and "[ZwVH1983; vaHV1991]". These keys are also included in the bibliographic entries. CSL has limited support for this format, since it currently doesn't allow for (style-specific) customisation of the key format.
 
-*Bibliography*
+Bibliography
+++++++++++++
 
 [GBKv2008] Gidijala L, Bovenberg RA, Klaassen P, van der Klei IJ, Veenhuis M, et al. (2008) Production of functionally active *Penicillium chrysogenum* isopenicillin N synthase in the yeast *Hansenula polymorpha*. BMC Biotechnol 8: 29.
    
@@ -86,7 +90,7 @@ Cites of "label" styles consist of short keys, e.g. [GBKv2008] and [ZwVH1983; va
 Note Styles
 ^^^^^^^^^^^
 
-The second category of citation styles consists of **"note"** styles. Here a *marker* (a number or a symbol) is added to the sentence when works are cited, e.g. [*]_ and [*]_. Each marker points to a footnote or endnote. CSL styles do not control which number formats or symbols are used for the markers, which is left to the word processor instead. In contrast to in-text citations, footnotes and endnotes typically contain all information required to identify the cited work(s). Some "note" styles include a bibliography to give an overview of all cited works, and to describe the works in more detail.
+The second category of citation styles consists of **note** styles. Here a *marker*, which can be a number or a symbol, is added to the sentence when works are cited, e.g. "[*]_" and "[*]_". Each marker points to a footnote or endnote. CSL styles do not control which number formats or symbols are used for the markers, which is left to the word processor. In contrast to **in-text** citations, footnotes and endnotes typically contain all information required to identify the cited work(s). Some **note** styles include a bibliography to give an overview of all cited works, and to describe the works in more detail.
 
     .. [*] 'Voyage to St. Kilda' (3rd edit. 1753), p. 37.
     .. [*] Sir J. E. Tennent, 'Ceylon,' vol. ii. 1859, p. 107.
