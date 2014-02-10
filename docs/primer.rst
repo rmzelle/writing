@@ -90,15 +90,19 @@ Bibliography
 Note Styles
 ^^^^^^^^^^^
 
-The second category of citation styles consists of **note** styles. Here a *marker*, which can be a number or a symbol, is added to the sentence when works are cited, e.g. \ "[*]_\ " and \ "[*]_\ ". Each marker points to a footnote or endnote. CSL styles do not control which number formats or symbols are used for the markers, which is left to the word processor. In contrast to **in-text** citations, footnotes and endnotes typically contain all information required to identify the cited work(s). Some **note** styles include a bibliography to give an overview of all cited works, and to describe the works in more detail.
+The second category of citation styles consists of **note** styles. Here a *marker*, which can be a number or a symbol, is added to the sentence when works are cited, e.g. "[*]_" and \ "[*]_\ ". Each marker points to a footnote or endnote. CSL styles do not control which number formats or symbols are used for the markers, which is left to the word processor. In contrast to **in-text** citations, footnotes and endnotes typically contain all information required to identify the cited work(s). Some **note** styles include a bibliography to give an overview of all cited works, and to describe the works in more detail.
 
     .. [*] 'Voyage to St. Kilda' (3rd edit. 1753), p. 37.
     .. [*] Sir J. E. Tennent, 'Ceylon,' vol. ii. 1859, p. 107.
 
-CSL Infrastructure
-^^^^^^^^^^^^^^^^^^
+The CSL Ecosystem
+^^^^^^^^^^^^^^^^^
 
-To generate citations and bibliographies in any of the supported formats described above, a CSL-based reference manager needs:
+Before introducing you to the CSL syntax, let's first take a broader look at the context in which CSL is used, and discuss the various bit and pieces that make up the CSL ecosystem.
+
+At the center of CSL are its styles, of which there are two types: **independent** and **dependent** styles. An independent CSL style both defines a citation format, and provides information about the style (the **style metadata**). Examples of style metadata are the title of the journal for which the CSL style was created, a link to that journal's website, the name of the creator of the CSL style, etc.
+
+Citation styles often share the same format. For instance, many publishers use a single citation style for all their journals. If we had to define the same citation format over and over again for each of these journals, the resulting CSL styles would be bulky and difficult to maintain. Dependent styles solve this problem. A dependent CSL style only contains style metadata, and links to an independent style, its "parent". For example, the CSL style for the journal "Nature Biotechnology" is a dependent style, and points to the independent "Nature" style. Now, if the Nature Publishing Group decides to change its citation format, we only have to correct the citation format in the "Nature" CSL style, and we wouldn't have to touch any of its dependent styles.
 
 - a **CSL style**, which describes a citation style.
 
