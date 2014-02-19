@@ -96,26 +96,26 @@ The second category of citation styles consists of **note** styles. Here a *mark
     .. [*] Sir J. E. Tennent, 'Ceylon,' vol. ii. 1859, p. 107.
 
 The CSL Ecosystem
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 Before introducing the CSL syntax, let's first take a broader look at how CSL is used, and discuss the various bit and pieces that make up the CSL ecosystem.
 
 Independent and Dependent Styles
-''''''''''''''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 At the center of CSL are its styles. There are two types: **independent** and **dependent** styles. An independent CSL style both defines a citation format, and provides information about the style (the **style metadata**). Examples of style metadata are the title of the journal for which the CSL style was created, a link to that journal's website, the name of the creator of the CSL style, etc.
 
 Citation styles often share the same format. For instance, many publishers use a single citation style for all their journals. If we had to define the same citation format over and over again for each of these journals, the resulting CSL styles would be bulky and difficult to maintain. Dependent styles solve this problem. A dependent CSL style only contains style metadata, and relies on an independent style for its citation format. For example, the CSL style for the journal "Nature Biotechnology" is a dependent style, and points to the independent "Nature" style. Now, if the Nature Publishing Group changes its citation format, we only have to correct the citation format in the "Nature" CSL style, without having to touch any of its dependent styles.
 
 Item Metadata
-'''''''''''''
+^^^^^^^^^^^^^
 
 Citations and bibliographic entries must allow the reader to identify and find the referenced materials. This is usually done by showing a wide range of identifying information. For example, the bibliographic entry for a journal article may show the names of the authors, the year in which the article was published, the article title, the journal title, the volume and issue in which the article appeared, the page numbers of the article, and the article's Digital Object Identifier (DOI). Together, these details are called the **item metadata**.
 
 In order to create citations and bibliographies from this item metadata, a reference management software product needs a way to handle this information. Most reference managers support popular bibliographic formats such as BibTeX and RIS for exchanging item metadata. Internally, they often use different formats. The CSL project does not formally offer a bibliographic format of its own, but most CSL-supporting software uses the JSON-based format that was introduced by the citeproc-js CSL processor. This format is often referred to as "citeproc JSON" or "CSL JSON".
 
 CSL Processors
-''''''''''''''
+^^^^^^^^^^^^^^
 
 - a **CSL style**, which describes a citation style.
 
