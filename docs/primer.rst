@@ -110,9 +110,12 @@ Citation styles often share the same format. For instance, many publishers use a
 Item Metadata
 '''''''''''''
 
-Citations and bibliographic entries are only useful if they allow the reader to identify and find the referenced materials. This is typically achieved by showing a range of identifying information. For example, the bibliographic entry for a journal article may show the names of the authors, the year in which the article was published, the article title, the journal title, the volume and issue in which the article appeared, the page numbers of the article, and the Digital Object Identifier (DOI) of the article. Together, these details are called the **item metadata**.
+Citations and bibliographic entries must allow the reader to identify and find the referenced materials. This is usually done by showing a wide range of identifying information. For example, the bibliographic entry for a journal article may show the names of the authors, the year in which the article was published, the article title, the journal title, the volume and issue in which the article appeared, the page numbers of the article, and the article's Digital Object Identifier (DOI). Together, these details are called the **item metadata**.
 
-One of the main attractions of reference management software is that it can be used to easily import, store, organize, and export item metadata. To exchange item metadata, most tools support formats such as BibTeX and RIS. While the CSL project does not formally offer an exchange format of its own, the majority of CSL-supporting software uses the JSON format used the citeproc-js CSL processor (often referred to as "citeproc JSON" or "CSL JSON").
+In order to create citations and bibliographies from this item metadata, a reference management software product needs a way to handle this information. Most reference managers support popular bibliographic formats such as BibTeX and RIS for exchanging item metadata. Internally, they often use different formats. The CSL project does not formally offer a bibliographic format of its own, but most CSL-supporting software uses the JSON-based format that was introduced by the citeproc-js CSL processor. This format is often referred to as "citeproc JSON" or "CSL JSON".
+
+CSL Processors
+''''''''''''''
 
 - a **CSL style**, which describes a citation style.
 
