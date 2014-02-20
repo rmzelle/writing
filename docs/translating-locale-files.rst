@@ -53,7 +53,7 @@ file.
 Modifications to existing locale files can be made directly via the GitHub
 website. New locale files can be submitted as a "gist" or through a pull
 request. For details, see the `instructions on submitting CSL styles
-<https://github.com/citation-style-language/styles/wiki/Submitting-Styles>`_. If
+<https://github.com/citation-style-language/styles/blob/master/CONTRIBUTING.md>`_. If
 you edit a locale file on your own computer, use a suitable plain text editor
 such as TextWrangler for OS X, Notepad++ for Windows, or jEdit.
 
@@ -446,8 +446,8 @@ Submitting Contributions
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 To submit changes to an existing locale file, or to submit a new locale file,
-follow the `submission instructions for CSL styles <https://github.com/citation-
-style-language/styles/wiki/Submitting-Styles>`_.
+follow the `submission instructions for CSL styles
+<https://github.com/citation-style-language/styles/blob/master/CONTRIBUTING.md>`_.
 
 Questions?
 ~~~~~~~~~~
