@@ -107,25 +107,31 @@ At the center of CSL are its styles. There are two types: **independent** and **
 
 Citation styles often share the same format. For instance, many publishers use a single citation style for all their journals. If we had to define the same citation format over and over again for each of these journals, the resulting CSL styles would be bulky and difficult to maintain. Dependent styles solve this problem. A dependent CSL style only contains style metadata, and relies on an independent style for its citation format. For example, the CSL style for the journal "Nature Biotechnology" is a dependent style, and points to the independent "Nature" style. Now, if the Nature Publishing Group changes its citation format, we only have to correct the citation format in the "Nature" CSL style, without having to touch any of its dependent styles.
 
+The CSL project maintains a central style repository, which hosts thousands of freely available CSL styles.
+
 Item Metadata
 ^^^^^^^^^^^^^
 
 Citations and bibliographic entries must allow the reader to identify and find the referenced materials. This is usually done by showing a wide range of identifying information. For example, the bibliographic entry for a journal article may show the names of the authors, the year in which the article was published, the article title, the journal title, the volume and issue in which the article appeared, the page numbers of the article, and the article's Digital Object Identifier (DOI). Together, these details are called the **item metadata**.
 
-In order to create citations and bibliographies from this item metadata, a reference management software product needs a way to handle this information. Most reference managers support popular bibliographic formats such as BibTeX and RIS for exchanging item metadata. Internally, they often use different formats. The CSL project does not formally offer a bibliographic format of its own, but most CSL-supporting software uses the JSON-based format that was introduced by the citeproc-js CSL processor. This format is often referred to as "citeproc JSON" or "CSL JSON".
+In order to create citations and bibliographies from this item metadata, a reference management software product needs a way to handle this information. Most reference managers support popular bibliographic formats such as BibTeX and RIS for exchanging item metadata. Internally, they often use different formats. The CSL project does not formally offer a bibliographic format of its own, but most CSL-based software uses the JSON-based format that was introduced by the citeproc-js CSL processor. This format is often referred to as "citeproc JSON" or "CSL JSON".
+
+Locale Files
+^^^^^^^^^^^^
+
+CSL makes it easy to translate styles. CSL styles themselves are largely language-agnostic, and rely on **locale files** for translations of commonly used terms ("edition", "editor", "page", etc.) and for localized grammar settings and date formats. Each locale file is dedicated to one language.
+
+The CSL project maintains a central locale repository, which hosts dozens of freely available locale files.
 
 CSL Processors
 ^^^^^^^^^^^^^^
 
-- a **CSL style**, which describes a citation style.
+With CSL styles, locale files, and item metadata in hand, we now need a piece of software to parse all this information, and generate citations and bibliographies in the correct format. This is the job of the **CSL processor**. While the CSL project doesn't develop CSL processors itself, there are various open source CSL processors available.
 
-- **item metadata**, which are the bibliographic details of the cited works. E.g., the item type (book), title ("Moby-Dick"), author (Herman Melville), etc.
+Citing Details
+^^^^^^^^^^^^^^
 
-- **CSL locale files** and the desired **locale**. CSL styles rely on CSL locale files for default localization data (e.g., translations of common terms like "in" and "and", date formats, and grammar preferences). This allows styles to automatically localize based on the provided **locale**. For example, a single CSL style can produce both "Doe and Smith. May 5, 1993." (for US English) and "Doe und Smith. 5. Mai 1993." (for German). Note that many styles in the CSL style repository, such as styles for journals that publish in a single language, are hard-coded to one particular language.
-
-- **citing details**. Citations often contain information beyond the item metadata. Such details include the order in which the items are cited in the document, which items are cited together in citations, and locators (to pinpoint a section within a larger work).
-
-- a **CSL processor**, which processes all the pieces listed above and generates the formatted citations and bibliographies.
+Citations often contain information other than just the item metadata. E.g. the order in which items are cited in the document, which can affect the order of references in the bibliography and their numbering. Position can also play a role when items are cited multiple times in the same document: subsequent cites are often more compact than the first cite to an item. Another example is the use of locators, which are pinpoints to guide the reader to a specific section within the cited work, such as the page numbers within a chapter where a certain argument is made, e.g. "(Doe, 2000, p. 43-44)".
 
 |csl-infrastructure|
 
