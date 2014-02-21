@@ -181,11 +181,11 @@ There are several concepts and terms you need to be familiar with. These are:
 Dissecting a Dependent Style
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Lets look again at the dependent style we showed above. This time, we include XML comments to describe each part of the style (XML comments start with "<!--" and end with "-->").
+Lets look again at the dependent style we showed above. This time, we include XML comments to describe each part of the style (XML comments start with ``<!--`` and end with ``-->``).
 
 .. sourcecode:: xml
 
-    <!-- The CSL style begins with the XML declarations -->
+    <!-- The CSL style begins with the XML declaration -->
     <?xml version="1.0" encoding="utf-8"?>
     <!-- The cs:style root element. The "default-locale" attribute sets this style's
          locale to US English. -->
@@ -220,7 +220,7 @@ Lets look again at the dependent style we showed above. This time, we include XM
       </info>
     </style>
 
-Dependent styles are concise and the easiest to read. The CSL 1.0 style above is for the medical journal Academic Medicine (ISSN 1040-2446). It is available at http://www.zotero.org/styles/academic-medicine, available under a Creative Commons BY-SA license, and last updated on January 11th, 2012. When you use this style, the in-text numeric citation style described in the CSL style found at http://www.zotero.org/styles/vancouver will be used.
+As you can see, dependent styles don't contain any formatting instructions. Instead, the style above leans on the independent CSL style for the American Society for Microbiology.
 
 Tools for Editing
 ~~~~~~~~~~~~~~~~~
