@@ -163,7 +163,7 @@ Let's take a look at the following dependent CSL style:
         <eissn>1098-5336</eissn>
         <updated>2012-09-09T21:58:08+00:00</updated>
         <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is
-licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+    licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
       </info>
     </style>
 
@@ -223,7 +223,7 @@ Lets look again at the dependent style we showed above. This time, we include XM
         <updated>2012-09-09T21:58:08+00:00</updated>
         <!-- cs:rights specifies the license under which the style is made available -->
         <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is
-licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+    licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
       </info>
     </style>
 
