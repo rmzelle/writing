@@ -131,11 +131,12 @@ With CSL styles, locale files, and item metadata in hand, we now need a piece of
 Citing Details
 ^^^^^^^^^^^^^^
 
-Citations often contain information other than just the item metadata. E.g. the order in which items are cited in the document, which can affect the order of references in the bibliography and their numbering. Position can also play a role when items are cited multiple times in the same document: subsequent cites are often more compact than the first cite to an item. Another example is the use of locators, which are pinpoints to guide the reader to a specific section within the cited work, such as the page numbers within a chapter where a certain argument is made, e.g. "(Doe, 2000, p. 43-44)".
+Citations often contain information other than just the item metadata. These **citing details** include the order in which items are cited in the document, which can affect the order of references in the bibliography and their numbering. Position can also play a role when items are cited multiple times in the same document: subsequent cites are often more compact than the first cite to an item. Another example is the use of locators, which guide the reader to a specific section within the cited work, such as the page numbers within a chapter where a certain argument is made, e.g. "(Doe, 2000, p. 43-44)".
 
 |csl-infrastructure|
 
 .. |csl-infrastructure| image:: https://github.com/rmzelle/writing/raw/master/csl-infrastructure.png
+   :width: 514pt
 
 XML Basics
 ~~~~~~~~~~
