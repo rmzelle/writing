@@ -100,6 +100,11 @@ The CSL Ecosystem
 
 Before introducing the CSL syntax, let's first take a broader look at how CSL is used, and discuss the various bit and pieces that make up the CSL ecosystem.
 
+|csl-infrastructure|
+
+.. |csl-infrastructure| image:: https://github.com/rmzelle/writing/raw/master/csl-infrastructure.png
+   :width: 257pt
+
 Independent and Dependent Styles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -132,11 +137,6 @@ Citing Details
 ^^^^^^^^^^^^^^
 
 Citations often contain information other than just the item metadata. These **citing details** include the order in which items are cited in the document, which can affect the order of references in the bibliography and their numbering. Position can also play a role when items are cited multiple times in the same document: subsequent cites are often more compact than the first cite to an item. Another example is the use of locators, which guide the reader to a specific section within the cited work, such as the page numbers within a chapter where a certain argument is made, e.g. "(Doe, 2000, p. 43-44)".
-
-|csl-infrastructure|
-
-.. |csl-infrastructure| image:: https://github.com/rmzelle/writing/raw/master/csl-infrastructure.png
-   :width: 514pt
 
 XML Basics
 ~~~~~~~~~~
