@@ -152,15 +152,18 @@ Let's take a look at the following dependent CSL style:
       <info>
         <title>Applied and Environmental Microbiology</title>
         <id>http://www.zotero.org/styles/applied-and-environmental-microbiology</id>
-        <link href="http://www.zotero.org/styles/applied-and-environmental-microbiology" rel="self"/>
-        <link href="http://www.zotero.org/styles/american-society-for-microbiology" rel="independent-parent"/>
+        <link href="http://www.zotero.org/styles/applied-and-environmental-microbiology"
+              rel="self"/>
+        <link href="http://www.zotero.org/styles/american-society-for-microbiology"
+              rel="independent-parent"/>
         <link href="http://aem.asm.org/" rel="documentation"/>
         <category citation-format="numeric"/>
         <category field="biology"/>
         <issn>0099-2240</issn>
         <eissn>1098-5336</eissn>
         <updated>2012-09-09T21:58:08+00:00</updated>
-        <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+        <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is
+licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
       </info>
     </style>
 
@@ -191,32 +194,36 @@ Lets look again at the dependent style we showed above. This time, we include XM
          locale to US English. -->
     <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" default-locale="en-US">
       <info>
-        <!-- cs:title stores the style's title. In this case, the style is for the 
-             journal "Applied and Environmental Microbiology" -->
+        <!-- cs:title stores the style's title. This style is for the journal
+             "Applied and Environmental Microbiology". -->
         <title>Applied and Environmental Microbiology</title>
-        <!-- cs:id stores the style's ID, which is used by the CSL processor
-             to identify the style -->
+        <!-- cs:id stores the style's ID, used by the CSL processor to identify
+             the style. -->
         <id>http://www.zotero.org/styles/applied-and-environmental-microbiology</id>
-        <!-- The "self" URL is where this style can be found online -->
-        <link href="http://www.zotero.org/styles/applied-and-environmental-microbiology" rel="self"/>
-        <!-- The "independent-parent" URL is where the independent parent style can
-             be found online -->
-        <link href="http://www.zotero.org/styles/american-society-for-microbiology" rel="independent-parent"/>
-        <!-- The "documentation" URL is where documentation about this citation style
-             can be found online -->
+        <!-- The "self" URL is where this style can be found online. -->
+        <link href="http://www.zotero.org/styles/applied-and-environmental-microbiology"
+              rel="self"/>
+        <!-- The "independent-parent" URL is where the independent parent style can be
+             found online. -->
+        <link href="http://www.zotero.org/styles/american-society-for-microbiology"
+              rel="independent-parent"/>
+        <!-- The "documentation" URL is where documentation about this citation style can
+             be found online. -->
         <link href="http://aem.asm.org/" rel="documentation"/>
         <!-- cs:category describes the type of style. The "citation-format" attribute
-             indicates that this style uses "numeric" in-text citations, while the
-             "field" attribute indicates that this style is relevant to the field of biology -->
+             indicates that this style uses "numeric" in-text citations, while the "field"
+             attribute indicates that this style is relevant to the field of biology. -->
         <category citation-format="numeric"/>
         <category field="biology"/>
-        <!-- cs:issn and cs:eissn store the journal's print and electronic ISSN, respectively -->
+        <!-- cs:issn and cs:eissn store the journal's print and electronic ISSN,
+             respectively -->
         <issn>0099-2240</issn>
         <eissn>1098-5336</eissn>
         <!-- cs:updated stores the timestamp of when the style was last updated -->
         <updated>2012-09-09T21:58:08+00:00</updated>
         <!-- cs:rights specifies the license under which the style is made available -->
-        <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+        <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is
+licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
       </info>
     </style>
 
