@@ -141,9 +141,9 @@ Citations often contain information other than just the item metadata. These **c
 XML Basics
 ~~~~~~~~~~
 
-For those new to XML (or HTML), this section gives a short overview of what you need to know about XML in order to edit CSL styles and locale files. For more background, just check one of the many XML tutorials online.
+For those new to XML, this section gives a short overview of what you need to know about XML in order to read and edit CSL styles and locale files. For more background, just check one of the many XML tutorials online.
 
-Let's take a look at the following CSL style:
+Let's take a look at the following dependent CSL style:
 
 .. sourcecode:: xml
 
@@ -166,17 +166,57 @@ Let's take a look at the following CSL style:
 
 There are several concepts and terms you need to be familiar with. These are:
 
-- **XML Declaration**. The first line of any style or locale file should always be the XML declaration. In most cases, this will be ``<?xml version="1.0" encoding="utf-8"?>``. This line designates the document as XML, and specifies the XML version ("1.0") and character encoding ("utf-8") used.
+- **XML Declaration**. The first line of each style and locale file is usually the XML declaration. In most cases, this will be ``<?xml version="1.0" encoding="utf-8"?>``. This line designates the document as XML, and specifies the XML version ("1.0") and character encoding ("utf-8") used.
 
-- **Elements and Hierarchy**. The basic building blocks of XML documents are elements, which are hierarchically structured. Each XML document contains a single root element (for CSL styles this is ``<style/>``). If an element contains other elements, the parent element is split into a start tag (``<style>``) and an end tag (``</style>``). In our example, the ``<style/>`` element has one child element, ``<info/>``. This element has several children of its own, which are grandchildren of the grandparent ``<style/>`` element. Element tags are always wrapped in less-than ("<") and greater-than (">") characters (e.g., ``<style>``). For empty-element tags, ">" is preceded by a forward-slash (e.g., ``<category/>``), while for end tags "<" is followed by a forward-slash (e.g.,``</style>``). Child elements are typically indented with spaces or tabs to show the different hierarchical levels.
+- **Elements and Hierarchy**. The basic building blocks of XML documents are elements. Each XML document contains a single root element (for CSL styles this is ``<style/>``). If an element contains other elements, this parent element is split into a start tag (``<style>``) and an end tag (``</style>``). In our example, the ``<style/>`` element has one child element, ``<info/>``. This element has several children of its own, which are grandchildren of the grandparent ``<style/>`` element. Element tags are always wrapped in less-than ("<") and greater-than (">") characters (e.g., ``<style>``). For empty-element tags, ">" is preceded by a forward-slash (e.g., ``<category/>``), while for end tags "<" is followed by a forward-slash (e.g., ``</style>``). Child elements are typically indented with spaces or tabs to show the different hierarchical levels. In the CSL project, we use 2 spaces per level.
 
 - **Attributes and Element Content**. There are two ways to add additional information to elements. First, XML elements can carry one or more attributes (the order of attributes on an element is arbitrary). Every attribute needs a value. For example, the ``<style/>`` element carries a ``version`` attribute, set to a value of "1.0", indicating that the style is written in CSL 1.0. Secondly, elements can store non-element content between start and end tags, e.g. the content of the ``<title/>`` element is "Applied and Environmental Microbiology".
 
-- **Namespace**. To indicate that all the elements in the style or locale file are part of CSL, the root element should always carry the ``xmlns`` attribute, set to the CSL XML namespace URI, "http://purl.org/net/xbiblio/csl". In the rest of this primer we will use the namespace prefix "cs:" when referring to CSL elements (e.g., ``cs:style`` instead of ``<style/>``).
+- **Namespace**. To indicate that all the elements in the style or locale file are part of CSL, the root element always carries the ``xmlns`` attribute, set to the CSL XML namespace URI, "http://purl.org/net/xbiblio/csl". In the rest of this primer we will use the namespace prefix "cs:" when referring to CSL elements (e.g., ``cs:style`` instead of ``<style/>``).
 
 - **Escaping**. Some characters have to be substituted when used for purposes other than for defining the XML structure (e.g., when used in attribute values or non-element content), or, in the case of the ampersand ("&"), for substitution itself. Escape sequences are "&lt;" for "<", "&gt;" for ">", "&amp;" for "&", "&apos;" for ', and "&quot;" for ". For example, the link "http://domain.com/?tag=a&id=4" is escaped as ``<link href="http://domain.com/?tag=a&amp;id=4"/>``.
 
-- **Well-formedness and Schema Validity**. Unlike HTML, XML does not allow for any markup errors. Any error, like forgetting an end tag, having more than one root element, or incorrect escaping will break the XML document and can prevent it from being processed. XML documents that follow the XML specification and are error-free are "well-formed". For well-formed CSL styles and locale files there is a second level of testing, involving the CSL schema. This schema describes which CSL elements and attributes are allowed and how they must be used. When a style or locale file is tested against the rules of the CSL schema and passes, the file is valid CSL (this process is called "validation"). Only well-formed and valid CSL files can be expected to work properly.
+- **Well-formedness and Schema Validity**. Unlike HTML, XML does not allow for any markup errors. Any error, like forgetting an end tag, having more than one root element, or incorrect escaping will break the XML document and can prevent it from being processed. XML documents that follow the XML specification and are error-free are "well-formed". For well-formed CSL styles and locale files there is a second level of testing, involving the CSL schema. Our schema describes which CSL elements and attributes are allowed and how they must be used. When a style or locale file is tested against the rules of the CSL schema and passes, the file is valid CSL (this process is called "validation"). Only well-formed and valid CSL files can be expected to work properly.
+
+Dissecting a Dependent Style
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Lets look again at the dependent style we showed above. This time, we include XML comments to describe each part of the style (XML comments start with "<!--" and end with "-->").
+
+.. sourcecode:: xml
+
+    <!-- The CSL style begins with the XML declarations -->
+    <?xml version="1.0" encoding="utf-8"?>
+    <!-- The cs:style root element. The "default-locale" attribute sets this style's
+         locale to US English. -->
+    <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" default-locale="en-US">
+      <info>
+        <!-- cs:title stores the style's title -->
+        <title>Applied and Environmental Microbiology</title>
+        <!-- cs:id stores the style's ID, which is used by the CSL processor to identify the style -->
+        <id>http://www.zotero.org/styles/applied-and-environmental-microbiology</id>
+        <!-- cs:link stores URLs. The "self" URL is where this style can be found online -->
+        <link href="http://www.zotero.org/styles/applied-and-environmental-microbiology" rel="self"/>
+        <!-- The "independent-parent" URL is where the independent parent style can be found online -->
+        <link href="http://www.zotero.org/styles/american-society-for-microbiology" rel="independent-parent"/>
+        <!-- The "documentation" URL is where documentation about this citation style can be found online -->
+        <link href="http://aem.asm.org/" rel="documentation"/>
+        <!-- cs:category describes the type of style. The "citation-format" attribute
+             indicates that this style uses "numeric" in-text citations, while the
+             "field" attribute indicates that this style is relevant to the field of biology -->
+        <category citation-format="numeric"/>
+        <category field="biology"/>
+        <!-- cs:issn and cs:eissn store the journal's print and electronic ISSN, respectively -->
+        <issn>0099-2240</issn>
+        <eissn>1098-5336</eissn>
+        <!-- cs:updated stores the timestamp of when the style was last updated -->
+        <updated>2012-09-09T21:58:08+00:00</updated>
+        <!-- cs:rights specifies the license under which the style is made available -->
+        <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+      </info>
+    </style>
+
+Dependent styles are concise and the easiest to read. The CSL 1.0 style above is for the medical journal Academic Medicine (ISSN 1040-2446). It is available at http://www.zotero.org/styles/academic-medicine, available under a Creative Commons BY-SA license, and last updated on January 11th, 2012. When you use this style, the in-text numeric citation style described in the CSL style found at http://www.zotero.org/styles/vancouver will be used.
 
 Tools for Editing
 ~~~~~~~~~~~~~~~~~
@@ -263,32 +303,6 @@ Bibliography
 ''''''''''''
 
 The ``cs:bibliography`` element describes the formatting of the references in the bibliography, and functions very similar to the ``citation`` element. The ``cs:sort`` child element of ``cs:bibliography`` can be used to specify how bibliographic entries should be sorted, while the ``cs:layout`` element is used to describe the format of bibliographic entries.
-
-Dependent Styles
-''''''''''''''''
-
-When multiple journals share the same citation style, you could create a collection of CSL styles that all have the exact same formatting instructions and which only differ in the contents of the ``cs:info`` element. But this approach has some drawbacks. For instance, if the citation style changes, you would have to update each CSL style. To make things simpler for these cases, CSL supports "dependent styles". In a dependent style, ``cs:style`` only includes the ``cs:info`` child element, which links to an independent style which contains a full set of formatting instructions to define the citation style format. E.g., dependent styles for the journals "Nature Biotechnology", "Nature Nanotechnology", etc. would all point to a single independent style, "Nature".
-
-Dissecting a Dependent Style
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. sourcecode:: xml
-
-    <?xml version="1.0" encoding="utf-8"?>
-    <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0">
-      <info>
-        <title>Academic Medicine</title>
-        <id>http://www.zotero.org/styles/academic-medicine</id>
-        <link href="http://www.zotero.org/styles/vancouver" rel="independent-parent"/>
-        <category citation-format="numeric"/>
-        <category field="medicine"/>
-        <issn>1040-2446</issn>
-        <updated>2012-01-11T19:01:02+00:00</updated>
-        <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
-      </info>
-    </style>
-
-Dependent styles are concise and the easiest to read. The CSL 1.0 style above is for the medical journal Academic Medicine (ISSN 1040-2446). It is available at http://www.zotero.org/styles/academic-medicine, available under a Creative Commons BY-SA license, and last updated on January 11th, 2012. When you use this style, the in-text numeric citation style described in the CSL style found at http://www.zotero.org/styles/vancouver will be used.
 
 Dissecting an Independent Style
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
