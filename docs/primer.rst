@@ -191,15 +191,19 @@ Lets look again at the dependent style we showed above. This time, we include XM
          locale to US English. -->
     <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" default-locale="en-US">
       <info>
-        <!-- cs:title stores the style's title -->
+        <!-- cs:title stores the style's title. In this case, the style is for the 
+             journal "Applied and Environmental Microbiology" -->
         <title>Applied and Environmental Microbiology</title>
-        <!-- cs:id stores the style's ID, which is used by the CSL processor to identify the style -->
+        <!-- cs:id stores the style's ID, which is used by the CSL processor
+             to identify the style -->
         <id>http://www.zotero.org/styles/applied-and-environmental-microbiology</id>
-        <!-- cs:link stores URLs. The "self" URL is where this style can be found online -->
+        <!-- The "self" URL is where this style can be found online -->
         <link href="http://www.zotero.org/styles/applied-and-environmental-microbiology" rel="self"/>
-        <!-- The "independent-parent" URL is where the independent parent style can be found online -->
+        <!-- The "independent-parent" URL is where the independent parent style can
+             be found online -->
         <link href="http://www.zotero.org/styles/american-society-for-microbiology" rel="independent-parent"/>
-        <!-- The "documentation" URL is where documentation about this citation style can be found online -->
+        <!-- The "documentation" URL is where documentation about this citation style
+             can be found online -->
         <link href="http://aem.asm.org/" rel="documentation"/>
         <!-- cs:category describes the type of style. The "citation-format" attribute
              indicates that this style uses "numeric" in-text citations, while the
