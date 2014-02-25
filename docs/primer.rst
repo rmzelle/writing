@@ -182,9 +182,9 @@ There are several concepts and terms you need to be familiar with. These are:
 - **Well-formedness and Schema Validity**. Unlike HTML, XML does not allow for any markup errors. Any error, like forgetting an end tag, having more than one root element, or incorrect escaping will break the XML document and can prevent it from being processed. XML documents that follow the XML specification and are error-free are "well-formed". For well-formed CSL styles and locale files there is a second level of testing, involving the CSL schema. Our schema describes which CSL elements and attributes are allowed and how they must be used. When a style or locale file is tested against the rules of the CSL schema and passes, the file is valid CSL (this process is called "validation"). Only well-formed and valid CSL files can be expected to work properly.
 
 Dissecting a Dependent Style
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lets look again at the dependent style we showed above. This time, we include XML comments to describe each part of the style (XML comments start with ``<!--`` and end with ``-->``).
+Lets look again at the dependent style we showed above. This time, we include XML comments to describe each part of the style (XML comments start with ``<!--`` and end with ``-->``, and are ignored by the CSL processor).
 
 .. sourcecode:: xml
 
@@ -228,6 +228,11 @@ Lets look again at the dependent style we showed above. This time, we include XM
     </style>
 
 As you can see, dependent styles don't contain any formatting instructions. Instead, the style above leans on the independent CSL style for the American Society for Microbiology.
+
+Reading Independent Styles
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
 Tools for Editing
 ~~~~~~~~~~~~~~~~~
