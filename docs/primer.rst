@@ -1,5 +1,12 @@
-Citation Style Language - Primer
-================================
+Primer
+======
+
+by Rintze M. Zelle, PhD
+
+|CCBYSA|_
+
+.. |CCBYSA| image:: http://i.creativecommons.org/l/by-sa/3.0/80x15.png
+.. _CCBYSA: http://creativecommons.org/licenses/by-sa/3.0/
 
 .. contents:: **Table of Contents**
    :depth: 4
@@ -19,8 +26,8 @@ If you ever wrote a research paper, you probably included references to other wo
 
 Luckily, reference management software can help out. Programs like Zotero, Mendeley, and Papers not only help you manage your research library, but can also automatically generate citations and bibliographies. But to format references in the desired style, these programs need descriptions of each citation style in language the computer can understand. As you might have guessed, the Citation Style Language (CSL) is such a language.
 
-Supported Citation Formats
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Citation Formats
+~~~~~~~~~~~~~~~~
 
 There are hundreds, if not thousands of different citation styles in use around the world. Fortunately, most citation styles fall within a few basic categories. CSL distinguishes between the following types:
 
@@ -29,60 +36,56 @@ In-text Styles
 
 Citation styles can be divided in two main categories. The first category consists of **in-text** styles, where a *citation* in the sentence directly points to one or multiple entries in the *bibliography*. CSL subdivides this category in **author-date**, **author**, **numeric** and **label** styles.
 
-A citation can point to multiple *bibliographic entries*. In CSL, each individual pointer is called a *cite*. For example, the citation "(Doe et al. 2002, Smith 1997)" contains two cites: one to a 2002 publication by Doe et al., and one to a 1997 publication by Smith. In the context of CSL, bibliographic entries are sometimes also called *references*.
+Each citation points to one or more *bibliographic entries*. In CSL, each individual pointer is called a *cite*. For example, the citation "(Doe et al. 2002, Smith 1997)" contains two cites: one to a 2002 publication by Doe et al., and one to a 1997 publication by Smith. In the context of CSL, bibliographic entries are sometimes also called *references*.
 
-author-date & author Styles
-'''''''''''''''''''''''''''
+"author-date" & "author" Styles
+'''''''''''''''''''''''''''''''
 
 Cites of **author-date** styles show author names and the date of publication, e.g. "(Van der Klei et al. 1991; Zwart et al. 1983)", whereas cites of **author** styles only show names, e.g. "(Gidijala et al.)". Bibliographic entries are typically sorted alphabetically by author.
 
-Note that many citation style guides use the term "Harvard" to refer to the **author-date** format, and that, as such, there isn't a single official "Harvard" style. Because these citation styles typically don't have any connection to Harvard University, we prefer the term **author-date**.
+Note that many style guides use the confusing term "Harvard" to refer to **author-date** formats, even when citation styles don't have any connection to Harvard University. There is also no such thing as a single official "Harvard" style.
 
-Bibliography
-++++++++++++
+**Example Bibliography**
 
 Gidijala L, Bovenberg RA, Klaassen P, van der Klei IJ, Veenhuis M, et al. (2008) Production of functionally active *Penicillium chrysogenum* isopenicillin N synthase in the yeast *Hansenula polymorpha*. BMC Biotechnol 8: 29.
 
 van der Klei IJ, Harder W, Veenhuis M (1991) Methanol metabolism in a peroxisome-deficient mutant of *Hansenula polymorpha*: a physiological study. Arch Microbiol 156: 15-23.
-   
+
 Zwart KB, Veenhuis M, Harder W (1983) Significance of yeast peroxisomes in the metabolism of choline and ethanolamine. Antonie van Leeuwenhoek 49: 369-385.
 
-numeric Styles
-''''''''''''''
+"numeric" Styles
+''''''''''''''''
 
-Cites of **numeric** styles consist of numbers, e.g. "[1, 2]" and "[3]". Bibliographic entries are typically sorted either alphabetically by author, or in the order in which the entries are first cited.
+Cites of **numeric** styles consist of numbers, e.g. "[1, 2]" and "[3]". Bibliographic entries are typically sorted either alphabetically by author, or put in the order by which they have been first cited.
 
-Bibliography
-++++++++++++
+**Example Bibliography**
 
 1. Gidijala L, Bovenberg RA, Klaassen P, van der Klei IJ, Veenhuis M, et al. (2008) Production of functionally active *Penicillium chrysogenum* isopenicillin N synthase in the yeast *Hansenula polymorpha*. BMC Biotechnol 8: 29.
-   
+
 2. Zwart KB, Veenhuis M, Harder W (1983) Significance of yeast peroxisomes in the metabolism of choline and ethanolamine. Antonie van Leeuwenhoek 49: 369-385.
-   
+
 3. van der Klei IJ, Harder W, Veenhuis M (1991) Methanol metabolism in a peroxisome-deficient mutant of *Hansenula polymorpha*: a physiological study. Arch Microbiol 156: 15-23.
 
-numeric Compound Styles
-'''''''''''''''''''''''
+"numeric" Compound Styles
+'''''''''''''''''''''''''
 
-Compound styles are a variation of the **numeric** in-text style format. With these styles, popular in the field of chemistry, bibliographic entries may consist of one "[1]" or multiple references "[2]". Single items can be cited again individually, e.g. "[2b]". This format is not yet supported by CSL.
+Compound styles are a variation of the **numeric** in-text style format. With these styles, popular in the field of chemistry, bibliographic entries may contain multiple references. Once a citation has defined such a bibliographic entry (e.g, "[2]"), it becomes possible to cite individual items within the entry, e.g. with "[2b]". This format is not yet supported by CSL.
 
-Bibliography
-++++++++++++
+**Example Bibliography**
 
 1. Gidijala L, et al. (2008) BMC Biotechnol 8: 29.
-   
+
 2. \a) Zwart KB, et al. (1983) Antonie van Leeuwenhoek 49: 369-385, b) van der Klei IJ, et al. (1991) Arch Microbiol 156: 15-23.
 
-label Styles
-''''''''''''
+"label" Styles
+''''''''''''''
 
 Cites of **label** styles consist of short keys, e.g. "[GBKv2008]" and "[ZwVH1983; vaHV1991]". These keys are also included in the bibliographic entries. CSL has limited support for this format, since it currently doesn't allow for (style-specific) customisation of the key format.
 
-Bibliography
-++++++++++++
+**Example Bibliography**
 
 [GBKv2008] Gidijala L, Bovenberg RA, Klaassen P, van der Klei IJ, Veenhuis M, et al. (2008) Production of functionally active *Penicillium chrysogenum* isopenicillin N synthase in the yeast *Hansenula polymorpha*. BMC Biotechnol 8: 29.
-   
+
 [vaHV1991] van der Klei IJ, Harder W, Veenhuis M (1991) Methanol metabolism in a peroxisome-deficient mutant of *Hansenula polymorpha*: a physiological study. Arch Microbiol 156: 15-23.
 
 [ZwVH1983] Zwart KB, Veenhuis M, Harder W (1983) Significance of yeast peroxisomes in the metabolism of choline and ethanolamine. Antonie van Leeuwenhoek 49: 369-385.
@@ -242,7 +245,7 @@ Text/XML editors
 
 CSL styles and locales can be edited with any plain text editor. However, editors with XML support can make editing easier with features like automatic indenting, tag closing, and real-time testing
 for well-formedness and schema validation. Some suitable editors include `Notepad++ <http://notepad-plus-plus.org/>`_ for Windows, `TextWrangler <http://www.barebones.com/products/textwrangler/>`_ for OS X, and the cross-platform
-`<oXygen/> XML Editor <http://www.oxygenxml.com/>`_ (commercial), `GNU Emacs <http://www.gnu.org/software/emacs/>`_ (in `nXML mode <http://www.thaiopensource.com/nxml-mode/>`_) and 
+`<oXygen/> XML Editor <http://www.oxygenxml.com/>`_ (commercial), `GNU Emacs <http://www.gnu.org/software/emacs/>`_ (in `nXML mode <http://www.thaiopensource.com/nxml-mode/>`_) and
 `jEdit <http://www.jedit.org/>`_ (with its `XML plugin <jEdit>`_).
 
 XML Validators
