@@ -111,29 +111,43 @@ To understand how CSL works, let's start by taking a look at the various bits an
 Independent and Dependent Styles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Styles! Everything in the world of CSL revolves around styles. But not all CSL styles are alike. There are two types: **independent** and **dependent**.
+Styles! Everything in the world of CSL revolves around styles. But not all CSL styles are alike. There are two types: **independent styles** and **dependent styles**.
 
-An **independent CSL style** has two functions: first, it needs to define a citation format. Secondly, the CSL style must describe itself. We call this self-describing information **style metadata**, and it can include the title of the journal for which the CSL style was created, a link to that journal's website, the name of the creator of the CSL style, etc.
+An **independent CSL style** has two functions: first, it needs to define a citation format. What does the format look like? Is it an "author-date" style, or a "note" style? Are cites ordered alphabetically, or by date? Should bibliographic entries include DOIs? What punctuation and capitalization should be used? Does the year of publication come before or after the title? Etcetera, etcetera. Secondly, the CSL style must describe itself. We call this self-describing information **style metadata**, and it can include the title of the journal for which the CSL style was created, a link to that journal's website, the name of the creator of the CSL style, etc.
 
 A **dependent CSL style**, on the other hand, only contains **style metadata**. Instead of providing a definition of a citation format, a dependent style simply refers to an independent CSL style (its "parent"), whose citation format will be used instead.
 
-Dependent styles come in handy when multiple CSL styles share the same citation format. Take a publisher which uses a single citation format for all its journals. If we were limited to using independent CSL styles, every journal's CSL style would need to contain a full definition of the citation format, even though this definition would be the same for each journal. This will produce a collection of bulky styles that are hard to maintain. If this publisher makes a change to its citation format, we have to update every single independent CSL style.
+Dependent styles come in handy when multiple CSL styles share the same citation format. Take a publisher which uses a single citation format for all its journals. If we were limited to using independent CSL styles, every journal's CSL style would need to contain a full definition of the citation format, even though it would be the same for each journal. This would produce a collection of bulky styles that are hard to maintain. If the publisher makes a change to its citation format, we would have to update every single independent CSL style.
 
-Dependent styles solve these problems. For example, the journals "Nature Biotechnology", "Nature Chemistry", and "Nature" all use the same citation format. We therefore created dependent CSL styles for "Nature Biotechnology" and "Nature Chemistry" that both point to our independent CSL style for "Nature". The dependent styles are a fraction of the size of the independent style. And, if the Nature Publishing Group ever decides to change the "Nature" citation format across its journals, we only have to correct the citation format in the "Nature" CSL style, without having to touch any of its dependents.
-
-Item Metadata
-^^^^^^^^^^^^^
-
-Citations and bibliographic entries must allow the reader to identify and find the referenced materials. This is usually done by showing a wide range of identifying information. For example, the bibliographic entry for a journal article may show the names of the authors, the year in which the article was published, the article title, the journal title, the volume and issue in which the article appeared, the page numbers of the article, and the article's Digital Object Identifier (DOI). Together, these details are called the **item metadata**.
-
-In order to create citations and bibliographies from this item metadata, a reference management software product needs a way to handle this information. Most reference managers support popular bibliographic formats such as BibTeX and RIS for exchanging item metadata. Internally, they often use different formats. The CSL project does not formally offer a bibliographic format of its own, but most CSL-based software uses the JSON-based format that was introduced by the citeproc-js CSL processor. This format is often referred to as "citeproc JSON" or "CSL JSON".
+Dependent styles solve these problems. For example, the journals "Nature Biotechnology", "Nature Chemistry", and "Nature" all use the same citation format. We therefore created dependent CSL styles for "Nature Biotechnology" and "Nature Chemistry" that both point to our independent CSL style for "Nature". Since they don't define a citation format, dependent styles are a fraction of the size of an independent style. And, if the Nature Publishing Group ever decides to change the "Nature" citation format across its journals, we only have to correct the citation format in the "Nature" CSL style, without having to touch any of its dependents.
 
 Locale Files
 ^^^^^^^^^^^^
 
-CSL makes it easy to translate styles. CSL styles themselves are largely language-agnostic, and rely on **locale files** for translations of commonly used terms ("edition", "editor", "page", etc.) and for localized grammar settings and date formats. Each locale file is dedicated to one language.
+I have a little secret to share with you: most independent styles aren't actually fully independent.
 
-The CSL project maintains a central locale repository, which hosts dozens of freely available locale files.
+When you write an independent CSL style, you can hard-code all language-specific information into the style. For example, you can put "Retrieved from" before the URL of a cited item, and use "YYYY, Month DD" as the date format:
+
+Hartman, P., Bezos, J. P., Kaphan, S., & Spiegel, J. (1999, September 28). Method and system for placing a purchase order via a communications network. Retrieved from https://www.google.com/patents/US5960411
+
+However, such a style would only be usable in US English. If you needed a German variant of this citation format, you would have to change all the translations and date formats within the style.
+
+To make it easier to adapt CSL styles to other languages, and to even allow a single CSL style to be used in more than one language, CSL uses **locale files**. These files contain various language-specific preferences: translations, date formats, and grammar. CSL styles can be written to be mostly language-agnostic, where they rely on these locale files for their localization.
+
+In our example above, we could rewrite the CSL style to use the "retrieved" and "from" terms, and to use the localized "text" date format. Now, if the CSL style is set to German, it will retrieve the German translations and date format from the German locale file, and produce:
+
+Hartman, P., Bezos, J. P., Kaphan, S., & Spiegel, J. (28. September 1999). Method and system for placing a purchase order via a communications network. Abgerufen von https://www.google.com/patents/US5960411
+
+By using locale files, we only need to define translations, date formats, and grammar once per language. This helps keeping styles compact, and makes locale data much easier to maintain. Since citation formats for a given language don't always agree on a translation or date format, it is possible to overwrite any locale data in CSL styles.
+
+Item Metadata
+^^^^^^^^^^^^^
+
+Next up are the bibliographic details of the items you wish to cite: the **item metadata**.
+
+For example, the bibliographic entry for a journal article may show the names of the authors, the year in which the article was published, the article title, the journal title, the volume and issue in which the article appeared, the page numbers of the article, and the article's Digital Object Identifier (DOI). All these details help the reader identify and find the referenced work.
+
+Reference managers make it easy to create a library of items. While many reference managers have their own way of storing item metadata, most support common bibliographic exchange formats such as BibTeX and RIS. The citeproc-js CSL processor introduced a JSON-based format for storing item metadata in a way citeproc-js could understand. Several other CSL processors have since adopted this "CSL JSON" format (also known as "citeproc JSON").
 
 CSL Processors
 ^^^^^^^^^^^^^^
