@@ -128,13 +128,13 @@ I have a little secret to share with you: most independent styles aren't fully i
 
 Take the reference below:
 
-Hartman, P., Bezos, J. P., Kaphan, S., & Spiegel, J. (1999, September 28). Method and system for placing a purchase order via a communications network. Retrieved from https://www.google.com/patents/US5960411
+    Hartman, P., Bezos, J. P., Kaphan, S., & Spiegel, J. (1999, September 28). Method and system for placing a purchase order via a communications network. Retrieved from https://www.google.com/patents/US5960411
 
 You can describe this citation format in an independent CSL style by hard-coding all language-specific information into the style. For example, you can put the text "Retrieved from" before the URL, and use "YYYY, Month DD" as the date format. However, such a style would only be usable in US English. If you later need a German variant of this citation format, you would have to change all the translations and date formats within the style.
 
 Fortunately, independent CSL styles can rely on the CSL **locale files** for translations of common terms, localized date formats, and grammar. For example, we can rewrite our CSL style to use the "retrieved" and "from" CSL terms, and to use the localized "text" date format. If we then set the locale of the style to US English, this style will retrieve the term translations and localized date format from the US English CSL locale file, which will produce the reference as written above. But if we switch the style locale to German, the German locale file will be used instead, producing:
 
-Hartman, P., Bezos, J. P., Kaphan, S., & Spiegel, J. (28. September 1999). Method and system for placing a purchase order via a communications network. Abgerufen von https://www.google.com/patents/US5960411
+    Hartman, P., Bezos, J. P., Kaphan, S., & Spiegel, J. (28. September 1999). Method and system for placing a purchase order via a communications network. Abgerufen von https://www.google.com/patents/US5960411
 
 So with CSL locale files, it becomes possible to write CSL styles that are largely language-agnostic. As illustrated above, such styles can easily switch between different languages. However, languages are complex, and CSL's automatic localization doesn't support the peculiarities of all languages for which we have locale files. But even if you find that you need to modify a CSL style to adapt it to your language of preference, language-agnostic styles have value, since they're easier to translate.
 
