@@ -149,15 +149,19 @@ For example, the bibliographic entry for a journal article may show the names of
 
 Reference managers make it easy to create a library of items. While many reference managers have their own way of storing item metadata, most support common bibliographic exchange formats such as BibTeX and RIS. The citeproc-js CSL processor introduced a JSON-based format for storing item metadata in a way citeproc-js could understand. Several other CSL processors have since adopted this "CSL JSON" format (also known as "citeproc JSON").
 
-CSL Processors
-^^^^^^^^^^^^^^
-
-With CSL styles, locale files, and item metadata in hand, we now need a piece of software to parse all this information, and generate citations and bibliographies in the correct format. This is the job of the **CSL processor**. While the CSL project doesn't develop CSL processors itself, there are various open source CSL processors available.
-
 Citing Details
 ^^^^^^^^^^^^^^
 
-Citations often contain information other than just the item metadata. These **citing details** include the order in which items are cited in the document, which can affect the order of references in the bibliography and their numbering. Position can also play a role when items are cited multiple times in the same document: subsequent cites are often more compact than the first cite to an item. Another example is the use of locators, which guide the reader to a specific section within the cited work, such as the page numbers within a chapter where a certain argument is made, e.g. "(Doe, 2000, p. 43-44)".
+For a given citation format, the way citations and bibliographies look not only depends on the metadata of the cited items, but also on the context in which these items are cited. We refer to this type of context-specific information as the **citing details**.
+
+For instance, the order in which items are cited in a document can affect their order in the bibliography. And in "note" styles, subsequent cites to a previously cited item are often written in a more compact form. Another example is the use of locators, which guide the reader to a specific location within a cited work, such as the page numbers within a chapter where a certain argument is made, e.g. "(Doe 2000, pp. 43-44)".
+
+CSL Processors
+^^^^^^^^^^^^^^
+
+With CSL styles, locale files, item metadata and citing details in hand, we now need a piece of software to parse all this information, and generate citations and bibliographies in the correct format: the **CSL processor**.
+
+Most reference managers use one of the freely available open source CSL processors, such as citeproc-js.
 
 XML Basics
 ~~~~~~~~~~
