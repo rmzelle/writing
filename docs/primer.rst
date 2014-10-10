@@ -124,21 +124,21 @@ Dependent styles solve these problems. For example, the journals "Nature Biotech
 Locale Files
 ^^^^^^^^^^^^
 
-I have a little secret to share with you: most independent styles aren't actually fully independent.
+I have a little secret to share with you: most independent styles aren't fully independent.
 
-When you write an independent CSL style, you can hard-code all language-specific information into the style. For example, you can put "Retrieved from" before the URL of a cited item, and use "YYYY, Month DD" as the date format:
+Take the reference below:
 
 Hartman, P., Bezos, J. P., Kaphan, S., & Spiegel, J. (1999, September 28). Method and system for placing a purchase order via a communications network. Retrieved from https://www.google.com/patents/US5960411
 
-However, such a style would only be usable in US English. If you needed a German variant of this citation format, you would have to change all the translations and date formats within the style.
+You can describe this citation format in an independent CSL style by hard-coding all language-specific information into the style. For example, you can put the text "Retrieved from" before the URL, and use "YYYY, Month DD" as the date format. However, such a style would only be usable in US English. If you later need a German variant of this citation format, you would have to change all the translations and date formats within the style.
 
-To make it easier to adapt CSL styles to other languages, and to even allow a single CSL style to be used in more than one language, CSL uses **locale files**. These files contain various language-specific preferences: translations, date formats, and grammar. CSL styles can be written to be mostly language-agnostic, where they rely on these locale files for their localization.
-
-In our example above, we could rewrite the CSL style to use the "retrieved" and "from" terms, and to use the localized "text" date format. Now, if the CSL style is set to German, it will retrieve the German translations and date format from the German locale file, and produce:
+Fortunately, independent CSL styles can rely on the CSL **locale files** for translations of common terms, localized date formats, and grammar. For example, we can rewrite our CSL style to use the "retrieved" and "from" CSL terms, and to use the localized "text" date format. If we then set the locale of the style to US English, this style will retrieve the term translations and localized date format from the US English CSL locale file, which will produce the reference as written above. But if we switch the style locale to German, the German locale file will be used instead, producing:
 
 Hartman, P., Bezos, J. P., Kaphan, S., & Spiegel, J. (28. September 1999). Method and system for placing a purchase order via a communications network. Abgerufen von https://www.google.com/patents/US5960411
 
-By using locale files, we only need to define translations, date formats, and grammar once per language. This helps keeping styles compact, and makes locale data much easier to maintain. Since citation formats for a given language don't always agree on a translation or date format, it is possible to overwrite any locale data in CSL styles.
+So with CSL locale files, it becomes possible to write CSL styles that are largely language-agnostic. As illustrated above, such styles can easily switch between different languages. However, languages are complex, and CSL's automatic localization doesn't support the peculiarities of all languages for which we have locale files. But even if you find that you need to modify a CSL style to adapt it to your language of preference, language-agnostic styles have value, since they're easier to translate.
+
+Locale files have the added benefit that we only need to define common translations, date formats, and grammar once per language. This keeps styles compact, and makes locale data easier to maintain. Since citation formats for a given language don't always agree on a translation or date format, CSL styles can selectively overwrite any locale data that is defined in the locale files.
 
 Item Metadata
 ^^^^^^^^^^^^^
