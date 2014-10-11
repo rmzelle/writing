@@ -163,10 +163,15 @@ With CSL styles, locale files, item metadata and citing details in hand, we now 
 
 Most reference managers use one of the freely available open source CSL processors, such as citeproc-js.
 
-XML Basics
-~~~~~~~~~~
+Understanding CSL Styles
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-For those new to XML, this section gives a short overview of what you need to know about XML in order to read and edit CSL styles and locale files. For more background, just check one of the many XML tutorials online.
+By now you've learned what CSL is, how it can be used, and how its different parts and pieces fit together. We're now ready to dive into the CSL styles themselves, and look at their XML code.
+
+XML Basics
+^^^^^^^^^^
+
+If you're new to XML, this section gives a short overview of what you need to know about XML in order to read and edit CSL styles and locale files. For more background, just check one of the many XML tutorials online.
 
 Let's take a look at the following dependent CSL style:
 
@@ -174,42 +179,60 @@ Let's take a look at the following dependent CSL style:
 
     <?xml version="1.0" encoding="utf-8"?>
     <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" default-locale="en-US">
+      <!-- Generated with https://github.com/citation-style-language/utilities/tree/master/generate_dependent_styles/data/asm -->
       <info>
         <title>Applied and Environmental Microbiology</title>
         <id>http://www.zotero.org/styles/applied-and-environmental-microbiology</id>
-        <link href="http://www.zotero.org/styles/applied-and-environmental-microbiology"
-              rel="self"/>
-        <link href="http://www.zotero.org/styles/american-society-for-microbiology"
-              rel="independent-parent"/>
+        <link href="http://www.zotero.org/styles/applied-and-environmental-microbiology" rel="self"/>
+        <link href="http://www.zotero.org/styles/american-society-for-microbiology" rel="independent-parent"/>
         <link href="http://aem.asm.org/" rel="documentation"/>
         <category citation-format="numeric"/>
         <category field="biology"/>
         <issn>0099-2240</issn>
         <eissn>1098-5336</eissn>
-        <updated>2012-09-09T21:58:08+00:00</updated>
-        <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is
-    licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+        <updated>2014-04-30T03:45:36+00:00</updated>
+        <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
       </info>
     </style>
 
 There are several concepts and terms you need to be familiar with. These are:
 
-- **XML Declaration**. The first line of each style and locale file is usually the XML declaration. In most cases, this will be ``<?xml version="1.0" encoding="utf-8"?>``. This line designates the document as XML, and specifies the XML version ("1.0") and character encoding ("utf-8") used.
+- **XML Declaration**. The first line of each style and locale file is usually the XML declaration. In most cases, this will be ``<?xml version="1.0" encoding="utf-8"?>``. This declaration makes it clear that the document consists of XML, and specifies the XML version ("1.0") and character encoding ("utf-8") used.
 
-- **Elements and Hierarchy**. The basic building blocks of XML documents are elements. Each XML document contains a single root element (for CSL styles this is ``<style/>``). If an element contains other elements, this parent element is split into a start tag (``<style>``) and an end tag (``</style>``). In our example, the ``<style/>`` element has one child element, ``<info/>``. This element has several children of its own, which are grandchildren of the grandparent ``<style/>`` element. Element tags are always wrapped in less-than ("<") and greater-than (">") characters (e.g., ``<style>``). For empty-element tags, ">" is preceded by a forward-slash (e.g., ``<category/>``), while for end tags "<" is followed by a forward-slash (e.g., ``</style>``). Child elements are typically indented with spaces or tabs to show the different hierarchical levels. In the CSL project, we use 2 spaces per level.
+- **Elements and Hierarchy**. Elements are the basic building blocks of XML documents. Each XML document contains a single root element (for CSL styles this is ``<style/>``). If an element contains other elements, this parent element is split into a start tag (``<style>``) and an end tag (``</style>``). In our example, the ``<style/>`` element has one child element, ``<info/>``. This element has several children of its own, which are grandchildren of the grandparent ``<style/>`` element.
 
-- **Attributes and Element Content**. There are two ways to add additional information to elements. First, XML elements can carry one or more attributes (the order of attributes on an element is arbitrary). Every attribute needs a value. For example, the ``<style/>`` element carries a ``version`` attribute, set to a value of "1.0", indicating that the style is written in CSL 1.0. Secondly, elements can store non-element content between start and end tags, e.g. the content of the ``<title/>`` element is "Applied and Environmental Microbiology".
+  Element tags are always wrapped in less-than ("<") and greater-than (">") characters (e.g., ``<style>``). For empty-element tags, ">" is preceded by a forward-slash (e.g., ``<category/>``), while for end tags, "<" is followed by a forward-slash (e.g., ``</style>``). Child elements are typically indented with spaces or tabs to show the different hierarchical levels. We use 2 spaces per level in our CSL style and locale files.
 
-- **Namespace**. To indicate that all the elements in the style or locale file are part of CSL, the root element always carries the ``xmlns`` attribute, set to the CSL XML namespace URI, "http://purl.org/net/xbiblio/csl". In the rest of this primer we will use the namespace prefix "cs:" when referring to CSL elements (e.g., ``cs:style`` instead of ``<style/>``).
+  In the rest of this primer we will use the prefix "cs:" when referring to CSL elements (e.g., ``cs:style`` instead of ``<style/>``).
 
-- **Escaping**. Some characters have to be substituted when used for purposes other than for defining the XML structure (e.g., when used in attribute values or non-element content), or, in the case of the ampersand ("&"), for substitution itself. Escape sequences are "&lt;" for "<", "&gt;" for ">", "&amp;" for "&", "&apos;" for ', and "&quot;" for ". For example, the link "http://domain.com/?tag=a&id=4" is escaped as ``<link href="http://domain.com/?tag=a&amp;id=4"/>``.
+- **Attributes and Element Content**. There are two ways to add additional information to elements.
 
-- **Well-formedness and Schema Validity**. Unlike HTML, XML does not allow for any markup errors. Any error, like forgetting an end tag, having more than one root element, or incorrect escaping will break the XML document and can prevent it from being processed. XML documents that follow the XML specification and are error-free are "well-formed". For well-formed CSL styles and locale files there is a second level of testing, involving the CSL schema. Our schema describes which CSL elements and attributes are allowed and how they must be used. When a style or locale file is tested against the rules of the CSL schema and passes, the file is valid CSL (this process is called "validation"). Only well-formed and valid CSL files can be expected to work properly.
+  First, XML elements can carry one or more attributes. The order of attributes on an element is arbitrary, but every attribute needs a value. For example, the ``<style/>`` element carries the ``version`` attribute, set to a value of "1.0" (which indicates that the style is compatible with the latest CSL 1.0.x release).
+
+  Secondly, elements can store non-element content between their start and end tag. For example, the title of the style, "Applied and Environmental Microbiology", is stored as the content of the ``<title/>`` element.
+
+- **Escaping**. To avoid ambiguity in defining the structure of XML files, some characters need to be substituted when used for other purposes, e.g. when used in attribute values or non-element content. The escape sequences are:
+
+  * ``&lt;`` for ``<``
+  * ``&gt;`` for ``>``
+  * ``&amp;`` for ``&``
+  * ``&apos;`` for ``'``
+  * ``&quot;`` for ``"``
+
+  For example, the link ``http://domain.com/?tag=a&id=4`` is escaped as ``<link href="http://domain.com/?tag=a&amp;id=4"/>``.
+
+- **XML Comments**. You can use XML comments to add clarifying information to a XML file. Comments start with ``<!--`` and end with ``-->``, and are ignored by the CSL processor.
+
+- **Well-formedness and Schema Validity**. Unlike HTML, XML is unforgiving when it comes to markup errors. Any error, like forgetting an end tag, having more than one root element, or incorrect escaping will break the entire XML document, and prevent it from being processed.
+
+  To make sure that a CSL style works correctly, it must follow the XML specification. An error-free XML file is called "well-formed". But to be considered "valid" CSL, a well-formed CSL style must also follow the rules specified by the CSL schema. This schema describes all the various CSL elements and attributes, and how they must be used.
+
+  You can use a CSL validator to check a CSL style for any errors. Remember that only well-formed and valid CSL files can be expected to work properly.
 
 Dissecting a Dependent Style
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lets look again at the dependent style we showed above. This time, we include XML comments to describe each part of the style (XML comments start with ``<!--`` and end with ``-->``, and are ignored by the CSL processor).
+Lets look again at the dependent style we showed above. This time, we include XML comments to describe each part of the style.
 
 .. sourcecode:: xml
 
