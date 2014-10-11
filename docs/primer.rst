@@ -201,17 +201,17 @@ There are several concepts and terms you need to be familiar with. These are:
 
 - **Elements and Hierarchy**. Elements are the basic building blocks of XML documents. Each XML document contains a single root element (for CSL styles this is ``<style/>``). If an element contains other elements, this parent element is split into a start tag (``<style>``) and an end tag (``</style>``). In our example, the ``<style/>`` element has one child element, ``<info/>``. This element has several children of its own, which are grandchildren of the grandparent ``<style/>`` element.
 
-  Element tags are always wrapped in less-than ("<") and greater-than (">") characters (e.g., ``<style>``). For empty-element tags, ">" is preceded by a forward-slash (e.g., ``<category/>``), while for end tags, "<" is followed by a forward-slash (e.g., ``</style>``). Child elements are typically indented with spaces or tabs to show the different hierarchical levels. We use 2 spaces per level in our CSL style and locale files.
+  Element tags are always wrapped in less-than ("<") and greater-than (">") characters (e.g., ``<style>``). For empty-element tags, ">" is preceded by a forward-slash (e.g., ``<category/>``), while for end tags, "<" is followed by a forward-slash (e.g., ``</style>``). Child elements are typically indented with spaces or tabs to show the different hierarchical levels. We use 2 spaces per level in our CSL styles and locale files.
 
   In the rest of this primer we will use the prefix "cs:" when referring to CSL elements (e.g., ``cs:style`` instead of ``<style/>``).
 
 - **Attributes and Element Content**. There are two ways to add additional information to elements.
 
-  First, XML elements can carry one or more attributes. The order of attributes on an element is arbitrary, but every attribute needs a value. For example, the ``<style/>`` element carries the ``version`` attribute, set to a value of "1.0" (which indicates that the style is compatible with the latest CSL 1.0.x release).
+  First, XML elements can carry one or more attributes. The order of attributes on an element is arbitrary, but every attribute needs a value. For example, the ``<style/>`` element carries the ``version`` attribute, set to a value of "1.0" (this indicates that the style is compatible with the latest CSL 1.0.x release).
 
-  Secondly, elements can store non-element content between their start and end tag. For example, the title of the style, "Applied and Environmental Microbiology", is stored as the content of the ``<title/>`` element.
+  Secondly, elements can store non-element content between their start and end tags. For example, the title of the style, "Applied and Environmental Microbiology", is stored as the content of the ``<title/>`` element.
 
-- **Escaping**. To avoid ambiguity in defining the structure of XML files, some characters need to be substituted when used for other purposes, e.g. when used in attribute values or non-element content. The escape sequences are:
+- **Escaping**. To avoid ambiguity in defining the structure of XML files, some characters need to be substituted when used for other purposes, e.g. when used in attribute values or element content. The escape sequences are:
 
   * ``&lt;`` for ``<``
   * ``&gt;`` for ``>``
@@ -229,58 +229,97 @@ There are several concepts and terms you need to be familiar with. These are:
 
   You can use a CSL validator to check a CSL style for any errors. Remember that only well-formed and valid CSL files can be expected to work properly.
 
-Dissecting a Dependent Style
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Anatomy of a Dependent Style
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Lets look again at the dependent style we showed above. This time, we include XML comments to describe each part of the style.
+As explained above, dependent CSL styles are much more compact that their independent counterparts, since they don't actually have to define a citation format. Dependent styles are also very common, and their style metadata is similar to that of independent styles, so they are a good starting point for learning CSL. Let's take a closer look at the dependent style above, line by line.
 
 .. sourcecode:: xml
 
-    <!-- The CSL style begins with the XML declaration -->
     <?xml version="1.0" encoding="utf-8"?>
-    <!-- The cs:style root element. The "default-locale" attribute sets this style's
-         locale to US English. -->
+
+The XML declaration.
+
+.. sourcecode:: xml
+
     <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" default-locale="en-US">
-      <info>
-        <!-- cs:title stores the style's title. This style is for the journal
-             "Applied and Environmental Microbiology". -->
-        <title>Applied and Environmental Microbiology</title>
-        <!-- cs:id stores the style's ID, used by the CSL processor to identify
-             the style. -->
-        <id>http://www.zotero.org/styles/applied-and-environmental-microbiology</id>
-        <!-- The "self" URL is where this style can be found online. -->
-        <link href="http://www.zotero.org/styles/applied-and-environmental-microbiology"
-              rel="self"/>
-        <!-- The "independent-parent" URL is where the independent parent style can be
-             found online. -->
-        <link href="http://www.zotero.org/styles/american-society-for-microbiology"
-              rel="independent-parent"/>
-        <!-- The "documentation" URL is where documentation about this citation style can
-             be found online. -->
-        <link href="http://aem.asm.org/" rel="documentation"/>
-        <!-- cs:category describes the type of style. The "citation-format" attribute
-             indicates that this style uses "numeric" in-text citations, while the "field"
-             attribute indicates that this style is relevant to the field of biology. -->
-        <category citation-format="numeric"/>
-        <category field="biology"/>
-        <!-- cs:issn and cs:eissn store the journal's print and electronic ISSN,
-             respectively -->
-        <issn>0099-2240</issn>
-        <eissn>1098-5336</eissn>
-        <!-- cs:updated stores the timestamp of when the style was last updated -->
-        <updated>2012-09-09T21:58:08+00:00</updated>
-        <!-- cs:rights specifies the license under which the style is made available -->
-        <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is
-    licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
-      </info>
+        ...
     </style>
 
-As you can see, dependent styles don't contain any formatting instructions. Instead, the style above leans on the independent CSL style for the American Society for Microbiology.
+The start and end tags of the ``cs:style`` root element. Its ``xmlns`` attribute specifies that all elements in the style are part of CSL, while the ``version`` attribute indicates CSL version compatibility. The ``default-locale`` attribute tells the style to generate citations and bibliographies in a certain language (in this case US English).
+
+.. sourcecode:: xml
+
+      <!-- Generated with https://github.com/citation-style-language/utilities/tree/master/generate_dependent_styles/data/asm -->
+
+Most of our dependent styles are automatically generated from spreadsheet data. This XML comment makes it clear that this style has been generated, and contains a link to the spreadsheet.
+
+.. sourcecode:: xml
+
+      <info>
+        ...
+      </info>
+
+The ``cs:info`` section is used to store most of the style's metadata.
+
+.. sourcecode:: xml
+
+    <title>Applied and Environmental Microbiology</title>
+
+The title of the style.
+
+.. sourcecode:: xml
+
+    <id>http://www.zotero.org/styles/applied-and-environmental-microbiology</id>
+
+The style ID, which is used by reference managers to identify styles and tell them apart.
+
+.. sourcecode:: xml
+
+    <link href="http://www.zotero.org/styles/applied-and-environmental-microbiology" rel="self"/>
+
+The style's "self" link. This URL links to an online copy of the style. For simplicity, we use the same URL as style ID and "self" link for our repository styles.
+
+.. sourcecode:: xml
+
+    <link href="http://www.zotero.org/styles/american-society-for-microbiology" rel="independent-parent"/>
+
+Dependent styles need to link to an independent parent style, whose citation format will be used. Here we use the citation format from the CSL style for the American Society for Microbiology.
+
+.. sourcecode:: xml
+
+    <link href="http://aem.asm.org/" rel="documentation"/>
+
+It's much easier to maintain our collection of CSL styles if each style's purpose is clear. We therefore require that all our repository styles contain at least one "documentation" link. In this case, to the journal's home page.
+
+.. sourcecode:: xml
+
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+
+To help cataloguing our styles, we specify the citation format with the ``citation-format`` attribute on ``cs:category``. Similarly, we assign each style to one or more fields of study, using the ``field`` attribute.
+
+.. sourcecode:: xml
+
+    <issn>0099-2240</issn>
+    <eissn>1098-5336</eissn>
+
+When a CSL styles is created for a journal, we store the journal's print ISSN and electronic ISSN in the ``cs:issn`` and ``cs:eissn`` elements, respectively.
+
+.. sourcecode:: xml
+
+    <updated>2014-04-30T03:45:36+00:00</updated>
+
+A time stamp to indicate when the style was last updated.
+
+.. sourcecode:: xml
+
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+
+Last, but certainly not least, the license under which the style is released.
 
 Reading Independent Styles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
 
 Tools for Editing
 ~~~~~~~~~~~~~~~~~
