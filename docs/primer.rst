@@ -321,16 +321,127 @@ Last, but certainly not least, the license under which the style is released.
 Anatomy of an Independent Style
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Todo:
+Finally, a real independent CSL style, that actually defines a citation format! Well, okay, maybe it's not exactly a realistic style. Most independent styles in our repository are quite a bit bigger than the simplified example style below. But our style is valid CSL, and still has the same overall structure as any other independent style.
 
-Show full style.
+.. sourcecode:: xml
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0">
+      <info>
+        <title>Example Style</title>
+        <id>http://www.zotero.org/styles/example</id>
+        <link href="http://www.zotero.org/styles/example" rel="self"/>
+        <author>
+          <name>John Doe</name>
+          <email>JohnDoe@example.com</email>
+        </author>
+        <contributor>
+          <name>Jane Doe</name>
+        </contributor>
+        <category citation-format="author-date"/>
+        <updated>2013-09-21T18:17:09+00:00</updated>
+        <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+      </info>
+      <locale xml:lang="en">
+        <terms>
+          <term name="no date">without date</term>
+        </terms>
+      </locale>
+      <macro name="author">
+        <names variable="author">
+          <name initialize-with=". "/>
+        </names>
+      </macro>
+      <macro name="issued-year">
+        <choose>
+          <if variable="issued">
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+          </if>
+          <else>
+            <text term="no date"/>
+          </else>
+        </choose>
+      </macro>
+      <citation et-al-min="6" et-al-use-first="1">
+        <sort>
+          <key macro="author"/>
+          <key macro="issued-year"/>
+        </sort>
+        <layout prefix="(" suffix=")" delimiter="; ">
+          <group delimiter=", ">
+            <text macro="author"/>
+            <text macro="issued-year"/>
+          </group>
+        </layout>
+      </citation>
+      <bibliography>
+        <sort>
+          <key macro="author"/>
+          <key macro="issued-year"/>
+          <key variable="title"/>
+        </sort>
+        <layout>
+          <group suffix="." delimiter=", ">
+            <group delimiter=". ">
+              <text macro="author"/>
+              <text macro="issued-year"/>
+              <text variable="title"/>
+              <text variable="container-title"/>
+            </group>
+            <group>
+              <text variable="volume"/>
+              <text variable="issue" prefix="(" suffix=")"/>
+            </group>
+            <text variable="page"/>
+          </group>
+        </layout>
+      </bibliography>
+    </style>
+
+Root Element
+^^^^^^^^^^^^
+
+Style Metadata
+^^^^^^^^^^^^^^
+
+Citation
+^^^^^^^^
+
+et-al
+cs:layout and cs:sort
+
+Bibliography
+^^^^^^^^^^^^
+
+Macros
+^^^^^^
+
+Locale
+^^^^^^
+
+terms/locales/redefining terms
+
+Groups
+^^^^^^
+
+delimiters/affixes
+
+Rendering Elements
+^^^^^^^^^^^^^^^^^^
+
+Conditionals
+^^^^^^^^^^^^
+
+Todo:
 
 Discuss style metadata (how does it differ from a dependent style)
 
 Discuss rest of the style (check existing primer)
 Function of citation, bibliography, macros
 Function of sort and layout
-Briefly discuss all main rendering elements (group, number, label, text, etc.)
+Briefly discuss all main rendering elements (group, names, number, label, text, date, etc.)
 Focus on delimiters
 
 Feedback
@@ -390,12 +501,3 @@ Bibliography
 ''''''''''''
 
 The ``cs:bibliography`` element describes the formatting of the references in the bibliography, and functions very similar to the ``citation`` element. The ``cs:sort`` child element of ``cs:bibliography`` can be used to specify how bibliographic entries should be sorted, while the ``cs:layout`` element is used to describe the format of bibliographic entries.
-
-Dissecting an Independent Style
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Discuss, info section, give example of formatted citations, discuss cs:citation element (et-al-* attributes), cs:layout, delimiters/affixes, names, dates, terms/locales/redefining terms. give example of formatted bib, discuss cs:bibliography, sorting
-
-Don't cover number, label right now.
-
-Make style a bit more expansive with stuff from existing example primer, so journal papers are formatted halfway decent.
