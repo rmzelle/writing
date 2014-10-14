@@ -1,11 +1,11 @@
 Primer
 ======
 
-by Rintze M. Zelle, PhD
+by `Rintze M. Zelle, PhD <https://twitter.com/rintzezelle>`_
 
 |CCBYSA|_
 
-.. |CCBYSA| image:: http://i.creativecommons.org/l/by-sa/3.0/80x15.png
+.. |CCBYSA| image:: media/cc-by-sa-80x15.png
 .. _CCBYSA: http://creativecommons.org/licenses/by-sa/3.0/
 
 .. contents:: **Table of Contents**
@@ -105,7 +105,7 @@ To understand how CSL works, let's start by taking a look at the various bits an
 
 |csl-infrastructure|
 
-.. |csl-infrastructure| image:: https://github.com/rmzelle/writing/raw/master/csl-infrastructure.png
+.. |csl-infrastructure| image:: media/csl-infrastructure.png
    :width: 257pt
 
 Independent and Dependent Styles
@@ -318,43 +318,27 @@ A time stamp to indicate when the style was last updated.
 
 Last, but certainly not least, the license under which the style is released.
 
-Reading Independent Styles
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Anatomy of an Independent Style
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Tools for Editing
-~~~~~~~~~~~~~~~~~
+Todo:
 
-Text/XML editors
-^^^^^^^^^^^^^^^^
+Show full style.
 
-CSL styles and locales can be edited with any plain text editor. However, editors with XML support can make editing easier with features like automatic indenting, tag closing, and real-time testing
-for well-formedness and schema validation. Some suitable editors include `Notepad++ <http://notepad-plus-plus.org/>`_ for Windows, `TextWrangler <http://www.barebones.com/products/textwrangler/>`_ for OS X, and the cross-platform
-`<oXygen/> XML Editor <http://www.oxygenxml.com/>`_ (commercial), `GNU Emacs <http://www.gnu.org/software/emacs/>`_ (in `nXML mode <http://www.thaiopensource.com/nxml-mode/>`_) and
-`jEdit <http://www.jedit.org/>`_ (with its `XML plugin <jEdit>`_).
+Discuss style metadata (how does it differ from a dependent style)
 
-XML Validators
-^^^^^^^^^^^^^^
+Discuss rest of the style (check existing primer)
+Function of citation, bibliography, macros
+Function of sort and layout
+Briefly discuss all main rendering elements (group, number, label, text, etc.)
+Focus on delimiters
 
-Instead of validating directly in the text editor, you can also use a dedicated
-XML validator. See `<Validation>`_ for more information.
+Feedback
+~~~~~~~~
 
-Zotero's Reference Test and Preview panes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Have something to report? Contact me on Twitter at `@rintzezelle`_, or create an issue on GitHub `here <https://github.com/rmzelle/writing/issues>`_.
 
-The `Zotero <http://www.zotero.org>`_ reference manager comes with two
-CSL tools. After installing the Zotero for Firefox add-on, you
-can access the `Zotero Preview pane <http://www.zotero.org/support/dev/citation_styles/preview_pane>`_ by entering
-"chrome://zotero/content/tools/cslpreview.xul" in the Firefox address bar. The
-Preview pane generates citations and bibliographies for all installed CSL
-styles, using the items selected in your local Zotero library. The
-`Zotero Reference Test pane <http://www.zotero.org/support/dev/citation_styles/reference_test_pane>`_, accessible via
-"chrome://zotero/content/tools/csledit.xul", allows you to edit a style with
-instant previewing, again using items from your Zotero library. Users of Zotero Standalone can access these tools through the Zotero preferences panel.
-
-Citation Styles
-~~~~~~~~~~~~~~~
-
-We're now ready to see how CSL styles are actually written.
+.. _@rintzezelle: https://twitter.com/rintzezelle
 
 Basic Anatomy of a Style
 ^^^^^^^^^^^^^^^^^^^^^^^^
