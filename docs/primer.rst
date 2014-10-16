@@ -321,7 +321,7 @@ Last, but certainly not least, the license under which the style is released.
 Anatomy of an Independent Style
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Finally, a real independent CSL style, that actually defines a citation format! Well, okay, maybe it's not exactly a realistic style. Most independent styles in our repository are quite a bit bigger than the simplified example style below. But our style is valid CSL, and still has the same overall structure as any other independent style.
+Finally, a real independent CSL style, one that actually defines a citation format! Well, okay, maybe it's not exactly a realistic style. Most independent styles in our repository are quite a bit bigger than the simplified example style below. But our "author-date" style below is valid CSL, and still has the same overall design as any other independent style.
 
 .. sourcecode:: xml
 
@@ -331,6 +331,8 @@ Finally, a real independent CSL style, that actually defines a citation format! 
         <title>Example Style</title>
         <id>http://www.zotero.org/styles/example</id>
         <link href="http://www.zotero.org/styles/example" rel="self"/>
+        <link href="http://www.zotero.org/styles/apa" rel="template"/>
+        <link href="http://www.example.com/style-guide/" rel="documentation"/>
         <author>
           <name>John Doe</name>
           <email>JohnDoe@example.com</email>
@@ -338,8 +340,12 @@ Finally, a real independent CSL style, that actually defines a citation format! 
         <contributor>
           <name>Jane Doe</name>
         </contributor>
+        <contributor>
+          <name>Bill Johnson</name>
+        </contributor>
         <category citation-format="author-date"/>
-        <updated>2013-09-21T18:17:09+00:00</updated>
+        <category field="science"
+        <updated>2014-10-15T18:17:09+00:00</updated>
         <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
       </info>
       <locale xml:lang="en">
@@ -400,14 +406,115 @@ Finally, a real independent CSL style, that actually defines a citation format! 
       </bibliography>
     </style>
 
-Root Element
-^^^^^^^^^^^^
+Style Structure
+'''''''''''''''
 
-Style Metadata
-^^^^^^^^^^^^^^
+To understand the style above, lets first look at the child elements of the ``cs:style`` root element:
 
-Citation
-^^^^^^^^
+.. sourcecode:: xml
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <style>
+      <info/>
+      <locale/>
+      <macro/>
+      <macro/>
+      <citation/>
+      <bibliography/>
+    </style>
+
+Compared to a dependent style, which only has the ``cs:info`` child element, we see several additional elements here. In additional to ``cs:info``, we see ``cs:locale``, ``cs:macro``, ``cs:citation``, and ``cs:bibliography``.
+
+What do these elements do?
+
+- The required ``cs:info`` element fulfills the same function in independent styles as it does in dependent styles: it stores the style metadata.
+- The optional ``cs:locale`` elements can be used to overwrite the locale data from the locale files.
+- The optional ``cs:macro`` elements can be used to store CSL code for use by ``cs:citation``, ``cs:bibliography``, or other ``cs:macro`` elements.
+- The required ``cs:citation`` element defines the format of citations.
+- The optional ``cs:bibliography`` element defines the format of the bibliography.
+
+With this in mind, let's step through the style, starting with the ``cs:style`` element.
+
+``cs:style`` Root Element
+'''''''''''''''''''''''''
+
+.. sourcecode:: xml
+
+    <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0">
+      ...
+    </style>
+
+We've already come across the ``xmlns`` and ``version`` attributes when we looked at the ``cs:style`` element of our dependent style. The ``class`` attribute is new. It tells the CSL processor whether it is an "in-text" or "note" style.
+
+``cs:info`` Element
+'''''''''''''''''''
+
+The style metadata for independent styles is usually more expansive than for dependent styles:
+
+.. sourcecode:: xml
+
+    <info>
+      <title>Example Style</title>
+      <id>http://www.zotero.org/styles/example</id>
+      <link href="http://www.zotero.org/styles/example" rel="self"/>
+      <link href="http://www.zotero.org/styles/apa" rel="template"/>
+      <link href="http://www.example.com/style-guide/" rel="documentation"/>
+      <author>
+        <name>John Doe</name>
+        <email>JohnDoe@example.com</email>
+      </author>
+      <contributor>
+        <name>Jane Doe</name>
+      </contributor>
+      <contributor>
+        <name>Bill Johnson</name>
+      </contributor>
+      <category citation-format="author-date"/>
+      <category field="science"
+      <updated>2014-10-15T18:17:09+00:00</updated>
+      <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+    </info>
+
+The title, style ID, "self" link, categories, time stamp, and license work the same, but there are differences. First, independent styles don't depend on a parent style. Instead we usually provide a "template" link to indicate which style was used as a starting point for creating the current style (CSL styles are rarely written from scratch, since it's usually much faster to adapt an existing one). In this case, the template was the APA style. We also like to include one or more "documentation" links that point to an online description of the citation format in question.
+
+To acknowledge the creators of CSL styles, their names and contact information can be added to the style. In this case, we have one author and two contributors. Authors usually have done most of the work in creating the style, whereas contributors have provided small improvements.
+
+``cs:citation`` and ``cs:macro`` Elements
+'''''''''''''''''''''''''''''''''''''''''
+
+.. sourcecode:: xml
+
+    <macro name="author">
+      <names variable="author">
+        <name initialize-with=". "/>
+      </names>
+    </macro>
+    <macro name="issued-year">
+      <choose>
+        <if variable="issued">
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </if>
+        <else>
+          <text term="no date"/>
+        </else>
+      </choose>
+    </macro>
+    <citation et-al-min="6" et-al-use-first="1">
+      <sort>
+        <key macro="author"/>
+        <key macro="issued-year"/>
+      </sort>
+      <layout prefix="(" suffix=")" delimiter="; ">
+        <group delimiter=", ">
+          <text macro="author"/>
+          <text macro="issued-year"/>
+        </group>
+      </layout>
+    </citation>
+
+Let's now jump down to the macros and ``cs:citation`` element.
 
 et-al
 cs:layout and cs:sort
