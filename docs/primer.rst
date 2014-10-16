@@ -344,7 +344,7 @@ Finally, a real independent CSL style, one that actually defines a citation form
           <name>Bill Johnson</name>
         </contributor>
         <category citation-format="author-date"/>
-        <category field="science"
+        <category field="science">
         <updated>2014-10-15T18:17:09+00:00</updated>
         <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
       </info>
@@ -470,7 +470,7 @@ The style metadata for independent styles is usually more expansive than for dep
         <name>Bill Johnson</name>
       </contributor>
       <category citation-format="author-date"/>
-      <category field="science"
+      <category field="science">
       <updated>2014-10-15T18:17:09+00:00</updated>
       <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
     </info>
