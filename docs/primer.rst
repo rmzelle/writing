@@ -355,7 +355,7 @@ Finally, a real independent CSL style, one that actually defines a citation form
       </locale>
       <macro name="author">
         <names variable="author">
-          <name initialize-with=". "/>
+          <name initialize-with="."/>
         </names>
       </macro>
       <macro name="issued-year">
@@ -370,7 +370,7 @@ Finally, a real independent CSL style, one that actually defines a citation form
           </else>
         </choose>
       </macro>
-      <citation et-al-min="6" et-al-use-first="1">
+      <citation et-al-min="3" et-al-use-first="1">
         <sort>
           <key macro="author"/>
           <key macro="issued-year"/>
@@ -388,20 +388,18 @@ Finally, a real independent CSL style, one that actually defines a citation form
           <key macro="issued-year"/>
           <key variable="title"/>
         </sort>
-        <layout>
-          <group suffix="." delimiter=", ">
-            <group delimiter=". ">
-              <text macro="author"/>
-              <text macro="issued-year"/>
-              <text variable="title"/>
-              <text variable="container-title"/>
-            </group>
-            <group>
-              <text variable="volume"/>
-              <text variable="issue" prefix="(" suffix=")"/>
-            </group>
-            <text variable="page"/>
+        <layout suffix="." delimiter=", ">
+          <group delimiter=". ">
+            <text macro="author"/>
+            <text macro="issued-year"/>
+            <text variable="title"/>
+            <text variable="container-title"/>
           </group>
+          <group>
+            <text variable="volume"/>
+            <text variable="issue" prefix="(" suffix=")"/>
+          </group>
+          <text variable="page"/>
         </layout>
       </bibliography>
     </style>
@@ -482,11 +480,13 @@ To acknowledge the creators of CSL styles, their names and contact information c
 ``cs:citation`` and ``cs:macro`` Elements
 '''''''''''''''''''''''''''''''''''''''''
 
+Let's jump down now to the macros and ``cs:citation`` element. The purpose of the ``cs:citation`` element is to describe the format of citations (or, for "note" styles, the format of footnotes or endnotes).
+
 .. sourcecode:: xml
 
     <macro name="author">
       <names variable="author">
-        <name initialize-with=". "/>
+        <name initialize-with="."/>
       </names>
     </macro>
     <macro name="issued-year">
@@ -501,7 +501,7 @@ To acknowledge the creators of CSL styles, their names and contact information c
         </else>
       </choose>
     </macro>
-    <citation et-al-min="6" et-al-use-first="1">
+    <citation et-al-min="3" et-al-use-first="1">
       <sort>
         <key macro="author"/>
         <key macro="issued-year"/>
@@ -514,42 +514,99 @@ To acknowledge the creators of CSL styles, their names and contact information c
       </layout>
     </citation>
 
-Let's now jump down to the macros and ``cs:citation`` element.
+The code above generates citations like "(A.C. Smith et al., 2002; W. Wallace, J. Snow, 1999)". To understand how this citation format is encoded in CSL, let's first focus on the ``cs:layout`` element of ``cs:citation``. Its ``prefix`` and ``suffix`` attributes define the parentheses around the citation, while the value of the ``delimiter`` attribute ("; ") separates neighboring cites. The format of each individual cite is defined by the contents of ``cs:layout``, which consists of the output of the "author" and "issued-year" macros, separated by the value of the "delimiter" attribute (", ") on the ``cs:group`` element.
 
-et-al
-cs:layout and cs:sort
+The "author" macro prints the names stored in the "author" name variable of the cited item. The ``initialize-with`` attribute on ``cs:name`` specifies that given names should appear as initials, and that each initial is followed by the attribute's value (".").
 
-Bibliography
-^^^^^^^^^^^^
+The "issued-year" macro starts with a test, defined with the ``cs:choose`` element. If the cited item has a date stored in its "issued" date variable, the year of this date is printed. Otherwise, the style prints the value of the "no date" term.
 
-Macros
-^^^^^^
+You might wonder why we didn't just put the CSL code from the two macros directly into the ``cs:citation`` element. What are the advantages of using macros? Well, in the example above, the use of macros simplifies the structure of ``cs:citation``, making it easier to follow. In addition, both macros are called a total of four times in the style (twice in ``cs:citation``, and twice in ``cs:bibliography``). Without macros, we'd have to repeat the CSL code of these macros multiple times. Macros thus allow for more compact styles.
 
-Locale
-^^^^^^
+We're not done yet. The ``cs:citation`` element carries two attributes, ``et-al-min`` and ``et-al-use-first``. Together, they specify that if an item has three or more "author" names, only the first name is printed, followed by the value of the "et al" term.
 
-terms/locales/redefining terms
+Finally, ``cs:citation`` contains the ``cs:sort`` element, which itself contains two ``cs:key`` elements. This section specifies how cites within a citation are sorted. The first sorting key consists of the output of the "author" macro (CSL is smart enough to sort names by the family name first, and by initials second). Any cites with the same output for the first key are then sorted by the second sorting key, which is the output of the "issue-year" macro.
 
-Groups
-^^^^^^
+``cs:bibliography`` Element
+'''''''''''''''''''''''''''
 
-delimiters/affixes
+Whereas ``cs:citation`` is responsible for citations and cites, the ``cs:bibliography`` element is used to define the format of bibliographic entries.
+
+.. sourcecode:: xml
+
+    <macro name="author">
+      <names variable="author">
+        <name initialize-with="."/>
+      </names>
+    </macro>
+    <macro name="issued-year">
+      <choose>
+        <if variable="issued">
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </if>
+        <else>
+          <text term="no date"/>
+        </else>
+      </choose>
+    </macro>
+    ...
+    <bibliography>
+      <sort>
+        <key macro="author"/>
+        <key macro="issued-year"/>
+        <key variable="title"/>
+      </sort>
+      <layout suffix="." delimiter=", ">
+        <group delimiter=". ">
+          <text macro="author"/>
+          <text macro="issued-year"/>
+          <text variable="title"/>
+          <text variable="container-title"/>
+        </group>
+        <group>
+          <text variable="volume"/>
+          <text variable="issue" prefix="(" suffix=")"/>
+        </group>
+        <text variable="page"/>
+      </layout>
+    </bibliography>
+
+The ``cs:bibliography`` section of our example style really only works well for a single type of items: journal articles. It generates bibliographic entries in the form of:
+
+    A.C. Smith, D. Williams, T. Johnson. 2002. Story of my life. Journal of Biographies, 12(2), 24—27.
+    W. Wallace, J. Snow. 1999. Winter is coming. Journal of Climate Dynamics, 6(9), 97—102.
+
+How were we able to define this format? First, the structure of ``cs:bibliography`` is very similar to that of ``cs:citation``, but here ``cs:layout`` defines the format of each individual bibliographic entry. In addition to the "author" and "issued-year" macro, the bibliographic entries also show each item's "title" and "container-title" (for journal articles, the "container-title" is the title of the journal), the "volume" and "issue" in which the article was printed, and the pages ("page") on which the article appeared. The style uses the ``prefix`` and ``suffix`` attributes to wrap the journal issue number in parentheses, and relies on the ``suffix`` and ``delimiter`` attributes on the ``cs:layout`` and ``cs:group`` elements to place the rest of the punctuation.
+
+The ``cs:bibliography`` element also contains a ``cs:sort`` element, with three keys: the "author" and "issued-year" macros, and, as a third key, the item's "title".
+
+``cs:locale`` Element
+'''''''''''''''''''''
+
+The last section of our style is ``cs:locale``. As we wrote above, CSL locale files allow CSL styles to quickly translate into different languages. However, sometimes it's desirable to overwrite the default translations.
+
+.. sourcecode:: xml
+
+    <locale xml:lang="en">
+      <terms>
+        <term name="no date">without date</term>
+      </terms>
+    </locale>
+
+The translation for the "no date" term in the CSL locale file for US English is, not very surprising, "no date". However, for our example style, I wanted to use the English translation "without date" instead. To overwrite the default translation, we can use the ``cs:locale`` element as shown above.
+
+The ``xml:lang`` attribute on ``cs:locale`` is set to "en", which tells the style to overwrite the "no date" translation whenever the style is used in English. If we used the style in German, the style would still print the translation from the German locale file ("ohne Datum").
 
 Rendering Elements
-^^^^^^^^^^^^^^^^^^
+''''''''''''''''''
 
-Conditionals
-^^^^^^^^^^^^
+Briefly discuss the rendering elements (layout, choose, group, names, number, label, text, date).
 
-Todo:
+Diving Deeper
+~~~~~~~~~~~~~
 
-Discuss style metadata (how does it differ from a dependent style)
-
-Discuss rest of the style (check existing primer)
-Function of citation, bibliography, macros
-Function of sort and layout
-Briefly discuss all main rendering elements (group, names, number, label, text, date, etc.)
-Focus on delimiters
+You finished the primer. Good job! If you're interested in learning more about CSL, you're now well prepared to start reading the `CSL Specification`_ and our other documentation on the `Citation Style Language`_ website.
 
 Feedback
 ~~~~~~~~
@@ -557,54 +614,3 @@ Feedback
 Have something to report? Contact me on Twitter at `@rintzezelle`_, or create an issue on GitHub `here <https://github.com/rmzelle/writing/issues>`_.
 
 .. _@rintzezelle: https://twitter.com/rintzezelle
-
-Basic Anatomy of a Style
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-All CSL styles have the following basic structure:
-
-.. sourcecode:: xml
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text">
-      <info/>
-      <locale/>
-      <macro/>
-      <citation>
-        <sort/>
-        <layout/>
-      </citation>
-      <bibliography>
-        <sort/>
-        <layout/>
-      </bibliography>
-    </style>
-
-As you can see, the ``cs:style`` root element has (up to) five different child elements. The function of each type of child element is described below. The ``cs:style`` element itself normally carries the ``xmlns`` attribute (set to the CSL namespace), the ``version`` attribute (specifying the CSL version, set to "1.0" for CSL 1.0 styles), and the ``class`` attribute (specifies whether the style type, "in-text" or "note").
-
-Info
-''''
-
-``cs:info`` is always the first child element of the ``cs:style`` root element. It provides information about the CSL style (the style metadata), such as the style title, when the style was last updated, who wrote the style, etc.
-
-Locales
-'''''''
-
-CSL styles can automatically localize terms, date formats, and punctuation. Default sets of localization data are stored in the `CSL locale files <https://github.com/citation-style-language/locales/wiki>`_. In some cases it is desirable to override (subsets of) the default localization data, and this can be done in styles by using one or more ``cs:locale`` elements.
-
-Macros
-''''''
-
-Styles may contain one or more ``cs:macro`` elements. Each ``cs:macro`` element defines a macro, and each macro contains formatting instructions.
-
-Macros have two main roles. First, they can hold formatting instructions that otherwise would be put into the ``cs:citation`` and ``cs:bibliography`` elements. Using macros in this way keeps the structure of these latter elements concise and easy to understand. Secondly, they can be used to define complex sorting rules, for cites in citations, and references in bibliographies.
-
-Citation
-''''''''
-
-The ``cs:citation`` element describes how the in-text citations (for in-text styles) or footnotes/endnotes (for note styles) are formatted. The ``cs:sort`` child element of ``cs:citation`` can be used to specify how cites should be sorted within citations, while the ``cs:layout`` element is used to describe the format of cites and citations.
-
-Bibliography
-''''''''''''
-
-The ``cs:bibliography`` element describes the formatting of the references in the bibliography, and functions very similar to the ``citation`` element. The ``cs:sort`` child element of ``cs:bibliography`` can be used to specify how bibliographic entries should be sorted, while the ``cs:layout`` element is used to describe the format of bibliographic entries.
