@@ -594,14 +594,9 @@ The last section of our style is ``cs:locale``. As we wrote above, CSL locale fi
       </terms>
     </locale>
 
-The translation for the "no date" term in the CSL locale file for US English is, not very surprising, "no date". However, for our example style, I wanted to use the English translation "without date" instead. To overwrite the default translation, we can use the ``cs:locale`` element as shown above.
+The translation for the "no date" term in the CSL locale file for US English is, not very surprising, "no date". However, for our example style, I wanted to use "without date" instead. To overwrite the default translation, we can use the ``cs:locale`` element as shown above. For an item without an issued date, this would result in a citation like "(D. Williams, without date)".
 
 The ``xml:lang`` attribute on ``cs:locale`` is set to "en", which tells the style to overwrite the "no date" translation whenever the style is used in English. If we used the style in German, the style would still print the translation from the German locale file ("ohne Datum").
-
-Rendering Elements
-''''''''''''''''''
-
-Briefly discuss the rendering elements (layout, choose, group, names, number, label, text, date).
 
 Diving Deeper
 ~~~~~~~~~~~~~
