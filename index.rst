@@ -11,4 +11,5 @@ Citation Style Language - Documentation
 
    primer
    translating-locale-files
+   release-notes-1.0.1
    release-notes-1.0
