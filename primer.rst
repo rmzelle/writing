@@ -1,5 +1,5 @@
-Primer
-======
+Primer — An Introduction to CSL
+===============================
 
 by `Rintze M. Zelle, PhD <https://twitter.com/rintzezelle>`_
 
@@ -606,6 +606,6 @@ You finished the primer. Good job! If you're interested in learning more about C
 Feedback
 ~~~~~~~~
 
-Have something to report? Contact me on Twitter at `@rintzezelle`_, or create an issue on GitHub `here <https://github.com/rmzelle/writing/issues>`_.
+If you found a typo, or have something else to report regarding this primer, please contact me on Twitter at `@rintzezelle`_, or create an issue on GitHub `here <https://github.com/rmzelle/writing/issues>`_.
 
 .. _@rintzezelle: https://twitter.com/rintzezelle

@@ -1,5 +1,12 @@
-Translating CSL 1.0.1 Locale Files
-==================================
+Guide to Translating CSL Locale Files
+=====================================
+
+by `Rintze M. Zelle, PhD <https://twitter.com/rintzezelle>`_
+
+|CCBYSA|_
+
+.. |CCBYSA| image:: media/cc-by-sa-80x15.png
+.. _CCBYSA: http://creativecommons.org/licenses/by-sa/3.0/
 
 .. contents:: **Table of Contents**
    :depth: 4
@@ -38,7 +45,7 @@ https://github.com/citation-style-language/locales/.
 
 Each locale file contains the localization data for one language. Locale files
 are named "locales-xx-XX.xml", where "xx-XX" is a `BCP 47 language code
-<http://people.w3.org/rishida/utils/subtags/index.php>`_ (e.g. the locale code
+<http://people.w3.org/rishida/utils/subtags/>`_ (e.g. the locale code
 for British English is "en-GB"). The `repository wiki
 <https://github.com/citation-style-language/locales/wiki>`_ lists the locale
 code, language, and translation status of all locale files in the repository.
@@ -123,7 +130,7 @@ CSL styles can render dates in either non-localizing or localizing formats:
 .. sourcecode:: xml
 
     <style>
-      
+
       <!-- use of non-localized date format -->
       <macro name="accessed">
         <date variable="accessed" suffix=", ">
@@ -132,12 +139,12 @@ CSL styles can render dates in either non-localizing or localizing formats:
           <date-part name="year"/>
         </date>
       </macro>
-      
+
       <!-- use of localized date format -->
       <macro name="issued">
         <date variable="issued" form="text"/>
       </macro>
-      
+
     </style>
 
 Each locale file defines two localized date formats: a numeric format (e.g.
@@ -239,20 +246,20 @@ attribute on the ``term`` element. The different forms are "long" (the default),
         <single>editor</single>
         <multiple>editors</multiple>
       </term>
-      
+
       <term name="editor" form="short">
         <single>ed.</single>
         <multiple>eds.</multiple>
       </term>
-      
+
       <term name="editor" form="verb">edited by</term>
       <term name="editor" form="verb-short">ed.</term>
-      
+
       <term name="paragraph">
         <single>paragraph</single>
         <multiple>paragraph</multiple>
       </term>
-      
+
       <term name="paragraph" form="symbol">
         <single>¶</single>
         <multiple>¶¶</multiple>
@@ -292,7 +299,7 @@ contains internal quotes, these are replaced by "open-inner-quote",
 
 styles can render titles as
 
-::  
+::
 
     “Moby-Dick”
     “Textual Analysis of ‘Moby-Dick’”
@@ -335,8 +342,8 @@ Terms for the "ordinal" form follow special rules to make it possible to render
 any number in the "ordinal" form (e.g., "2nd", "15th", "231st"), without having
 to define a term for each number.
 
-The logic for defining ordinal suffixes with terms is described at
-http://citationstyles.org/downloads/specification.html#ordinal-suffixes, and
+The logic for defining ordinal suffixes with terms is described at `Ordinal Suffixes
+<http://citationstyles.org/downloads/specification.html#ordinal-suffixes>`_, and
 won't be revisited here. Instead, we'll look at an example.
 
 In English, there are four different ordinal suffixes in use: "st", "nd", and
@@ -407,7 +414,7 @@ A minimal example for French:
         </term>
         <term name="edition" form="short">éd.</term>
         <term name="month-01" gender="masculine">janvier</term>
-        
+
         <term name="long-ordinal-01" gender-form="masculine">premier</term>
         <term name="long-ordinal-01" gender-form="feminine">première</term>
         <term name="long-ordinal-01">premier</term>
@@ -420,7 +427,7 @@ A minimal example for French:
         <term name="long-ordinal-08">huitième</term>
         <term name="long-ordinal-09">neuvième</term>
         <term name="long-ordinal-10">dixième</term>
-        
+
         <term name="ordinal">e</term>
         <term name="ordinal-01" gender-form="feminine" match="whole-number">re</term>
         <term name="ordinal-01" gender-form="masculine" match="whole-number">er</term>
@@ -452,4 +459,6 @@ follow the `submission instructions for CSL styles
 Questions?
 ~~~~~~~~~~
 
-Post to the `Zotero forums <http://forums.zotero.org/11/>`_.
+Questions? Contact us on Twitter at `@csl_styles`_, or create an issue on GitHub `here <https://github.com/citation-style-language/locales/issues>`_.
+
+.. _@csl_styles: https://twitter.com/csl_styles
