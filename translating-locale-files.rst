@@ -9,7 +9,6 @@ by `Rintze M. Zelle, PhD <https://twitter.com/rintzezelle>`_
 .. _CCBYSA: http://creativecommons.org/licenses/by-sa/3.0/
 
 .. contents:: **Table of Contents**
-   :depth: 4
 
 Preface
 ~~~~~~~

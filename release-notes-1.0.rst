@@ -11,7 +11,6 @@ with contributions from Frank G. Bennett, Jr. and Bruce D'Arcus.
 .. _CCBYSA: http://creativecommons.org/licenses/by-sa/3.0/
 
 .. contents:: **Table of Contents**
-   :depth: 5
 
 Preface
 -------
