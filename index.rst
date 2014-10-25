@@ -7,7 +7,7 @@ Citation Style Language - Documentation
 =======================================
 
 .. toctree::
-   :titlesonly:
+   :maxdepth: 1
 
    primer
    translating-locale-files
