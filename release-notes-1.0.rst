@@ -26,8 +26,9 @@ often don't constitute valid CSL styles. In addition, when references are
 made to the XML elements of CSL, the CSL namespace ("cs") is always attached
 as a prefix (e.g. ``cs:citation`` for the ``<citation/>`` element). However,
 for CSL styles it is customary to declare the default CSL namespace on the
-root ``cs:style`` element (<style xmlns="http://purl.org/net/xbiblio/csl"
-/>), which eliminates the need to include this namespace for each element.
+root ``cs:style`` element (``<style
+xmlns="http://purl.org/net/xbiblio/csl"/>``), which eliminates the need to
+include this namespace for each element.
 
 Project Home(s)
 ---------------
@@ -139,7 +140,7 @@ Version Number
 
 Starting with CSL 1.0, styles (and locales files) must indicate the CSL
 version with which they are compatible. All CSL 1.0 styles should include
-the ``version`` attribute with the value "1.0" on the cs:style element,
+the ``version`` attribute with the value "1.0" on the ``cs:style`` element,
 e.g.:
 
 .. sourcecode:: xml
@@ -211,16 +212,17 @@ ISSN and ISSN-L
 ISSN-identifiers unambiguously identify journals. While CSL 0.8 allowed only a
 single ISSN identifier to be included in the style metadata section, CSL 1.0 now
 supports multiple ISSNs (e.g. the ISSNs of the print and online editions of a
-journal), as well as the relatively new `ISSN-L
-<http://www.issn.org/2-22637-What-is-an-ISSN-L.php>`_ identifier. For example:
+journal), as well as the relatively new `ISSN-L`_ identifier. For example:
+
+.. _ISSN-L: http://www.issn.org/understanding-the-issn/assignment-rules/the-issn-l-for-publications-on-multiple-media/
 
 .. sourcecode:: xml
 
     <style>
       <info>
-        <issn>1234-1234</issn>
-        <issn>4567-4567</issn>
-        <issnl>8521-8521</issnl>
+        <issn>0099-2240</issn>
+        <eissn>1098-5336</eissn>
+        <issnl>0099-2240</issnl>
       </info>
     </style>
 
@@ -1011,12 +1013,13 @@ alphabetically, while only taking the first author into account:
 Back-References in Note Styles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CSL 1.0 adds two features related to back-referencing in note styles. First, the
-`position` conditional supports a new value, "near-note". It tests true when an
-item has been previously cited, and the distance between the current and most
-recent use (measured in number of footnotes or endnotes) does not exceed the
-value of the new `near-note-distance` attribute. This attribute, which has a
-default value of 5, may be set on `cs:citation`. An example:
+CSL 1.0 adds two features related to back-referencing in note styles. First,
+the ``position`` conditional supports a new value, "near-note". It tests
+true when an item has been previously cited, and the distance between the
+current and most recent use (measured in number of footnotes or endnotes)
+does not exceed the value of the new ``near-note-distance`` attribute. This
+attribute, which has a default value of 5, may be set on ``cs:citation``. An
+example:
 
 .. sourcecode:: xml
 
@@ -1035,12 +1038,12 @@ default value of 5, may be set on `cs:citation`. An example:
       </citation>
     </style>
 
-N.B. The value of "near-note" is *always* false for references that are not in a
-footnote/endnote.
+N.B. The value of "near-note" is *always* false for references that are not
+in a footnote/endnote.
 
-The second feature is the new `first-reference-note-number` variable. When an
-item has been previously cited, this variable holds the number of the first note
-to cite the item.
+The second feature is the new ``first-reference-note-number`` variable. When
+an item has been previously cited, this variable holds the number of the
+first note to cite the item.
 
 Variables
 ~~~~~~~~~
