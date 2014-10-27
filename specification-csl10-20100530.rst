@@ -19,19 +19,17 @@ __ http://citationstyles.org/
         http://citationstyles.org/downloads/specification-csl10-20100530.html
     Latest version:
         http://citationstyles.org/downloads/specification.html
-    Previous versions: 
+    Previous versions:
         - http://citationstyles.org/downloads/specification-csl10-20100321.html
 
 .. class:: contributors
 
    Author
        * Rintze M. Zelle
-       
+
    Contributors
        * Frank G. Bennett, Jr.
        * Bruce D'Arcus
-
-.. |link| image:: link.png
 
 
 ========
@@ -44,7 +42,7 @@ __ http://citationstyles.org/
 Introduction
 ------------
 
-The Citation Style Language (CSL) is an |link| `XML
+The Citation Style Language (CSL) is an `XML
 <http://en.wikipedia.org/wiki/XML>`_ format for describing the formatting of
 in-text citations, notes and bibliographies. CSL offers:
 
@@ -58,7 +56,7 @@ in-text citations, notes and bibliographies. CSL offers:
 This document is meant as a complete and accurate specification of CSL 1.0.
 Additional documentation, such as the CSL schema, CSL styles, and information on
 how to add CSL support to applications, can be found at the official home of
-CSL, |link| `citationstyles.org <http://citationstyles.org>`_.
+CSL, `citationstyles.org <http://citationstyles.org>`_.
 
 CSL Styles - Basic Structure
 ----------------------------
@@ -66,7 +64,7 @@ CSL Styles - Basic Structure
 Namespacing
 ~~~~~~~~~~~
 
-All elements in CSL are |link| `namespaced
+All elements in CSL are `namespaced
 <http://en.wikipedia.org/wiki/XML_Namespace>`_. The recommended prefix ``cs`` is
 attached to element names throughout this specification, but is usually omitted
 from CSL styles when the default namespace is declared in the root ``cs:style``
@@ -97,7 +95,7 @@ following arguments:
     ("in-text").
 
 ``default-locale`` (optional)
-    Fixes style localization to the |link| `locale code
+    Fixes style localization to the `locale code
     <http://books.xmlschemata.org/relaxng/ch19-77191.html>`_ specified. This is
     desirable for most journal styles.
 
@@ -154,7 +152,7 @@ Info
 ^^^^
 
 The ``cs:info`` element contains all the style's metadata, many elements of
-which are borrowed from the |link| `Atom Syndication Format
+which are borrowed from the `Atom Syndication Format
 <http://tools.ietf.org/html/rfc4287>`_. Although it has no influence on how
 citations are formatted, complete and correct metadata is important if styles
 are made publicly available. Below is an example of a ``cs:info`` element,
@@ -194,13 +192,13 @@ followed by a description of all possible elements.
     to organize style repositories. Two types of categories exist. The first
     category type describes how in-text citations are rendered. For this type
     the ``citation-format`` attribute is set to one of the following values:
-    
+
     -  "author-date": e.g. "... (Doe, 1999)"
     -  "author": e.g. "... (Doe)"
     -  "numeric": e.g. "... [1]"
     -  "label": e.g. "... [doe99]"
     -  "note": the citation appears as a footnote or endnote
-    
+
     The second category type indicates the fields or disciplines for which the
     style is relevant. For this category type the ``field`` attribute is set to
     one of the discipline `categories`_.
@@ -215,7 +213,7 @@ followed by a description of all possible elements.
     Journal-specific styles may include one or more ``cs:issn`` elements,
     containing the journal's ISSN identifiers (multiple ISSNs can be assigned to
     a single journal, e.g. for the print and online editions). In addition, the
-    ``cs:issnl`` element may be used for the newly established |link| `ISSN-L
+    ``cs:issnl`` element may be used for the newly established `ISSN-L
     identifier <http://www.issn.org/2-22637-What-is-an-ISSN-L.php>`_.
 
 ``cs:link`` (optional)
@@ -223,7 +221,7 @@ followed by a description of all possible elements.
     set on the ``href`` attribute. The accompanying ``rel`` attribute must be
     set to indicate the relation of the URI to the style. The possible values of
     ``rel``:
-    
+
     -  "self": if the URI is that of the CSL style itself. Needed for automatic
        style updating.
     -  "independent-parent": if the URI is that of the parent CSL style, the
@@ -232,41 +230,41 @@ followed by a description of all possible elements.
     -  "template": if the URI is that of the CSL style from which the current
        independent style is derived. May be used to indicate style parentage.
     -  "documentation: if the URI points to the online style documentation.
-    
+
     The ``cs:link`` element may contain textual content to describe the link,
     and may carry the ``xml:lang`` attribute to specify the language of either
     the link description or of the link target (the value should be a
-    |link| `xsd:language locale code
+    `xsd:language locale code
     <http://books.xmlschemata.org/relaxng/ch19-77191.html>`_).
 
 ``cs:published`` (optional)
-    The contents of this element must be a |link| `timestamp
+    The contents of this element must be a `timestamp
     <http://books.xmlschemata.org/relaxng/ch19-77049.html>`_. This timestamp
     indicates when the style was initially created or made available.
 
 ``cs:rights`` (optional)
     This element specifies the license under which the style file is released.
-    See, e.g. the |link| `Creative Commons
+    See, e.g. the `Creative Commons
     <http://creativecommons.org/license/>`_. The element may include a
     ``xml:lang`` attribute to specify the language of the content (the value
-    should be an |link| `xsd:language locale code
+    should be an `xsd:language locale code
     <http://books.xmlschemata.org/relaxng/ch19-77191.html>`_).
 
 ``cs:summary`` (optional)
     This element gives a summary of the style.The element may include a
     ``xml:lang`` attribute to specify the language of the content (the value
-    should be an |link| `xsd:language locale code
+    should be an `xsd:language locale code
     <http://books.xmlschemata.org/relaxng/ch19-77191.html>`_).
 
 ``cs:title``
     The contents of this required element should be the name of the style as it
     should be shown to users. The element may include a ``xml:lang`` attribute
-    to specify the language of the content (the value should be an |link|
+    to specify the language of the content (the value should be an
     `xsd:language locale code
     <http://books.xmlschemata.org/relaxng/ch19-77191.html>`_).
 
 ``cs:updated``
-    The contents of this required element must be a |link| `timestamp
+    The contents of this required element must be a `timestamp
     <http://books.xmlschemata.org/relaxng/ch19-77049.html>`_. This timestamp is
     used for automatic updating of styles.
 
@@ -383,7 +381,7 @@ US English). Localization data can also be included in styles, using one or more
 of the optional ``cs:locale`` elements, which by convention are included
 directly after the ``cs:info`` element. For each ``cs:locale`` element, the
 relevant locale can be indicated with the ``xml:lang`` attribute (set to an
-|link| `xsd:language locale code
+`xsd:language locale code
 <http://books.xmlschemata.org/relaxng/ch19-77191.html>`_). If the attribute is
 absent, the ``cs:locale`` element's localization data will apply to all locales.
 
@@ -541,7 +539,7 @@ value of the optional ``form`` attribute. The different forms are:
 -  "short" - e.g. "ed" and "eds" for the term "editor"
 -  "verb" - e.g. "edited by" for the term "editor"
 -  "verb-short" - e.g. "ed" for the term "editor"
--  "symbol" - e.g. "§" for the term "section"
+-  "symbol" - e.g. "Â§" for the term "section"
 
 Examples of how terms are defined have been given above (`Locale Files - Basic
 Structure`_). The complete list of terms can be found in `Appendix III -
@@ -693,7 +691,7 @@ date parts are identified by the value of the ``name`` attribute, which can be:
 
 ``day``
     For ``day``, ``cs:date-part`` may carry the ``form`` attribute, with values:
-    
+
     -  "numeric" - default, e.g. "1"
     -  "numeric-leading-zeros" - e.g. "01"
     -  "ordinal" - e.g. "1st"
@@ -704,7 +702,7 @@ date parts are identified by the value of the ``name`` attribute, which can be:
     and include periods by default (if applicable). These periods are removed
     when `strip-periods`_ is set to "true" ("false" is the default). The
     ``form`` attribute can be set to:
-    
+
     -  "long" - default, e.g. "January"
     -  "short" - e.g. "Jan."
     -  "numeric" - e.g. "1"
@@ -712,7 +710,7 @@ date parts are identified by the value of the ``name`` attribute, which can be:
 
 ``year``
     For ``year``, ``cs:date-part`` may carry the ``form`` attribute, with values:
-    
+
     -  "long" - default, e.g. "2005"
     -  "short" - e.g. "05"
 
@@ -731,7 +729,7 @@ delimiters. The attribute value set on the largest date-part ("day", "month" or
 instead of the en-dash. For example,
 
 .. sourcecode:: xml
-    
+
     <style>
       <citation>
         <layout>
@@ -763,7 +761,7 @@ If a date includes a season instead of a month, a season term (``season-01`` to
 the month date-part. E.g.,
 
 .. sourcecode:: xml
-    
+
     <style>
       <citation>
         <layout>
@@ -880,27 +878,27 @@ variable are separated from each other. The attributes that may be used on
     ampersand (&).
 
 ``delimiter``
-    Specifies the text string to separate names of a name variable. The default 
+    Specifies the text string to separate names of a name variable. The default
     value is ", " ("J. Doe, S. Smith").
 
 ``delimiter-precedes-last``
     Determines in which cases the delimiter used to delimit names is also used
     to separate the second to last and the last name in name lists. The possible
     values are:
-    
+
     -  "contextual" (default): the delimiter is only included for name lists
        with three or more names
-       
+
        - 2 names: "J. Doe and T. Williams,"
        - 3 names: "J. Doe, S. Smith, and T. Williams"
-    
+
     -  "always": the delimiter is always included
-       
+
        - 2 names: "J. Doe, and T. Williams"
        - 3 names: "J. Doe, S. Smith, and T. Williams"
-    
+
     -  "never": the delimiter is never included
-       
+
        - 2 names: "J. Doe and T. Williams,"
        - 3 names: "J. Doe, S. Smith and T. Williams"
 
@@ -913,7 +911,7 @@ variable are separated from each other. The attributes that may be used on
     (et-al-use-first="1"), the "et-al" term is preceded by a space (e.g. "Doe et
     al."). With multiple names, the "et-al" term is preceded by the name
     delimiter (e.g. "Doe, Smith, et al.").
-    
+
 ``et-al-subsequent-min`` / ``et-al-subsequent-use-first``
     The (optional) ``et-al-min`` and ``et-al-use-first`` attributes take effect
     for all cites and bibliographic entries. With the ``et-al-subsequent-min``
@@ -956,11 +954,11 @@ these name-parts, which are delimited by single spaces in rendered names, are:
     Specifies that names should be displayed with the given name following the
     family name (e.g. "John Doe" becomes "Doe, John"). The attribute may have
     one of the two values:
-    
+
     - "first": name-as-sort-order applies to the first name in each name
       variable
     - "all": name-as-sort-order applies to all names
-    
+
     Note that the sort order of names may differ from the display order for
     names containing particles and suffixes (see `Name-part order`_). Also, this
     attribute only affects names written in the latin or Cyrillic alphabet.
@@ -997,7 +995,7 @@ sorting order of name-parts often differs. An overview of the different orders:
     4) family
     5) suffix
 
-:Example: [Gérard] [de] [la] [Martinière] [III]
+:Example: [GÃ©rard] [de] [la] [MartiniÃ¨re] [III]
 
 ----
 
@@ -1011,12 +1009,12 @@ sorting order of name-parts often differs. An overview of the different orders:
     4) dropping-particle
     5) suffix
 
-:Example: [la] [Martinière], [Gérard] [de], [III]
+:Example: [la] [MartiniÃ¨re], [GÃ©rard] [de], [III]
 
 ----
 
 :Conditions: ``form`` set to "long", name-as-sort-order active,
-             ``demote-non-dropping-particle`` set to 
+             ``demote-non-dropping-particle`` set to
              "display-and-sort"
 :Order:
     1) family
@@ -1025,7 +1023,7 @@ sorting order of name-parts often differs. An overview of the different orders:
     4) non-dropping-particle
     5) suffix
 
-:Example: [Martinière], [Gérard] [de] [la], [III]
+:Example: [MartiniÃ¨re], [GÃ©rard] [de] [la], [III]
 
 ----
 
@@ -1034,7 +1032,7 @@ sorting order of name-parts often differs. An overview of the different orders:
     1) non-dropping-particles
     2) family
 
-:Example: [la] [Martinière]
+:Example: [la] [MartiniÃ¨re]
 
 ----
 
@@ -1051,7 +1049,7 @@ N.B. The sort keys are listed in descending order of importance.
     3) given
     4) suffix
 
-:Example: [la Martinière] [de] [Gérard] [III]
+:Example: [la MartiniÃ¨re] [de] [GÃ©rard] [III]
 
 ----
 
@@ -1062,7 +1060,7 @@ N.B. The sort keys are listed in descending order of importance.
     3) given
     4) suffix
 
-:Example: [Martinière] [de la] [Gérard] [III]
+:Example: [MartiniÃ¨re] [de la] [GÃ©rard] [III]
 
 ----
 
@@ -1200,16 +1198,16 @@ The ``cs:label`` element may carry attributes for `affixes`_, `formatting`_,
 
 ``form``
     Selects the form of the term, with possible values:
-    
+
     -  "long": the default, e.g. "editor"/"editors" for the "editor" term
     -  "verb": e.g. "edited by" for the "editor" term
     -  "short": e.g. "ed"/"eds" for the "editor" term
     -  "verb-short": e.g. "ed" for the "editor" term
-    -  "symbol": e.g. "§" for the singular "section" term
+    -  "symbol": e.g. "Â§" for the singular "section" term
 
 ``plural``
     Sets pluralization of the term, with values:
-    
+
     -  "contextual": the default, pluralization is dependent on the
        variable contents, e.g. "page 1" and "pages 1-3"
     -  "always": always use the plural form, e.g. "pages 1" and "pages 1-3"
@@ -1279,10 +1277,10 @@ are:
 ``is-numeric``
     Tests whether the given variables (`Appendix I - Variables`_) contain
     numeric data.
-    
+
 ``is-uncertain-date``
     Tests whether the given `date variables`_ contain `uncertain dates`_.
-    
+
 ``locator``
     Tests whether the locator matches the given locator variable subtype
     (see `Locators`_).
@@ -1293,21 +1291,21 @@ are:
     "false"). The different positions are (note on terminology: a *citation*
     refers to a citation group, which contains one or more *cites* to individual
     items):
-    
+
     -  "first": the position of a cite that is the first to reference an item
     -  "ibid"/"ibid-with-locator"/"subsequent": a cite that references an
        earlier cited item always has the "subsequent" position. In special cases
        cites may have the "ibid" or "ibid-with-locator" position. These
        positions are only assigned when:
-       
+
        a) the current cite immediately follows on another cite, within the
           same citation, that references the same item
-            
+
        or
-       
+
        b) the current cite is the first cite in the citation, and the previous
           citation includes a single cite that references the same item
-            
+
        If either requirement is met, the presence of locators determines which
        position is assigned:
 
@@ -1318,13 +1316,13 @@ are:
          same locator, the position of the current cite is "ibid". If the
          locator differs the position is "ibid-with-locator". If the current
          cite lacks a locator the position is "subsequent".
-         
+
     - "near-note": the position of a cite following another cite that references
       the same item. Both cites have to be located in foot or endnotes, and the
       distance between both cites may not exceed the maximum distance (measured
       in number of foot or endnotes) set with the ``near-note-distance`` option
       (see `Note Distance`_).
-      
+
     Note that each cite can have multiple position values. Whenever
     position="ibid-with-locator" is true, position="ibid" is also true. And
     whenever position="ibid" or position="near-note" is true,
@@ -1439,14 +1437,14 @@ listed below.
 
              \(a) A ``form`` value of "short" can be incremented to "long" (e.g.
              "Doe" becomes "J. Doe").
-             
+
              \(b) ``initialize-with`` can be ignored (e.g. "J. Doe" becomes
              "John Doe").
 
           2. If ``initialize-with`` is *not* set, then the ``form`` value of
              "short" can be immediately incremented to "long" (e.g. "Doe"
              becomes "John Doe").
-    
+
     **Given name disambiguation rules**
         The effect of each given name disambiguation rule is described below. In
         all cases, transformations that do not contribute to disambiguation are
@@ -1499,7 +1497,7 @@ Citation Collapsing
     and "year-suffix-ranged" both fall back to "year" when the
     ``disambiguate-add-year-suffix`` attribute is not set to "true" (see
     `Disambiguation`_). Its possible values are:
-    
+
     -  "citation-number": collapses numeric citation ranges (e.g. from "[1, 2,
        3, 5]" to "[1-3, 5]"). Note that only increasing ranges are collapsed,
        e.g. "[3, 2, 1]" will not collapse (to see how numeric styles can sort
@@ -1511,7 +1509,7 @@ Citation Collapsing
        e.g. "(Doe 2000a, b)" instead of "(Doe 2000a, 2000b)".
     -  "year-suffix-ranged": collapses as "year-suffix", but also
        collapses ranges of year-suffix markers, e.g. "(Doe 2000a-c,e)"
-       instead of "(Doe 2000a, b, c, e)". 
+       instead of "(Doe 2000a, b, c, e)".
 
 ``year-suffix-delimiter``
     Specifies the delimiter for year-suffix elements. For example, citations
@@ -1554,9 +1552,9 @@ Whitespace
     is put in the margin and all subsequent lines of text are aligned with the
     margin (as in the IEEE style). An example showing the alignment, if the
     first field is ``<text variable="citation-number" suffix=". "/>``:
-    
+
     ::
-    
+
         1. Adams, D. (2002). The Ultimate Hitchhiker's Guide to the
            Galaxy (1st ed.).
 
@@ -1580,9 +1578,9 @@ Reference Grouping
     shares these names with the preceding bibliographic entry. Note that only
     the first ``cs:names`` element rendered is affected. E.g., with
     ``subsequent-author-substitute`` set to "---":
-    
+
     ::
-    
+
         Asimov. Foundation, 1951.
         ---. Foundation and Empire, 1952.
         ---. Second Foundation, 1953.
@@ -1617,16 +1615,16 @@ be either maintained or dropped when only the surname is shown (from now on we
 will refer to these two types as non-dropping-particle and dropping-particle,
 respectively). A single name can contain particles of both types (with the
 non-dropping-particle always following the dropping-particle). For example, the
-French name "Gérard de la Martinière" can be deconstructed into:
-    
+French name "GÃ©rard de la MartiniÃ¨re" can be deconstructed into:
+
     ::
-    
+
         {
             "author": {
-                "given": "Gérard",
+                "given": "GÃ©rard",
                 "dropping-particle": "de",
                 "non-dropping-particle": "la",
-                "family": "Martinière"
+                "family": "MartiniÃ¨re"
             },
             {
                 "given": "W.",
@@ -1636,7 +1634,7 @@ French name "Gérard de la Martinière" can be deconstructed into:
         }
 
 When just the surname is shown, only the non-dropping-particle is kept: "La
-Martinière".
+MartiniÃ¨re".
 
 Whereas the dropping-particle is always treated the same, styles vary in how the
 non-dropping-particle is handled in case of inverted names, where the family
@@ -1652,27 +1650,27 @@ dropping-particle, if available (sort order B).
 
 **Sort order A: non-dropping-particle not demoted**
 
--  primary sort key: "la Martinière"
+-  primary sort key: "la MartiniÃ¨re"
 -  secondary sort key: "de"
--  tertiary sort key: "Gérard"
+-  tertiary sort key: "GÃ©rard"
 
 **Sort order B: non-dropping-particle demoted**
 
--  primary sort key: "Martinière"
+-  primary sort key: "MartiniÃ¨re"
 -  secondary sort key: "de la"
--  tertiary sort key: "Gérard"
+-  tertiary sort key: "GÃ©rard"
 
 Some names include a particle that should never be demoted. For these cases the
 particle should just be included in the family name field, for example for the
 French general Charles de Gaulle:
 
     ::
-    
+
         {
             "author": {
                 "family": "de Gaulle",
                 "given": "Charles"
-            } 
+            }
         }
 
 The handling of particles for inverted names is set with the
@@ -1681,17 +1679,17 @@ The handling of particles for inverted names is set with the
 ``demote-non-dropping-particle``
     Sets the display and sorting behavior of the non-dropping-particle in
     inverted names (e.g. "Koning, W. de"). The possible values are:
-    
+
     -  "never": the non-dropping-particle is treated as part of the family name,
        whereas the dropping-particle is appended (e.g. "de Koning, W.", "la
-       Martinière, Gérard de"). The non-dropping-particle is part of the primary
+       MartiniÃ¨re, GÃ©rard de"). The non-dropping-particle is part of the primary
        sort key (sort order A, e.g. "de Koning, W." appears under "D").
     -  "sort-only": same display behavior as "never", but the
        non-dropping-particle is demoted to a secondary sort key (see sort order
        B, e.g. "de Koning, W." appears under "K").
     -  "display-and-sort" (default): the dropping and non-dropping-particle are
-       appended to the rest of the name (e.g. "Koning, W. de" and "Martinière,
-       Gérard de la"). When names are sorted, all particles are part of the
+       appended to the rest of the name (e.g. "Koning, W. de" and "MartiniÃ¨re,
+       GÃ©rard de la"). When names are sorted, all particles are part of the
        secondary sort key (see sort order B, e.g. "Koning, W. de" appears under
        "K").
 
@@ -1840,33 +1838,33 @@ The following formatting attributes may be set on ``cs:date``, ``cs:date-part``,
 
 ``font-style``
     Sets the font style, with values:
-    
+
     -  "normal" (default)
     -  "italic"
     -  "oblique" (i.e. slanted)
 
 ``font-variant``
     Allows for the use of small capitals, with values:
-    
+
     -  "normal" (default)
     -  "small-caps"
 
 ``font-weight``
     Sets the font weight, with values:
-    
+
     -  "normal" (default)
     -  "bold"
     -  "light"
 
 ``text-decoration``
     Allows for the use of underlining, with values:
-    
+
     -  "none" (default)
     -  "underline"
 
 ``vertical-align``
     Sets the vertical alignment, with values:
-    
+
     -  "baseline" (default)
     -  "sup" (superscript)
     -  "sup" (subscript)
@@ -1916,13 +1914,13 @@ following values:
 .. [#] N.B. if ``display`` attributes are used, make sure all rendering
        elements are under the control of exactly one display attribute.
 
-**Examples** 
+**Examples**
 
 (A) A similar effect as with ``second-field-align`` can be achieved with
     [#]_:
-    
+
     .. sourcecode:: xml
-    
+
         <bibliography>
           <layout>
             <text display="left-margin" variable="citation-number"
@@ -1939,10 +1937,10 @@ following values:
 
 ----
 
-(B) A per-author publication listing can be formatted as follows [#]_: 
-    
+(B) A per-author publication listing can be formatted as follows [#]_:
+
     .. sourcecode:: xml
-    
+
         <bibliography subsequent-author-substitute="">
           <sort>
             <key variable="author"/>
@@ -1962,9 +1960,9 @@ following values:
             </group>
           </layout>
         </bibliography>
-    
+
     which would result in
-    
+
     +-------------------+-----------------------+
     | Author1                                   |
     +-------------------+-----------------------+
@@ -1987,9 +1985,9 @@ following values:
 
 (C) An annotated bibliography with the annotation block-indented below the
     reference can be formatted as follows:
-    
+
     .. sourcecode:: xml
-    
+
         <bibliography>
           <layout>
             <group display="block">
@@ -2312,7 +2310,7 @@ The page abbreviation rules for the different values of the
     321-328, 2787-2816
 
 "chicago"
-    Page ranges are abbreviated according to the |link|
+    Page ranges are abbreviated according to the
     `Chicago Manual of Style-rules <http://www.aahn.org/guidelines.html>`_:
 
 Table: **Chicago Manual of Style page range abbreviation rules**
