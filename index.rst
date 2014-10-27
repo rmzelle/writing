@@ -11,5 +11,8 @@ Citation Style Language - Documentation
 
    primer
    translating-locale-files
+   specification-csl101-20120903
    release-notes-1.0.1
+   specification-csl10-20100530
+   specification-csl10-20100321
    release-notes-1.0
