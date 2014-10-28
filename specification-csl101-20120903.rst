@@ -1,5 +1,5 @@
-Specification for CSL 1.0.1 (2012-09-03)
-========================================
+CSL 1.0.1 Specification (2012-09-03)
+====================================
 
 by `Rintze M. Zelle, PhD <https://twitter.com/rintzezelle>`_
 

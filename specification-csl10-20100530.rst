@@ -1,5 +1,5 @@
-Specification for CSL 1.0 (update 2010-05-30)
-=============================================
+CSL 1.0 Specification (2010-05-30)
+==================================
 
 by `Rintze M. Zelle, PhD <https://twitter.com/rintzezelle>`_
 

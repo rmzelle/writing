@@ -1,5 +1,5 @@
-Release Notes for CSL 1.0
-=========================
+CSL 1.0 Release Notes
+=====================
 
 by `Rintze M. Zelle, PhD <https://twitter.com/rintzezelle>`_
 
