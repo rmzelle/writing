@@ -44,7 +44,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Citation Style Language'
-copyright = u'2014, Rintze M. Zelle'
+copyright = u'2015, Rintze M. Zelle'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
